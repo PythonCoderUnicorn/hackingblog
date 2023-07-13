@@ -1,0 +1,86 @@
+[
+  {
+    "objectID": "posts/post-with-code/index.html",
+    "href": "posts/post-with-code/index.html",
+    "title": "Hacking Starter Kit",
+    "section": "",
+    "text": "This is a post shows how to get started for Cyber Security / Ethical Hacking learning.\nThese are some of the things to have in order to start learning cyber security information. This will cover free resources to signup for and/or download onto your computer."
+  },
+  {
+    "objectID": "posts/post-with-code/index.html#virtual-machine-vm",
+    "href": "posts/post-with-code/index.html#virtual-machine-vm",
+    "title": "Hacking Starter Kit",
+    "section": "Virtual Machine (VM)",
+    "text": "Virtual Machine (VM)\nA virtual machine is a way to run another computer inside your computer you are using. If you are reading this on a Windows computer then that is called the host machine and the other computer you put inside your computer is called a hypervisor. Think of your main computer as a big box, and the VM is a smaller box inside the big box.\nThe hypervisor is isolated from your main computer, you can run any operating system on it, have multiple versions of it and if something goes bad, you can restart a new one. One thing to remember when you install a VM is that it thinks it is the only computer around, it has no idea about being inside a Windows or Apple computer.\nThe VM I suggest for beginners is VirualBox, Link here . This is usually what everyone suggests anyway as their first VM to learn on. On Youtube has videos on how to install VirtualBox, so there is no need to go over it here.\n\nIf you want to use another VM and are using an Apple computer then VMware is one I really like using. There are many products VMware offers but the one you want to select is the VM Fusion for personal use. The personal use you will need to make an account to get the access key which means you get to use it for free. The Link here.\n\nInstalling VMware is pretty straightforward, but in either VM, you can allow the computer to use default settings for disk space as it can be changed later in the settings. You can delete a VM and start again."
+  },
+  {
+    "objectID": "posts/post-with-code/index.html#linux-os",
+    "href": "posts/post-with-code/index.html#linux-os",
+    "title": "Hacking Starter Kit",
+    "section": "Linux OS",
+    "text": "Linux OS\nLinux operating system you want to install on your VM is Kali Linux as a starter. Easy to find, search “kali linux” and get to kali.org, click on download button.\n\nSelect the Installer Images. This will download a .iso file, which is what you will search for each and every time you want to install a OS on your virtual machine.\n\nOpen your VirtualBox or VMware and click on new.\n\nVMware icon on top menu bar on MacOS\n\nThe select the .iso file from your downloads folder. Name the VM after the OS it is. Start up the machine (will take a few minutes to boot up), enter your username and password. Launch the terminal, the black square with white border on the top menu bar.\n\nTo test if you have internet connection, type ping google.com and you should start seeing information load on the terminal. To stop the ping Ctrl + C.\n\nOkay, you have a connection to the internet on a virtual machine."
+  },
+  {
+    "objectID": "posts/post-with-code/index.html#github",
+    "href": "posts/post-with-code/index.html#github",
+    "title": "Hacking Starter Kit",
+    "section": "GitHub",
+    "text": "GitHub\nIf you are not familiar with GitHub, it is a website that stores and hosts programming software repositories. The “git” is the software the sends data to a website from the terminal. This is the website where people share their code with the world, or just place their code in a private repository. Much of the Free Open Source Software community is on this platform and is a great place to search for programming materials.\nThe Link is here for your free account. Note, there is also GitLab which requires a different username and password but works similarly.\n\nYou can host your own blog on GitHub or place your code on GitHub and then have Netlify etc. host your blog or whatever program you make. It is worthwhile getting used to GitHub as you will likely search for cyber security software and resources from here. You can find people to follow and see what projects they are working on, getting involved is always appreciated.\n\nGitHub is the website you put your code and share it"
+  },
+  {
+    "objectID": "posts/post-with-code/index.html#code-editor",
+    "href": "posts/post-with-code/index.html#code-editor",
+    "title": "Hacking Starter Kit",
+    "section": "Code Editor",
+    "text": "Code Editor\nEvery cyber security / ethical hacker uses a code editor, because you will be interacting with code and even writing your own code. Learning a programming language is another reason you need a code editor to practice what you are learning.\nFor learning a programming language on your regular computer then the code editor is really up to you on what one to go with. Some of the options are:\n\nVS Code, has many extensions and themes\nSublime text editor\nAtom\nNotepad++\n\nFor cyber security / hacking inside your VM, then it is best to stick with bare bones editors. Bare bones editors are ones that come installed with Linux like nano and Vim, these are light on the demnds of the computer.\nInside your terminal, type nano newfile.txt which will open nano and then you start typing in the text file, press Cmd + S, and then Cmd + X to exit (instructions on bottom of terminal). Note: this will open and create ‘newfile.txt’ whereever your present working directory is."
+  },
+  {
+    "objectID": "posts/post-with-code/index.html#linux-crash-course",
+    "href": "posts/post-with-code/index.html#linux-crash-course",
+    "title": "Hacking Starter Kit",
+    "section": "Linux Crash Course",
+    "text": "Linux Crash Course\nIn order to get anywhere in cyber security, programming or hacking is to know the Linux essentials of navigating through the file system. This information applies to Apple users as Apple is based off of Unix, so in a Mac computer with the terminal you can apply most of Linux commands.\nHere is a crash course, but you will greatly benefit from further learning. Note: folder and directory is being used interchangeably. All of these commands are typed in the terminal.\n\npwd means present working directory, this shows what files and folders are inside the folder directory you are at. If you have a file “desk.png”, and you are located at the desktop directory, you will see “desk.png” listed.\nls means list the things in the pwd\ncd means change directory, if you are in the home directory but want to go to the Download folder, you type cd Download/.\nsudo apt install <package> sudo means super user do, which is the command to run things as root (as admin) which requires a password (you will not see your password being typed, no ’*’ shown). This command installs the package you name.\nsudo apt update run this command to update all software packages on your linux VM or OS, you should get in a habit of running this every time you start the machine.\nsudo apt upgrade run this command for similar reason above, you want to ensure you stay uup to date on Linux packages.\nman <command> man means manual, it is the instructions for how to use a command, if you want to know more about ‘pwd’ you type man pwd and you will get a guide on how it works.\n<program> -h or --help is how to get help on how to use a program function. Example hashcat , type hashcat -h\ncd ~ this command takes you to your home directory, it will list Documents, Downloads, Pictures, etc. Wherever you are in the file system, this command will take you home (yep, a pun).\n\nHere is a tip, you often just need to type part of the word for a directory or file and hit tab for it to autocomplete. If autocomplete is not working then it is an indication you are in the wrong directory or the path is wrong.\n\nWe covered:\n\nVirtual Machines\nKali Linux\nGitHub\nCode Editor\nLinux Crash Course\n\nThis hopefully this was helpful to you and gets you ready for all the learning ahead."
+  },
+  {
+    "objectID": "posts/welcome/index.html",
+    "href": "posts/welcome/index.html",
+    "title": "Welcome To My Blog",
+    "section": "",
+    "text": "Hello World!"
+  },
+  {
+    "objectID": "posts/welcome/index.html#welcome-to-the-hacker_newb-blog.",
+    "href": "posts/welcome/index.html#welcome-to-the-hacker_newb-blog.",
+    "title": "Welcome To My Blog",
+    "section": "Welcome to the hacker_newb blog.",
+    "text": "Welcome to the hacker_newb blog.\nThis blog is aimed at fellow new people in the world of Cyber Security / Ethical Hacking.\nCyber Security field is massive in scope, a plethora of topics, so many things to learn, and it is always changing because technology evolves rapidly. The technology changes but some of the core concepts of cyber security remain the same overtime.\nPlenty of websites and YouTube videos on Cyber Security exist but none of them are talking to me, 99% of all the content is aimed at cisgender men. This blog is aimed at everyone else, there will be no “dudes”, “guys”, “bros”, etc in my blog.\nThis blog will have free information and will mix content from various resources that I have used and/ or learned from. When you start looking into Cyber Security training it is often expensive which another barrier for many.\nThis blog is not about directing your path in cyber security, just sharing mine and what topic in cyber security I find most interesting."
+  },
+  {
+    "objectID": "posts/welcome/index.html#some-truth",
+    "href": "posts/welcome/index.html#some-truth",
+    "title": "Welcome To My Blog",
+    "section": "Some truth",
+    "text": "Some truth\nThe learning curve is steep, there is a massive amount of content to learn, but like programming methodology, take huge problems and break them into small pieces and chip away at it.\nYou will need to be focused and dedicated to learning new things, the most important is the drive to keep trying and curiousity. If you have ever wondered “how does this work?”, “What if I do this?” and see if it breaks, then this is the path.\nThe mindset, the way you think about things will be altered as you learn cyber security, as you will need to start thinking like a malicious hacker. Doing the Capture The Flag (CTF) competitions you will force you to learn quickly a new Linux command, software program or vulnerability. These are fast (and free) way to learn the mindset and skills.\nJust about every professional Cyber Security / Hacker that I have watched or listned to (on podcasts and YouTube) has mentioned that doing CTFs is a surefire way to learn and get experience (not really ‘real world’ experience) but experience finding your way into a system."
+  },
+  {
+    "objectID": "posts/welcome/index.html#learning-essentials",
+    "href": "posts/welcome/index.html#learning-essentials",
+    "title": "Welcome To My Blog",
+    "section": "Learning Essentials",
+    "text": "Learning Essentials\nYou will need to know the fundamentals of cyber security, that means you need to know how networking works (how internet traffic gets your computer from the router, etc).\nHow to install and run a Virtual Machine (VM) on your computer, as you need this to do any sort of cyber security learning. Good thing about VMs are that they are free to download and use. VirtualBox is the most common one used and runs on all computers.\nYou will need to know Linux Operating System (OS) and commands. Most popular cyber security Linux OS is Kali Linux and Parrot OS. These operating systems have many tools built in for cyber security.\nLearn how to search. You may think “I already know how to use Google”, but there is a method called Google Dorks (Google dorking). Let us search for a news story from BBC or whatever, you remember that they had a story dealing with a specific topic, for example rise in ocean acidification. You will dork your query as such in the url: bbc: ocean acidification . People would also do Reddit as part of their dorking.\nLearn a programming language. Having knowledge of Python has helped me understand some of the code in exploits and getting through some learning module challenges. Find a language you like, that you understand, as this skill helps you in technology careers but also outside in daily life.\nEvery cyber security professional / hacker knows failure, and so will you. YOU WILL FAIL a lot, accept it, and most importantly, is that it is the basis for learning. Hacking is failing your way to success, you will fail multiple times iterating over characters in a password you are trying to crack. You will likely succeed if you try, search for a solution, ask for help and take break between attempts.\n\nIn my view, cyber security is like math, it is hard and many people do not want anything to do with it, yet it is all around you. When you finally get the answer to a problem it feels great.\n\nCyber Security / Ethical Hacking is exciting and fun to learn, challenging to do and practice. Many people in the cyber security community share what they know and learn, so help is out there."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "hacking newb",
+    "section": "",
+    "text": "Hacking Starter Kit\n\n\n\n\n\n\n\nbeginner\n\n\ncode\n\n\nstarter kit\n\n\n\n\n\n\n\n\n\n\n\nJul 13, 2023\n\n\nhacker_newb\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\ncyber security\n\n\nbeginner\n\n\n\n\n\n\n\n\n\n\n\nJul 10, 2023\n\n\nhacker_newb\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "Welcome to my hacking newb blog!\nThis blog is about sharing all of the Cyber Security / Ethical Hacking knowledge I learn with whomever reads this. My goal is to make this information accessible, many parts in one.\nEverything is beginner friendly as I am also learning this huge topic and sharing what I learn.\nWhy start a blog?\nTo help others learn Cyber Security in an ever Internet of Things world, anything connected to the internet is hackable. By learning some cyber security you help protect yourself from many vulnerabilities. Those who need to know cyber security the most have barriers to accessing this information or have no idea where to start.\nI am here to help and be part of the Free Open Source Software (FOSS) community.\nWhy ‘hacker newb’ ?\nWhenever someone is new to a technology stack, they are called or referred to as a “newb” and that is what I am and who my target audience is."
+  }
+]

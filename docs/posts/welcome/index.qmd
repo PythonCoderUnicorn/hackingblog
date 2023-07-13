@@ -1,0 +1,80 @@
+---
+title: "Welcome To My Blog"
+author: "hacker_newb"
+date: "2023-07-10"
+categories: [cyber security, beginner]
+image: greenlines.png
+---
+
+<pre> Hello World! </pre> 
+
+
+<img src='greenlines.png'>
+
+
+## Welcome to the hacker_newb blog.
+
+This blog is aimed at fellow new people in the world of
+Cyber Security / Ethical Hacking. 
+
+Cyber Security field is massive in scope, a plethora of
+topics, so many things to learn, and it is _always_ changing because technology evolves rapidly. The technology changes but some of the core concepts of cyber security remain the same overtime. 
+
+
+Plenty of websites and YouTube videos on Cyber Security 
+exist but none of them are talking to me, 99% of all the 
+content is aimed at cisgender men. This blog is aimed at 
+everyone else, there will be no "dudes", "guys", "bros", etc in my blog. 
+
+
+This blog will have _free_ information and will mix content from various resources that I have used and/ or learned from. When you start looking into Cyber Security training it is often expensive which another barrier for many. 
+
+
+This blog is not about directing your path in cyber security, just sharing mine and what topic in cyber security I find most interesting. 
+
+
+## Some truth
+
+The learning curve is steep, there is a massive amount of content to learn, but like programming methodology, take huge problems and break them into small pieces and chip away at it.
+
+You will need to be focused and dedicated to learning new things, the most important is the drive to keep trying and curiousity. 
+If you have ever wondered _"how does this work?"_, _"What if I do this?"_ and see if it breaks, then this is the path. 
+
+The mindset, the way you think about things will be altered as you learn cyber security, as you will need to start thinking like a malicious hacker. Doing the **Capture The Flag** (CTF) competitions you will force you to learn quickly a new Linux command, software program or vulnerability. These are fast (and free) way to learn the mindset and skills. 
+
+
+Just about every professional Cyber Security / Hacker that I have watched or listned to (on podcasts and YouTube) has mentioned that doing CTFs is a surefire way to learn and get experience (not really 'real world' experience) but experience finding your way into a system. 
+
+
+## Learning Essentials
+
+You will need to know the fundamentals of cyber security, that
+means you need to know how networking works (how internet traffic gets your computer from the router, etc). 
+
+How to install and run a Virtual Machine (VM) on your computer, as you need this to do any sort of cyber security learning. Good thing about VMs are that they are free to download and use. VirtualBox is the most common one used and runs on all computers.
+
+
+You will need to know Linux Operating System (OS) and commands. Most popular cyber security Linux OS is Kali Linux and Parrot OS. These operating systems have many tools built in for cyber security.
+
+
+Learn how to search. You may think "I already know how to use Google", but there is a method called Google Dorks (Google dorking). Let us search for a news story from BBC or whatever, you remember that they had a story dealing with a specific topic, for example rise in ocean acidification. You will dork your query as such in the url: `bbc: ocean acidification` . People would also do Reddit as part of their dorking. 
+
+
+Learn a programming language. Having knowledge of Python has helped me understand some of the code in exploits and getting through some learning module challenges. Find a language you like, that you understand, as this skill helps you in technology careers but also outside in daily life. 
+
+
+Every cyber security professional / hacker knows failure, and so will you. YOU WILL FAIL a lot, accept it, and most importantly, is that it is the basis for learning. Hacking is failing your way to success, you will fail multiple times iterating over characters in a password you are trying to crack. You will likely succeed if you try, search for a solution, ask for help and take break between attempts. 
+
+> In my view, cyber security is like math, it is hard and many people do not want anything to do with it, yet it is all around you. When you finally get the answer to a problem it feels great.
+
+
+Cyber Security / Ethical Hacking is exciting and fun to learn, challenging to do and practice. Many people in the cyber security community share what they know and learn, so help is out there. 
+
+
+
+
+
+
+
+
+
