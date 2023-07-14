@@ -70,11 +70,326 @@
     "text": "Learning Essentials\nYou will need to know the fundamentals of cyber security, that means you need to know how networking works (how internet traffic gets your computer from the router, etc).\nHow to install and run a Virtual Machine (VM) on your computer, as you need this to do any sort of cyber security learning. Good thing about VMs are that they are free to download and use. VirtualBox is the most common one used and runs on all computers.\nYou will need to know Linux Operating System (OS) and commands. Most popular cyber security Linux OS is Kali Linux and Parrot OS. These operating systems have many tools built in for cyber security.\nLearn how to search. You may think “I already know how to use Google”, but there is a method called Google Dorks (Google dorking). Let us search for a news story from BBC or whatever, you remember that they had a story dealing with a specific topic, for example rise in ocean acidification. You will dork your query as such in the url: bbc: ocean acidification . People would also do Reddit as part of their dorking.\nLearn a programming language. Having knowledge of Python has helped me understand some of the code in exploits and getting through some learning module challenges. Find a language you like, that you understand, as this skill helps you in technology careers but also outside in daily life.\nEvery cyber security professional / hacker knows failure, and so will you. YOU WILL FAIL a lot, accept it, and most importantly, is that it is the basis for learning. Hacking is failing your way to success, you will fail multiple times iterating over characters in a password you are trying to crack. You will likely succeed if you try, search for a solution, ask for help and take break between attempts.\n\nIn my view, cyber security is like math, it is hard and many people do not want anything to do with it, yet it is all around you. When you finally get the answer to a problem it feels great.\n\nCyber Security / Ethical Hacking is exciting and fun to learn, challenging to do and practice. Many people in the cyber security community share what they know and learn, so help is out there."
   },
   {
+    "objectID": "posts/definitions/index.html",
+    "href": "posts/definitions/index.html",
+    "title": "Cyber Security Definitions",
+    "section": "",
+    "text": "Cyber Security terms and definitions."
+  },
+  {
+    "objectID": "posts/definitions/index.html#asset",
+    "href": "posts/definitions/index.html#asset",
+    "title": "Cyber Security Definitions",
+    "section": "Asset",
+    "text": "Asset\nAssets are anything that a cyber security strategy should protect. Assets are physical and digital, software and hardware along with the data pertaining to them."
+  },
+  {
+    "objectID": "posts/definitions/index.html#access-control-ac",
+    "href": "posts/definitions/index.html#access-control-ac",
+    "title": "Cyber Security Definitions",
+    "section": "Access Control (AC)",
+    "text": "Access Control (AC)\nAny website or web application that restricts access to only users and their data on that website or app."
+  },
+  {
+    "objectID": "posts/definitions/index.html#authentication",
+    "href": "posts/definitions/index.html#authentication",
+    "title": "Cyber Security Definitions",
+    "section": "Authentication",
+    "text": "Authentication\nMaking sure only verified users have access to data on a website or app. Authentication is proving the user is who they claim to be. Authentication is done by username, passwords, and 2 Factor Authentication (2FA)."
+  },
+  {
+    "objectID": "posts/definitions/index.html#antivirus",
+    "href": "posts/definitions/index.html#antivirus",
+    "title": "Cyber Security Definitions",
+    "section": "Antivirus",
+    "text": "Antivirus\nA software used for detecting and removing a malicious software from the machine that the antivirus is installed on.\nTo see if a program or file is malicious you can upload it to VirusTotal to analyze it and rate out of 100 to check how dangerous it is. Once you upload a file this information is dispersed to all the antivirus software companies/vendors."
+  },
+  {
+    "objectID": "posts/definitions/index.html#bug",
+    "href": "posts/definitions/index.html#bug",
+    "title": "Cyber Security Definitions",
+    "section": "Bug",
+    "text": "Bug\nThe term ‘bug’ in computer history is credited to computer programmer Grace Hopper in 1947.\nIt simply means there is an error in the software code, which will crash your program or cause there to be a vulnerability. Anyone who works with software knows bugs, they are part of life."
+  },
+  {
+    "objectID": "posts/definitions/index.html#botnet",
+    "href": "posts/definitions/index.html#botnet",
+    "title": "Cyber Security Definitions",
+    "section": "Botnet",
+    "text": "Botnet\nA collection of computers which have been infected by a malicious software in order to run commands given to them by the attacker from the Command and Control Centre."
+  },
+  {
+    "objectID": "posts/definitions/index.html#blue-team",
+    "href": "posts/definitions/index.html#blue-team",
+    "title": "Cyber Security Definitions",
+    "section": " Blue Team ",
+    "text": "Blue Team \nA team of cyber security professionals with a shared goal to defend and protect an organization from Cyber Attacks. This teams is part of the Security Operations Center (SOC) who are actively watching for attacks."
+  },
+  {
+    "objectID": "posts/definitions/index.html#black-hat",
+    "href": "posts/definitions/index.html#black-hat",
+    "title": "Cyber Security Definitions",
+    "section": "Black Hat",
+    "text": "Black Hat\nA black hat hacker is one who breaks the law and violates security policies for personal profit (and fame). Hacking into a company’s system without explicit authorization is black hat activity.\nIf you want to see how many researchers investigate and explore the world of black hat hackers, there is a YouTube channel, link here."
+  },
+  {
+    "objectID": "posts/definitions/index.html#critical-infrastructure",
+    "href": "posts/definitions/index.html#critical-infrastructure",
+    "title": "Cyber Security Definitions",
+    "section": "Critical Infrastructure",
+    "text": "Critical Infrastructure\nAny asset that is vital to the organization and is the main focus for security teams strategies in defense."
+  },
+  {
+    "objectID": "posts/definitions/index.html#cyber-atack",
+    "href": "posts/definitions/index.html#cyber-atack",
+    "title": "Cyber Security Definitions",
+    "section": "Cyber Atack",
+    "text": "Cyber Atack\nAn attempt to compromise/ bypass a protected system. This can range from simple to large scale attacks."
+  },
+  {
+    "objectID": "posts/definitions/index.html#cryptography",
+    "href": "posts/definitions/index.html#cryptography",
+    "title": "Cyber Security Definitions",
+    "section": "Cryptography",
+    "text": "Cryptography\nAll the mathematical processes performed on data to provide privacy, authentication, integrity and security. The world of hacking deals with hashes.\nFor an example and useful tool, you can generate your own md5hash and then later use it for learning hashcat and other hashing tools.\n\nThe string ‘cryptography’ has the long hash, if you were to change 1 little character or digit the whole hash will be different."
+  },
+  {
+    "objectID": "posts/definitions/index.html#cve",
+    "href": "posts/definitions/index.html#cve",
+    "title": "Cyber Security Definitions",
+    "section": "CVE",
+    "text": "CVE\nCommon Vulnerabilities and Exposures (CVE) is a term you will absolutely see and hear. A database of publicly disclosed information security issues. A CVE number uniquely identifies one vulnerability from the list.\nAll CVEs start with the year, then a dash, followed by the number of vulnerabilities found. The link here is for a 2014 CVE, TimThumb and WordThumb which allowed Remote Code Execution (RCE), NIST CVE database."
+  },
+  {
+    "objectID": "posts/definitions/index.html#data-breach",
+    "href": "posts/definitions/index.html#data-breach",
+    "title": "Cyber Security Definitions",
+    "section": "Data breach",
+    "text": "Data breach\nThe unwanted disclosure or access to confidential information."
+  },
+  {
+    "objectID": "posts/definitions/index.html#data-theft",
+    "href": "posts/definitions/index.html#data-theft",
+    "title": "Cyber Security Definitions",
+    "section": "Data theft",
+    "text": "Data theft\nThe intentional act of stealing data. Stealing daya can be done through physical means or a data leak resulting for a code vulnerability."
+  },
+  {
+    "objectID": "posts/definitions/index.html#ddos",
+    "href": "posts/definitions/index.html#ddos",
+    "title": "Cyber Security Definitions",
+    "section": " DDOS ",
+    "text": "DDOS \nThis term is common to hear. Distributed Denial of Service. An attack during which the access of a certain system is blocked usually due to purposely ran flooding attacks and connection resource demand.\n\nthe website is unreachable, it is broken"
+  },
+  {
+    "objectID": "posts/definitions/index.html#digital-forensics",
+    "href": "posts/definitions/index.html#digital-forensics",
+    "title": "Cyber Security Definitions",
+    "section": "Digital Forensics",
+    "text": "Digital Forensics\nDigital forensics is a branch of cyber security that is involved after a attack has happened. Digital forensics is involved in recovery, investigation, examination and analysis of digital devices (along with physical ones)."
+  },
+  {
+    "objectID": "posts/definitions/index.html#dlp",
+    "href": "posts/definitions/index.html#dlp",
+    "title": "Cyber Security Definitions",
+    "section": "DLP",
+    "text": "DLP\nData Loss Prevention is a collection of security strategies used to prevent the occurrence of data loss and data leakage."
+  },
+  {
+    "objectID": "posts/definitions/index.html#encoding",
+    "href": "posts/definitions/index.html#encoding",
+    "title": "Cyber Security Definitions",
+    "section": "Encoding",
+    "text": "Encoding\nTaking plain text and converting it to ciphertext, unreadable and ununderstandble text.\n\nIf you did the hash example then you understand this."
+  },
+  {
+    "objectID": "posts/definitions/index.html#encyrption-key",
+    "href": "posts/definitions/index.html#encyrption-key",
+    "title": "Cyber Security Definitions",
+    "section": "Encyrption key",
+    "text": "Encyrption key\nEncryption Key is a random string of bits created for scrambling and unscrambling data. They are designed with intention to be unpredictable and unique."
+  },
+  {
+    "objectID": "posts/definitions/index.html#firewall",
+    "href": "posts/definitions/index.html#firewall",
+    "title": "Cyber Security Definitions",
+    "section": "Firewall",
+    "text": "Firewall\nA software security tool used for filtering web traffic. The firewall is controlled by a set of rules which traffic will be let through and which is blocked.\n\nHost based firewall\nNetwork based firewall"
+  },
+  {
+    "objectID": "posts/definitions/index.html#honeypot",
+    "href": "posts/definitions/index.html#honeypot",
+    "title": "Cyber Security Definitions",
+    "section": " Honeypot ",
+    "text": "Honeypot \nAn intentional vulnerable system used from trapping Black Hat hackers. It is a false system made as a decoy for the hacker to fall for. When an attacker falls for the honeypot it alerts security experts and researchers of the potential threat."
+  },
+  {
+    "objectID": "posts/definitions/index.html#ids",
+    "href": "posts/definitions/index.html#ids",
+    "title": "Cyber Security Definitions",
+    "section": "IDS",
+    "text": "IDS\nIntrusion Detection System is a monitoring system that detects suspicious activities and generates alerts when they are detected."
+  },
+  {
+    "objectID": "posts/definitions/index.html#ips",
+    "href": "posts/definitions/index.html#ips",
+    "title": "Cyber Security Definitions",
+    "section": "IPS",
+    "text": "IPS\nIntrusion Prevention System is a security tool to constantly monitor the network for malicious activity, takes actions to prevent and block activities."
+  },
+  {
+    "objectID": "posts/definitions/index.html#malware",
+    "href": "posts/definitions/index.html#malware",
+    "title": "Cyber Security Definitions",
+    "section": " Malware ",
+    "text": "Malware \nMalicious software or Malware is code written with an intent to cause harm and violate the security of a system. There are many types of Malware:\n\nRATs remote access trojan\nKeyloggers\nTrojans\nRootkits\nBackdoors\nAdwares."
+  },
+  {
+    "objectID": "posts/definitions/index.html#packet-sniffing",
+    "href": "posts/definitions/index.html#packet-sniffing",
+    "title": "Cyber Security Definitions",
+    "section": "Packet Sniffing",
+    "text": "Packet Sniffing\nThis is when you use software like Wireshark and Burpsuite to collect and capture internet packets off of a data network communication.\nYou are looking at all the HTTPS requests back and forth from your system or network to the endpoint, to see if anyone is sending little network packets with malicious code. This is used for defense and for offense purposes."
+  },
+  {
+    "objectID": "posts/definitions/index.html#patch",
+    "href": "posts/definitions/index.html#patch",
+    "title": "Cyber Security Definitions",
+    "section": "Patch",
+    "text": "Patch\nThis is a software update to repair a existing software bug/ flaw in the code or system. It is important to keep up to date on your software for devices."
+  },
+  {
+    "objectID": "posts/definitions/index.html#phishing",
+    "href": "posts/definitions/index.html#phishing",
+    "title": "Cyber Security Definitions",
+    "section": "Phishing",
+    "text": "Phishing\nPhishing is the most common cyber attack, and is part of  Social Engineering  strategies for attacks.\nThe attack is when the target gives their  confidential information  (username and password) to an email, person on the phone, social media or an acquaintance without knowing it."
+  },
+  {
+    "objectID": "posts/definitions/index.html#pen-testing",
+    "href": "posts/definitions/index.html#pen-testing",
+    "title": "Cyber Security Definitions",
+    "section": "Pen Testing",
+    "text": "Pen Testing\n\nPenetration Tester is part of the security Blue Team or an individual who checks and scans for any bugs and vulnerabilities using various software tools. After a pentest, a report is made which details any bugs and vulnerabilities that were found."
+  },
+  {
+    "objectID": "posts/definitions/index.html#risk-management",
+    "href": "posts/definitions/index.html#risk-management",
+    "title": "Cyber Security Definitions",
+    "section": "Risk Management",
+    "text": "Risk Management\nInternet Technology risk management is the application of risk management methods to manage IT threats. IT risk management involves procedures, policies, and tools to identify and assess potential threats and vulnerabilities in IT infrastructure"
+  },
+  {
+    "objectID": "posts/definitions/index.html#red-team",
+    "href": "posts/definitions/index.html#red-team",
+    "title": "Cyber Security Definitions",
+    "section": " Red Team ",
+    "text": "Red Team \nThis team is opposing the Blue Team. This team often gets more attention and hype due to its nature of “break stuff and report on it” job.\nA group of cybersecurity experts that perform offensive security exercises on the company to test its security.\nThe goal of this is to act as an attacker and find out as many potential vulnerabilities which can compromise the system/assets of an organization.\n\nact like a malicious hacker and get paid\n\nThis team can also work for a Bug Bounty program, where a company pays Red Teams to find vulnerabilities and get paid for their work."
+  },
+  {
+    "objectID": "posts/definitions/index.html#sandboxing",
+    "href": "posts/definitions/index.html#sandboxing",
+    "title": "Cyber Security Definitions",
+    "section": "Sandboxing",
+    "text": "Sandboxing\nThe act of isolating a system or an application in order to perform testing. If you installed a Virtual Machine then you have a sandbox environment."
+  },
+  {
+    "objectID": "posts/definitions/index.html#social-engineering",
+    "href": "posts/definitions/index.html#social-engineering",
+    "title": "Cyber Security Definitions",
+    "section": " Social Engineering ",
+    "text": "Social Engineering \nSocial Engineering is a field on its own, it is how many cyber attacks are performed and it does not get much attention in context of other cyber security topics.\nSocial engineering is the term used for a broad range of malicious activities accomplished through human interactions.\nExample: Call your bank, provide incorrect information and see if you are able to bypass your security question. Your birthday is often the security question which a friend or colleague would know.\n\nThe objective is to see what cyber security safeguards can be bypassed with publically available information"
+  },
+  {
+    "objectID": "posts/definitions/index.html#spam",
+    "href": "posts/definitions/index.html#spam",
+    "title": "Cyber Security Definitions",
+    "section": "Spam",
+    "text": "Spam\nThe folder in your email with messages or your phone being sent text messages that were not wanted.\nThese typically have spelling errors, general in scope but with ChatGPT and such Artificial Intelligence these spam emails and texts are getting better with English grammar making it easier for victims to fall for these attacks."
+  },
+  {
+    "objectID": "posts/definitions/index.html#vpn",
+    "href": "posts/definitions/index.html#vpn",
+    "title": "Cyber Security Definitions",
+    "section": "VPN",
+    "text": "VPN\nVirtual Private Network is a communication link between systems which is encrypted in order to provide a more secure and private communication.\nYour Internet Service Provider (ISP) can see what websites you go to, overall web traffic, but a VPN makes a tunnel in which your home internet IP address changes and the VPN see what website you visit. Many VPN providers do not keep logs and delete them daily, which makes your web traffic more secure. When using a VPN it is a secure way to use the internet."
+  },
+  {
+    "objectID": "posts/definitions/index.html#vulnerability",
+    "href": "posts/definitions/index.html#vulnerability",
+    "title": "Cyber Security Definitions",
+    "section": "Vulnerability",
+    "text": "Vulnerability\nVulnerability Is a flaw in code or system that weakens the overall security of that system.\nvulnerability examples:\n\nusing an older web browser\nnot updating your phone software\nnot updating your computer operating software\nvisiting HTTP websites (not encrypted, not safe)\nallowing the browser to store your passwords"
+  },
+  {
+    "objectID": "posts/definitions/index.html#white-hat",
+    "href": "posts/definitions/index.html#white-hat",
+    "title": "Cyber Security Definitions",
+    "section": " White Hat ",
+    "text": "White Hat \nA white hat hacker or ethical hacker is an individual who uses hacking skills to identify security vulnerabilities in hardware, software or networks.\nThe line between Black Hat and White Hat is Grey Hat, there is some subjectivity in the details of what a White Hat versus a Grey Hat does. Either way the White Hat reports vulnerabilities and likely does the Bug Bounty programs."
+  },
+  {
+    "objectID": "posts/definitions/index.html#wireshark",
+    "href": "posts/definitions/index.html#wireshark",
+    "title": "Cyber Security Definitions",
+    "section": "Wireshark",
+    "text": "Wireshark\nWireshark is free and open source packet analyzer. Wireshark is the most often-used packet sniffer in the world.\n\nWireshark comes installed with Kali Linux."
+  },
+  {
+    "objectID": "posts/definitions/index.html#tcpdump",
+    "href": "posts/definitions/index.html#tcpdump",
+    "title": "Cyber Security Definitions",
+    "section": "Tcpdump",
+    "text": "Tcpdump\nTcpdump is a useful packet sniffing tool for networks. It helps in monitoring and logging TCP/IP traffic that is shared over a network. Tcpdump is preinstalled on most Linux systems and can be ran from terminal."
+  },
+  {
+    "objectID": "posts/definitions/index.html#nessus",
+    "href": "posts/definitions/index.html#nessus",
+    "title": "Cyber Security Definitions",
+    "section": "Nessus",
+    "text": "Nessus\nNessus is one of the best vulnerability assessment scanners out there. Nessus offers 3 different versions: Essentials, Professional and Expert.\n\nrequires a user account\nfree version is limited in tools"
+  },
+  {
+    "objectID": "posts/definitions/index.html#metasploit",
+    "href": "posts/definitions/index.html#metasploit",
+    "title": "Cyber Security Definitions",
+    "section": "Metasploit",
+    "text": "Metasploit\nMetasploit has an excellent collection of tools that are perfect for penetration testing.\nMetasploit is a vulnerable VM which you can run exploits and target."
+  },
+  {
+    "objectID": "posts/definitions/index.html#burpsuit",
+    "href": "posts/definitions/index.html#burpsuit",
+    "title": "Cyber Security Definitions",
+    "section": "Burpsuit",
+    "text": "Burpsuit\nBurpsuite is used for performing security testing for web applications. It offers many functions from simple proxy functionality to different scanners, intruders to even more advance options such as spider, repeater, and decoder.\nThis is a Graphical User Interface (GUI) and is very much a tool you will need to be familiar with in most cyber security actions."
+  },
+  {
+    "objectID": "posts/definitions/index.html#nmap",
+    "href": "posts/definitions/index.html#nmap",
+    "title": "Cyber Security Definitions",
+    "section": "Nmap",
+    "text": "Nmap\nNmap (Network Mapper) is a free and open source tool used for network scanning and security auditing.\nThis is normally one of the first things you learn to use, when learning Networking and ports.\n\ninstalled on Kali Linux and Parrot OS"
+  },
+  {
+    "objectID": "posts/definitions/index.html#aircrack-ng",
+    "href": "posts/definitions/index.html#aircrack-ng",
+    "title": "Cyber Security Definitions",
+    "section": "Aircrack-ng",
+    "text": "Aircrack-ng\nAircrack-ng is a complete suite of tools to assess WiFi network security. Several things can be performed with aircrack from monitoring to attacking and cracking the password of the access point."
+  },
+  {
+    "objectID": "reference.html",
+    "href": "reference.html",
+    "title": "References",
+    "section": "",
+    "text": "List of resources and references used in my Cyber Security / Ethical Hacking learning and used on this blog.\n\nCyber Security Bootcamp. Zero To Mastery Inc., 2023. Udemy"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "hacking newb",
     "section": "",
-    "text": "Hacking Starter Kit\n\n\n\n\n\n\n\nbeginner\n\n\ncode\n\n\nstarter kit\n\n\n\n\n\n\n\n\n\n\n\nJul 13, 2023\n\n\nhacker_newb\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\ncyber security\n\n\nbeginner\n\n\n\n\n\n\n\n\n\n\n\nJul 10, 2023\n\n\nhacker_newb\n\n\n\n\n\n\nNo matching items"
+    "text": "Cyber Security Definitions\n\n\n\n\n\n\n\nbeginner\n\n\nterms\n\n\n\n\n\n\n\n\n\n\n\nJul 14, 2023\n\n\nhacker_newb\n\n\n\n\n\n\n  \n\n\n\n\nHacking Starter Kit\n\n\n\n\n\n\n\nbeginner\n\n\ncode\n\n\nstarter kit\n\n\n\n\n\n\n\n\n\n\n\nJul 13, 2023\n\n\nhacker_newb\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\ncyber security\n\n\nbeginner\n\n\n\n\n\n\n\n\n\n\n\nJul 10, 2023\n\n\nhacker_newb\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",

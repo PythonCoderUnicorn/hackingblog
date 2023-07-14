@@ -7,14 +7,16 @@ website:
   navbar:
     right:
       - about.qmd
+      - reference.qmd
       - icon: github
         href: https://github.com/
-      - icon: twitter
-        href: https://twitter.com
+      - icon: mastodon
+        href: https://infosec.exchange/@hacker_newb
 format:
   html:
     theme: solar
     css: styles.css
+
 
 
 
