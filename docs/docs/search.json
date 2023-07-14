@@ -70,6 +70,97 @@
     "text": "Learning Essentials\nYou will need to know the fundamentals of cyber security, that means you need to know how networking works (how internet traffic gets your computer from the router, etc).\nHow to install and run a Virtual Machine (VM) on your computer, as you need this to do any sort of cyber security learning. Good thing about VMs are that they are free to download and use. VirtualBox is the most common one used and runs on all computers.\nYou will need to know Linux Operating System (OS) and commands. Most popular cyber security Linux OS is Kali Linux and Parrot OS. These operating systems have many tools built in for cyber security.\nLearn how to search. You may think “I already know how to use Google”, but there is a method called Google Dorks (Google dorking). Let us search for a news story from BBC or whatever, you remember that they had a story dealing with a specific topic, for example rise in ocean acidification. You will dork your query as such in the url: bbc: ocean acidification . People would also do Reddit as part of their dorking.\nLearn a programming language. Having knowledge of Python has helped me understand some of the code in exploits and getting through some learning module challenges. Find a language you like, that you understand, as this skill helps you in technology careers but also outside in daily life.\nEvery cyber security professional / hacker knows failure, and so will you. YOU WILL FAIL a lot, accept it, and most importantly, is that it is the basis for learning. Hacking is failing your way to success, you will fail multiple times iterating over characters in a password you are trying to crack. You will likely succeed if you try, search for a solution, ask for help and take break between attempts.\n\nIn my view, cyber security is like math, it is hard and many people do not want anything to do with it, yet it is all around you. When you finally get the answer to a problem it feels great.\n\nCyber Security / Ethical Hacking is exciting and fun to learn, challenging to do and practice. Many people in the cyber security community share what they know and learn, so help is out there."
   },
   {
+    "objectID": "posts/OSINT/index.html",
+    "href": "posts/OSINT/index.html",
+    "title": "OSINT for beginners",
+    "section": "",
+    "text": "Penentration Testing, Step 1, gather information about target."
+  },
+  {
+    "objectID": "posts/OSINT/index.html#what-is-osint",
+    "href": "posts/OSINT/index.html#what-is-osint",
+    "title": "OSINT for beginners",
+    "section": "What is OSINT",
+    "text": "What is OSINT\nOpen Source Intelligence (OSINT) is using information online that is publically available about a target. This is the first step and typically takes the longest amount of time. Like in data science, you spend 80% of your time finding, cleaning, organizing, filtering the data before you do any of the fun stuff plotting the data in tables and charts.\n\nTake a moment and think of all the websites, apps and services you have signed up for in the last few years, and all the emails that exist. We all have some digital trail left by forgotton services and current ones.\n\nThe goal of OSINT is to search websites, social media, search engines and any public asset that could have the target’s information.\nOSINT Framework website that can bring this concept to a visual graph, which lays out the platforms and areas to search for OSINT data on a target.\n\nThe graph shows the many websites and apps that are to be searched for Email Address, Social Networks, Instant Messaging and Dating options are selected.\n\ncheck yourself\nIt is a good idea to see if any of your emails has been compromised. The website HaveIbeenPwned checks various email services and accounts to see if there has been any compromises with your email. Using this for the first time is a shock, and you will be informed if your email was part of a breach.\n\nupdate passwords with STRONG passwords\nuse a password manager like BitWarden, etc."
+  },
+  {
+    "objectID": "posts/OSINT/index.html#checkusernames",
+    "href": "posts/OSINT/index.html#checkusernames",
+    "title": "OSINT for beginners",
+    "section": " CheckUserNames ",
+    "text": "CheckUserNames \nOSINT tool that checks 500 websites for usernames and company brand names."
+  },
+  {
+    "objectID": "posts/OSINT/index.html#google-dorks",
+    "href": "posts/OSINT/index.html#google-dorks",
+    "title": "OSINT for beginners",
+    "section": " Google Dorks ",
+    "text": "Google Dorks \nUsing the search engine you already know, but with syntax that you use when searching a library database.\n\nSearch syntax for dorking:\n\nFiletype: specify the type of file (pdf, docx, etc.)\nExt: the file extension (.txt, .log, etc)\nIntext: searches for text inside a webpage\nIntitle: search a website with a specfic title\nInurl: searches for the url of any website\n\nExample: github: theharvester which searches only GitHub for the repositories with that name."
+  },
+  {
+    "objectID": "posts/OSINT/index.html#recon-ng",
+    "href": "posts/OSINT/index.html#recon-ng",
+    "title": "OSINT for beginners",
+    "section": " recon-ng ",
+    "text": "recon-ng \nrecon-ng is installed in Kali Linux and Parrot OS."
+  },
+  {
+    "objectID": "posts/OSINT/index.html#theharvester",
+    "href": "posts/OSINT/index.html#theharvester",
+    "title": "OSINT for beginners",
+    "section": " theHarvester ",
+    "text": "theHarvester \n\nScan for IP subdomains and ports for a company.\nFor details on how to use this check out the “GitHub for beginners” post."
+  },
+  {
+    "objectID": "posts/OSINT/index.html#sherlock",
+    "href": "posts/OSINT/index.html#sherlock",
+    "title": "OSINT for beginners",
+    "section": " Sherlock ",
+    "text": "Sherlock \nThe Sherlock scan of Red Team Hacker Cyber Security Professional Nahamsec.\n\nInstall the requirements: python3 -m pip install -r requirements.txt then cd sherlock/. The path to the executable Python is “sherlock/sherlock”.\n\nget help python3 sherlock --help or -h\n\nTo scan a username and have the scan spend only 1 second waiting for website reply:\n\npython3 sherlock <username>  --print-found --timeout 1\n\nAfter the search Sherlock makes the <username>.txt file in the same directory."
+  },
+  {
+    "objectID": "posts/OSINT/index.html#nmap",
+    "href": "posts/OSINT/index.html#nmap",
+    "title": "OSINT for beginners",
+    "section": " Nmap ",
+    "text": "Nmap \nNetwork mapper is super popular and is used for scanning networks. It comes installed in Kali Linux and Porrot OS.\nYou used this to see if a website domain (IP address) has any ports open and can detect which operating systsm (OS) is being used and its version. This tool is a powerful and useful one to know.\nNmap has many functions and is not an easy start for beginners, but there is a guide book Link here which will help.\n\nman nmap as usual to get the manual"
+  },
+  {
+    "objectID": "posts/OSINT/index.html#fierce",
+    "href": "posts/OSINT/index.html#fierce",
+    "title": "OSINT for beginners",
+    "section": " fierce ",
+    "text": "fierce \n\nOpen source tool that scans a website domain and subdomains that you specify."
+  },
+  {
+    "objectID": "posts/OSINT/index.html#metagoofil",
+    "href": "posts/OSINT/index.html#metagoofil",
+    "title": "OSINT for beginners",
+    "section": " metagoofil ",
+    "text": "metagoofil \nSomewhat of a silly name but what a useful tool.\n\nThe search parameters were to search the domain GitHub -d github.com for -f files of -t type pdf. The program generates .txt file of all pdfs found with links to the pdf."
+  },
+  {
+    "objectID": "posts/OSINT/index.html#other",
+    "href": "posts/OSINT/index.html#other",
+    "title": "OSINT for beginners",
+    "section": "other",
+    "text": "other\nother tools (not personally tried)\n\nCensys for any internet connected device\nWappalyzer free plan includes 50 searches/month for tracking websites, software vulnerabilities, Chrome/Firefox extension\nMaltego need an account to search target IP and domains\nShodan It is the Google for hackers. Not free. (monthly subscription: $69 / $359 (small business) / $1099 (corp))\nJigsaw Need an account. It allows you to search Jigsaw’s database of mostly large well known companies\nExiftool This gets data from images and video runs on Windows, MacOS and Linux. Free."
+  },
+  {
+    "objectID": "posts/github/index.html",
+    "href": "posts/github/index.html",
+    "title": "GitHub for beginners",
+    "section": "",
+    "text": "How to get software tools from GitHub on your Linux machine."
+  },
+  {
+    "objectID": "posts/github/index.html#github",
+    "href": "posts/github/index.html#github",
+    "title": "GitHub for beginners",
+    "section": "GitHub",
+    "text": "GitHub\nFor getting software tools and code from GitHub does not require signing into the website. Here are the instruction on how to a repository package onto your Linux VM.\nThis example will be getting theHarvester repo from ParrotSec. Inside your Linux VM, launch the firefox browser, Google dork for theHarvester.\n\nClick on the green button.\n\nClick on the copy icon for the HTTPS.\nInside your VM open the terminal, navigate to your desktop (or whever you want to store this repository) cd Desktop/.\nThen type git clone + paste in the HTTPS link. It should have ‘.git’ at the end. Hit enter. Hit ls to see the directory.\n\nYou should see theHarvester. cd theHarvester/, you can just type cd th<tab> for autocomplete.\n\nNext is to install the required software, instruction are commonly placed on the README file of the repository. We are told to run the command: pip3 install -r requirements.txt which installs packages.\nType python3 theHarvester.py\n\nThe program will quit because no argument parameter were provided. Type python3 theHarvester.py --help to get the instructions on how to use this program.\nto run a search:\n\npython3 theHarvester.py -d <website> -b all\nfill in <website> with whatever your target is\nthe -b all means search using all the domains\n\nFor a smaller scan:\n\npython3 theHarvester.py -d <website> -l 300  -b anubis\nthis limits scans to 300 and uses just anubis\n\nTo use API keys for searching:\n\ninside the terminal: nano /etc/theHarvester/api-keys.yaml\nopens a text file where you paste in your keys and the program will utilize the API keys\n\ntheHarvester is known to be a hit and miss for returning results, some days it will work great. The scan takes a few minutes, so you can get a coffee and come back."
+  },
+  {
     "objectID": "posts/definitions/index.html",
     "href": "posts/definitions/index.html",
     "title": "Cyber Security Definitions",
@@ -385,6 +476,13 @@
     "text": "List of resources and references used in my Cyber Security / Ethical Hacking learning and used on this blog."
   },
   {
+    "objectID": "reference.html#youtube",
+    "href": "reference.html#youtube",
+    "title": "References",
+    "section": "YouTube",
+    "text": "YouTube\nList of YouTube videos (not in any order), topic -- channel.\n\ntheHarvester – System Exploited\nSherlock – NetworkChuck"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "hacking newb",
@@ -397,306 +495,5 @@
     "title": "About",
     "section": "",
     "text": "Welcome to my hacking newb blog!\nThis blog is about sharing all of the Cyber Security / Ethical Hacking knowledge I learn with whomever reads this. My goal is to make this information accessible, many parts in one.\nEverything is beginner friendly as I am also learning this huge topic and sharing what I learn.\nWhy start a blog?\nTo help others learn Cyber Security in an ever Internet of Things world, anything connected to the internet is hackable. By learning some cyber security you help protect yourself from many vulnerabilities. Those who need to know cyber security the most have barriers to accessing this information or have no idea where to start.\nI am here to help and be part of the Free Open Source Software (FOSS) community.\nWhy ‘hacker newb’ ?\nWhenever someone is new to a technology stack, they are called or referred to as a “newb” and that is what I am and who my target audience is."
-  },
-  {
-    "objectID": "posts/OSINT/index.html",
-    "href": "posts/OSINT/index.html",
-    "title": "OSINT for beginners",
-    "section": "",
-    "text": "Penentration Testing, Step 1, gather information about target."
-  },
-  {
-    "objectID": "posts/OSINT/index.html#what-is-osint",
-    "href": "posts/OSINT/index.html#what-is-osint",
-    "title": "OSINT for beginners",
-    "section": "What is OSINT",
-    "text": "What is OSINT\nOpen Source Intelligence (OSINT) is using information online that is publically available about a target. This is the first step and typically takes the longest amount of time. Like in data science, you spend 80% of your time finding, cleaning, organizing, filtering the data before you do any of the fun stuff plotting the data in tables and charts.\n\nTake a moment and think of all the websites, apps and services you have signed up for in the last few years, and all the emails that exist. We all have some digital trail left by forgotton services and current ones.\n\nThe goal of OSINT is to search websites, social media, search engines and any public asset that could have the target’s information.\nOSINT Framework website that can bring this concept to a visual graph, which lays out the platforms and areas to search for OSINT data on a target.\n\nThe graph shows the many websites and apps that are to be searched for Email Address, Social Networks, Instant Messaging and Dating options are selected.\n\ncheck yourself\nIt is a good idea to see if any of your emails has been compromised. The website HaveIbeenPwned checks various email services and accounts to see if there has been any compromises with your email. Using this for the first time is a shock, and you will be informed if your email was part of a breach.\n\nupdate passwords with STRONG passwords\nuse a password manager like BitWarden, etc."
-  },
-  {
-    "objectID": "posts/OSINT/index.html#tools",
-    "href": "posts/OSINT/index.html#tools",
-    "title": "OSINT for beginners",
-    "section": "# Tools ⚒️",
-    "text": "# Tools ⚒️"
-  },
-  {
-    "objectID": "posts/OSINT/index.html#checkusernames",
-    "href": "posts/OSINT/index.html#checkusernames",
-    "title": "OSINT for beginners",
-    "section": " CheckUserNames ",
-    "text": "CheckUserNames \nOSINT tool that checks 500 websites for usernames and company brand names."
-  },
-  {
-    "objectID": "posts/OSINT/index.html#google-dorks",
-    "href": "posts/OSINT/index.html#google-dorks",
-    "title": "OSINT for beginners",
-    "section": " Google Dorks ",
-    "text": "Google Dorks \nUsing the search engine you already know, but with syntax that you use when searching a library database.\n\nSearch syntax for dorking:\n\nFiletype: specify the type of file (pdf, docx, etc.)\nExt: the file extension (.txt, .log, etc)\nIntext: searches for text inside a webpage\nIntitle: search a website with a specfic title\nInurl: searches for the url of any website\n\nExample: github: theharvester which searches only GitHub for the repositories with that name."
-  },
-  {
-    "objectID": "posts/OSINT/index.html#recon-ng",
-    "href": "posts/OSINT/index.html#recon-ng",
-    "title": "OSINT for beginners",
-    "section": " recon-ng ",
-    "text": "recon-ng \nrecon-ng is installed in Kali Linux and Parrot OS."
-  },
-  {
-    "objectID": "posts/OSINT/index.html#theharvester",
-    "href": "posts/OSINT/index.html#theharvester",
-    "title": "OSINT for beginners",
-    "section": " theHarvester ",
-    "text": "theHarvester \n\nScan for IP subdomains and ports for a company.\nFor details on how to use this check out the “GitHub for beginners” post."
-  },
-  {
-    "objectID": "posts/github/index.html",
-    "href": "posts/github/index.html",
-    "title": "GitHub for beginners",
-    "section": "",
-    "text": "How to get software tools from GitHub on your Linux machine."
-  },
-  {
-    "objectID": "posts/github/index.html#github",
-    "href": "posts/github/index.html#github",
-    "title": "GitHub for beginners",
-    "section": "GitHub",
-    "text": "GitHub\nFor getting software tools and code from GitHub does not require signing into the website. Here are the instruction on how to a repository package onto your Linux VM.\nThis example will be getting theHarvester repo from ParrotSec. Inside your Linux VM, launch the firefox browser, Google dork for theHarvester.\n\nClick on the green button.\n\nClick on the copy icon for the HTTPS.\nInside your VM open the terminal, navigate to your desktop (or whever you want to store this repository) cd Desktop/.\nThen type git clone + paste in the HTTPS link. It should have ‘.git’ at the end. Hit enter. Hit ls to see the directory.\n\nYou should see theHarvester. cd theHarvester/, you can just type cd th<tab> for autocomplete.\n\nNext is to install the required software, instruction are commonly placed on the README file of the repository. We are told to run the command: pip3 install -r requirements.txt which installs packages.\nType python3 theHarvester.py\n\nThe program will quit because no argument parameter were provided. Type python3 theHarvester.py --help to get the instructions on how to use this program.\nto run a search:\n\npython3 theHarvester.py -d <website> -b all\nfill in <website> with whatever your target is\nthe -b all means search using all the domains\n\nFor a smaller scan:\n\npython3 theHarvester.py -d <website> -l 300  -b anubis\nthis limits scans to 300 and uses just anubis\n\nTo use API keys for searching:\n\ninside the terminal: nano /etc/theHarvester/api-keys.yaml\nopens a text file where you paste in your keys and the program will utilize the API keys\n\ntheHarvester is known to be a hit and miss for returning results, some days it will work great. The scan takes a few minutes, so you can get a coffee and come back."
-  },
-  {
-    "objectID": "reference.html#youtube",
-    "href": "reference.html#youtube",
-    "title": "References",
-    "section": "YouTube",
-    "text": "YouTube\nList of YouTube videos (not in any order), topic -- channel.\n\ntheHarvester – System Exploited\nSherlock – NetworkChuck"
-  },
-  {
-    "objectID": "posts/OSINT/index.html#sherlock",
-    "href": "posts/OSINT/index.html#sherlock",
-    "title": "OSINT for beginners",
-    "section": " Sherlock ",
-    "text": "Sherlock \nThe Sherlock scan of Red Team Hacker Cyber Security Professional Nahamsec.\n\nInstall the requirements: python3 -m pip install -r requirements.txt then cd sherlock/. The path to the executable Python is “sherlock/sherlock”.\n\nget help python3 sherlock --help or -h\n\nTo scan a username and have the scan spend only 1 second waiting for website reply:\n\npython3 sherlock <username>  --print-found --timeout 1\n\nAfter the search Sherlock makes the <username>.txt file in the same directory."
-  },
-  {
-    "objectID": "posts/OSINT/index.html#section",
-    "href": "posts/OSINT/index.html#section",
-    "title": "OSINT for beginners",
-    "section": "",
-    "text": "other tools (not personally tried)\n\nCensys for any internet connected device\nWappalyzer free plan includes 50 searches/month for tracking websites, software vulnerabilities, Chrome/Firefox extension\nMaltego need an account to search target IP and domains\nShodan It is the Google for hackers. Not free. (monthly subscription: $69 / $359 (small business) / $1099 (corp))\nJigsaw Need an account. It allows you to search Jigsaw’s database of mostly large well known companies"
-  },
-  {
-    "objectID": "posts/OSINT/index.html#l",
-    "href": "posts/OSINT/index.html#l",
-    "title": "OSINT for beginners",
-    "section": "L",
-    "text": "L"
-  },
-  {
-    "objectID": "posts/OSINT/index.html#list",
-    "href": "posts/OSINT/index.html#list",
-    "title": "OSINT for beginners",
-    "section": "List",
-    "text": "List"
-  },
-  {
-    "objectID": "posts/OSINT/index.html#list-of-c",
-    "href": "posts/OSINT/index.html#list-of-c",
-    "title": "OSINT for beginners",
-    "section": "List of c",
-    "text": "List of c"
-  },
-  {
-    "objectID": "posts/OSINT/index.html#list-of-cybe",
-    "href": "posts/OSINT/index.html#list-of-cybe",
-    "title": "OSINT for beginners",
-    "section": "List of cybe",
-    "text": "List of cybe"
-  },
-  {
-    "objectID": "posts/OSINT/index.html#list-of-cyber-securit",
-    "href": "posts/OSINT/index.html#list-of-cyber-securit",
-    "title": "OSINT for beginners",
-    "section": "List of cyber securit",
-    "text": "List of cyber securit"
-  },
-  {
-    "objectID": "posts/OSINT/index.html#list-of-cyber-security-tools",
-    "href": "posts/OSINT/index.html#list-of-cyber-security-tools",
-    "title": "OSINT for beginners",
-    "section": "-List of cyber security tools",
-    "text": "-List of cyber security tools"
-  },
-  {
-    "objectID": "posts/OSINT/index.html#span-checkusernames",
-    "href": "posts/OSINT/index.html#span-checkusernames",
-    "title": "OSINT for beginners",
-    "section": "<span CheckUserNames",
-    "text": "<span CheckUserNames\nOSINT tool that checks 500 websites for usernames and company brand names."
-  },
-  {
-    "objectID": "posts/OSINT/index.html#span-scheckusernames",
-    "href": "posts/OSINT/index.html#span-scheckusernames",
-    "title": "OSINT for beginners",
-    "section": "<span sCheckUserNames",
-    "text": "<span sCheckUserNames\nOSINT tool that checks 500 websites for usernames and company brand names."
-  },
-  {
-    "objectID": "posts/OSINT/index.html#span-stcheckusernames",
-    "href": "posts/OSINT/index.html#span-stcheckusernames",
-    "title": "OSINT for beginners",
-    "section": "<span stCheckUserNames",
-    "text": "<span stCheckUserNames\nOSINT tool that checks 500 websites for usernames and company brand names."
-  },
-  {
-    "objectID": "posts/OSINT/index.html#span-stylecheckusernames",
-    "href": "posts/OSINT/index.html#span-stylecheckusernames",
-    "title": "OSINT for beginners",
-    "section": "<span style=CheckUserNames",
-    "text": "<span style=CheckUserNames\nOSINT tool that checks 500 websites for usernames and company brand names."
-  },
-  {
-    "objectID": "posts/OSINT/index.html#span-stylecolcheckusernames",
-    "href": "posts/OSINT/index.html#span-stylecolcheckusernames",
-    "title": "OSINT for beginners",
-    "section": "<span style=colCheckUserNames",
-    "text": "<span style=colCheckUserNames\nOSINT tool that checks 500 websites for usernames and company brand names."
-  },
-  {
-    "objectID": "posts/OSINT/index.html#span-stylecolorcheckusernames",
-    "href": "posts/OSINT/index.html#span-stylecolorcheckusernames",
-    "title": "OSINT for beginners",
-    "section": "<span style=color:““CheckUserNames",
-    "text": "<span style=color:““CheckUserNames\nOSINT tool that checks 500 websites for usernames and company brand names."
-  },
-  {
-    "objectID": "posts/OSINT/index.html#google-dorks-recon-ng",
-    "href": "posts/OSINT/index.html#google-dorks-recon-ng",
-    "title": "OSINT for beginners",
-    "section": " Google Dorks recon-ng",
-    "text": "Google Dorks recon-ng\nrecon-ng is installed in Kali Linux and Parrot OS."
-  },
-  {
-    "objectID": "posts/OSINT/index.html#google-dorks-1",
-    "href": "posts/OSINT/index.html#google-dorks-1",
-    "title": "OSINT for beginners",
-    "section": " Google Dorks ",
-    "text": "Google Dorks \nrecon-ng is installed in Kali Linux and Parrot OS."
-  },
-  {
-    "objectID": "posts/OSINT/index.html#recon-ngtheharvester",
-    "href": "posts/OSINT/index.html#recon-ngtheharvester",
-    "title": "OSINT for beginners",
-    "section": "recon-ngtheHarvester",
-    "text": "recon-ngtheHarvester\n\nScan for IP subdomains and ports for a company.\nFor details on how to use this check out the “GitHub for beginners” post."
-  },
-  {
-    "objectID": "posts/OSINT/index.html#recon-ng-theharvester",
-    "href": "posts/OSINT/index.html#recon-ng-theharvester",
-    "title": "OSINT for beginners",
-    "section": " recon-ng theHarvester",
-    "text": "recon-ng theHarvester\n\nScan for IP subdomains and ports for a company.\nFor details on how to use this check out the “GitHub for beginners” post."
-  },
-  {
-    "objectID": "posts/OSINT/index.html#t-theharvester",
-    "href": "posts/OSINT/index.html#t-theharvester",
-    "title": "OSINT for beginners",
-    "section": " t theHarvester",
-    "text": "t theHarvester\n\nScan for IP subdomains and ports for a company.\nFor details on how to use this check out the “GitHub for beginners” post."
-  },
-  {
-    "objectID": "posts/OSINT/index.html#theh-theharvester",
-    "href": "posts/OSINT/index.html#theh-theharvester",
-    "title": "OSINT for beginners",
-    "section": " theH theHarvester",
-    "text": "theH theHarvester\n\nScan for IP subdomains and ports for a company.\nFor details on how to use this check out the “GitHub for beginners” post."
-  },
-  {
-    "objectID": "posts/OSINT/index.html#theharveste-theharvester",
-    "href": "posts/OSINT/index.html#theharveste-theharvester",
-    "title": "OSINT for beginners",
-    "section": " theHarveste theHarvester",
-    "text": "theHarveste theHarvester\n\nScan for IP subdomains and ports for a company.\nFor details on how to use this check out the “GitHub for beginners” post."
-  },
-  {
-    "objectID": "posts/OSINT/index.html#theharvester-theharvester",
-    "href": "posts/OSINT/index.html#theharvester-theharvester",
-    "title": "OSINT for beginners",
-    "section": " theHarvester theHarvester",
-    "text": "theHarvester theHarvester\n\nScan for IP subdomains and ports for a company.\nFor details on how to use this check out the “GitHub for beginners” post."
-  },
-  {
-    "objectID": "posts/OSINT/index.html#theharvester-theharveste",
-    "href": "posts/OSINT/index.html#theharvester-theharveste",
-    "title": "OSINT for beginners",
-    "section": " theHarvester theHarveste",
-    "text": "theHarvester theHarveste\n\nScan for IP subdomains and ports for a company.\nFor details on how to use this check out the “GitHub for beginners” post."
-  },
-  {
-    "objectID": "posts/OSINT/index.html#theharvester-theha",
-    "href": "posts/OSINT/index.html#theharvester-theha",
-    "title": "OSINT for beginners",
-    "section": " theHarvester theHa",
-    "text": "theHarvester theHa\n\nScan for IP subdomains and ports for a company.\nFor details on how to use this check out the “GitHub for beginners” post."
-  },
-  {
-    "objectID": "posts/OSINT/index.html#recon-ng-sherlock",
-    "href": "posts/OSINT/index.html#recon-ng-sherlock",
-    "title": "OSINT for beginners",
-    "section": " recon-ng  Sherlock",
-    "text": "recon-ng  Sherlock\nThe Sherlock scan of Red Team Hacker Cyber Security professional Nahamsec.\n\nInstall the requirements: python3 -m pip install -r requirements.txt then cd sherlock/. The path to the executable Python is “sherlock/sherlock”.\n\nget help python3 sherlock --help or -h\n\nTo scan a username and have the scan spend only 1 second waiting for website reply:\n\npython3 sherlock <username>  --print-found --timeout 1\n\nAfter the search Sherlock makes the <username>.txt file in the same directory."
-  },
-  {
-    "objectID": "posts/OSINT/index.html#r-sherlock",
-    "href": "posts/OSINT/index.html#r-sherlock",
-    "title": "OSINT for beginners",
-    "section": " r  Sherlock",
-    "text": "r  Sherlock\nThe Sherlock scan of Red Team Hacker Cyber Security professional Nahamsec.\n\nInstall the requirements: python3 -m pip install -r requirements.txt then cd sherlock/. The path to the executable Python is “sherlock/sherlock”.\n\nget help python3 sherlock --help or -h\n\nTo scan a username and have the scan spend only 1 second waiting for website reply:\n\npython3 sherlock <username>  --print-found --timeout 1\n\nAfter the search Sherlock makes the <username>.txt file in the same directory."
-  },
-  {
-    "objectID": "posts/OSINT/index.html#s-sherlock",
-    "href": "posts/OSINT/index.html#s-sherlock",
-    "title": "OSINT for beginners",
-    "section": " S  Sherlock",
-    "text": "S  Sherlock\nThe Sherlock scan of Red Team Hacker Cyber Security professional Nahamsec.\n\nInstall the requirements: python3 -m pip install -r requirements.txt then cd sherlock/. The path to the executable Python is “sherlock/sherlock”.\n\nget help python3 sherlock --help or -h\n\nTo scan a username and have the scan spend only 1 second waiting for website reply:\n\npython3 sherlock <username>  --print-found --timeout 1\n\nAfter the search Sherlock makes the <username>.txt file in the same directory."
-  },
-  {
-    "objectID": "posts/OSINT/index.html#sherlo-sherlock",
-    "href": "posts/OSINT/index.html#sherlo-sherlock",
-    "title": "OSINT for beginners",
-    "section": " Sherlo  Sherlock",
-    "text": "Sherlo  Sherlock\nThe Sherlock scan of Red Team Hacker Cyber Security professional Nahamsec.\n\nInstall the requirements: python3 -m pip install -r requirements.txt then cd sherlock/. The path to the executable Python is “sherlock/sherlock”.\n\nget help python3 sherlock --help or -h\n\nTo scan a username and have the scan spend only 1 second waiting for website reply:\n\npython3 sherlock <username>  --print-found --timeout 1\n\nAfter the search Sherlock makes the <username>.txt file in the same directory."
-  },
-  {
-    "objectID": "posts/OSINT/index.html#sherlock-sherlock",
-    "href": "posts/OSINT/index.html#sherlock-sherlock",
-    "title": "OSINT for beginners",
-    "section": " Sherlock  Sherlock",
-    "text": "Sherlock  Sherlock\nThe Sherlock scan of Red Team Hacker Cyber Security professional Nahamsec.\n\nInstall the requirements: python3 -m pip install -r requirements.txt then cd sherlock/. The path to the executable Python is “sherlock/sherlock”.\n\nget help python3 sherlock --help or -h\n\nTo scan a username and have the scan spend only 1 second waiting for website reply:\n\npython3 sherlock <username>  --print-found --timeout 1\n\nAfter the search Sherlock makes the <username>.txt file in the same directory."
-  },
-  {
-    "objectID": "posts/OSINT/index.html#nmap",
-    "href": "posts/OSINT/index.html#nmap",
-    "title": "OSINT for beginners",
-    "section": " Nmap ",
-    "text": "Nmap \nNetwork mapper is super popular and is used for scanning networks. It comes installed in Kali Linux and Porrot OS.\nYou used this to see if a website domain (IP address) has any ports open and can detect which operating systsm (OS) is being used and its version. This tool is a powerful and useful one to know.\nNmap has many functions and is not an easy start for beginners, but there is a guide book Link here which will help.\n\nman nmap as usual to get the manual"
-  },
-  {
-    "objectID": "posts/OSINT/index.html#fierce",
-    "href": "posts/OSINT/index.html#fierce",
-    "title": "OSINT for beginners",
-    "section": " fierce ",
-    "text": "fierce \n\nOpen source tool that scans a website domain and subdomains that you specify."
-  },
-  {
-    "objectID": "posts/OSINT/index.html#metagoofil",
-    "href": "posts/OSINT/index.html#metagoofil",
-    "title": "OSINT for beginners",
-    "section": " metagoofil ",
-    "text": "metagoofil \nSomewhat of a silly name but what a useful tool.\n\nThe search parameters were to search the domain GitHub -d github.com for -f files of -t type pdf. The program generates .txt file of all pdfs found with links to the pdf."
-  },
-  {
-    "objectID": "posts/OSINT/index.html#other",
-    "href": "posts/OSINT/index.html#other",
-    "title": "OSINT for beginners",
-    "section": "other",
-    "text": "other\nother tools (not personally tried)\n\nCensys for any internet connected device\nWappalyzer free plan includes 50 searches/month for tracking websites, software vulnerabilities, Chrome/Firefox extension\nMaltego need an account to search target IP and domains\nShodan It is the Google for hackers. Not free. (monthly subscription: $69 / $359 (small business) / $1099 (corp))\nJigsaw Need an account. It allows you to search Jigsaw’s database of mostly large well known companies\nExiftool This gets data from images and video runs on Windows, MacOS and Linux. Free."
   }
 ]
