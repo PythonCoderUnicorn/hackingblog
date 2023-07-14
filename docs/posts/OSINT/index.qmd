@@ -1,0 +1,182 @@
+---
+title: "OSINT for beginners"
+author: "hacker_newb"
+date: "2023-07-14"
+categories: [beginner, code, OSINT]
+image: "hackinglab.png"
+---
+
+Penentration Testing,  Step 1, gather information about target.
+
+
+<img src="osint.png">
+
+## What is OSINT 
+
+Open Source Intelligence (OSINT) is using information online that is
+publically available about a target. This is the first step and typically
+takes the longest amount of time. Like in data science, you spend 80% of your time finding, cleaning, organizing, filtering the data before you do any of the fun stuff plotting the data in tables and charts. 
+
+
+> Take a moment and think of all the websites, apps and services you have signed up for in the last few years, and all the emails that exist. We all have some digital trail left by forgotton services and current ones. 
+
+
+The goal of OSINT is to search websites, social media, search engines and any public asset that could have the target's information. 
+
+
+
+
+[OSINT Framework](https://osintframework.com/) website that can bring this concept to a visual graph, which lays out the platforms and areas to search for OSINT data on a target. 
+
+<img src="framework.png">
+
+The graph shows the many websites and apps that are to be searched for Email Address, Social Networks, Instant Messaging and Dating options are selected.
+
+
+### check yourself 
+
+It is a good idea to see if any of your emails has been compromised. 
+The website [HaveIbeenPwned](https://haveibeenpwned.com/) checks various email services and accounts to see if there has been any compromises with your email. Using this for the first time is a shock, and you will be informed if your email was part of a breach.
+
+
+- update passwords with STRONG passwords
+- use a password manager like BitWarden, etc.
+
+
+----
+
+# Tools ⚒️
+
+
+----
+
+
+
+## <span style="color:#ffff66"> CheckUserNames </span>
+
+OSINT tool that checks 500 websites for usernames and company brand names.
+
+<img src="username.png">
+
+
+
+## <span style="color:#ffff66">  Google Dorks </span>
+
+Using the search engine you already know, but with syntax that you use when searching a library database.
+
+<img src="google.png">
+
+Search syntax for dorking:
+
+- `Filetype:` specify the type of file (pdf, docx, etc.)
+- `Ext:` the file extension (.txt, .log, etc)
+- `Intext:` searches for text inside a webpage
+- `Intitle:` search a website with a specfic title
+- `Inurl:` searches for the url of any website
+
+Example: `github: theharvester` which searches only GitHub for the repositories with that name.
+
+
+
+## <span style="color:#ffff66">  recon-ng </span>
+
+recon-ng is installed in Kali Linux and Parrot OS. 
+
+<img src="recon-ng.png">
+
+
+## <span style="color:#ffff66">  theHarvester </span>
+
+<img src="harvester.png">
+
+Scan for IP subdomains and ports for a company.
+
+For details on how to use this check out the "GitHub for beginners" post.
+
+
+## <span style="color:#ffff66">  Sherlock </span>  
+
+
+The Sherlock scan of Red Team Hacker Cyber Security Professional Nahamsec.
+
+<img src="sherlock.png">
+
+Install the requirements: `python3 -m pip install -r requirements.txt`
+then `cd sherlock/`. The path to the executable Python is "sherlock/sherlock".
+
+- get help `python3 sherlock --help` or `-h`
+
+To scan a username and have the scan spend only 1 second waiting for website reply:
+
+- `python3 sherlock <username>  --print-found --timeout 1`
+
+After the search Sherlock makes the `<username>.txt` file in the same directory. 
+
+
+
+## <span style="color:#ffff66">  Nmap </span>  
+
+Network mapper is super popular and is used for scanning networks. It comes installed in Kali Linux and Porrot OS. 
+
+You used this to see if a website domain (IP address) has any ports open and can detect which operating systsm (OS) is being used and its version. This tool is a powerful and useful one to know. 
+
+Nmap has many functions and is not an easy start for beginners, but there is a guide book [Link here](https://nmap.org/book/toc.html) which will help.
+
+- `man nmap` as usual to get the manual
+
+
+
+## <span style="color:#ffff66">  fierce </span>  
+
+<img src="fierce.png">
+
+Open source tool that scans a website domain and subdomains that you specify.
+
+
+
+
+## <span style="color:#ffff66">  metagoofil </span> 
+
+Somewhat of a silly name but what a useful tool. 
+
+<img src="metagoofil.png">
+
+The search parameters were to search the domain GitHub `-d github.com` 
+for `-f` files of `-t` type pdf. The program generates `.txt` file of all pdfs found with links to the pdf.
+
+
+
+
+
+
+
+
+
+
+
+
+## other
+
+
+other tools (not personally tried)
+
+- [Censys](https://censys.io/) for any internet connected device
+- [Wappalyzer](https://www.wappalyzer.com/) free plan includes 50 searches/month for tracking websites, software vulnerabilities, Chrome/Firefox extension
+- [Maltego](https://www.maltego.com/downloads/) need an account to search target IP and domains
+- [Shodan](https://www.shodan.io/) It is the Google for hackers. Not free. (monthly subscription: $69 / $359 (small business) / $1099 (corp))
+
+- [Jigsaw](https://www.jigsawsecurityenterprise.com/) Need an account. It allows you to search Jigsaw's database of mostly large well known companies
+- [Exiftool](https://exiftool.org/) This gets data from images and video runs on Windows, MacOS and Linux. Free.
+
+
+
+
+
+
+
+
+
+
+
+
+
