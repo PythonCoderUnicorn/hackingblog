@@ -74,7 +74,7 @@
     "href": "posts/OSINT/index.html",
     "title": "OSINT for beginners",
     "section": "",
-    "text": "Penentration Testing, Step 1, gather information about target."
+    "text": "Pen Testing, Step 1, gather information about target."
   },
   {
     "objectID": "posts/OSINT/index.html#what-is-osint",
@@ -487,7 +487,7 @@
     "href": "index.html",
     "title": "hacking newb",
     "section": "",
-    "text": "OSINT for beginners\n\n\n\n\n\n\n\nbeginner\n\n\ncode\n\n\nOSINT\n\n\n\n\n\n\n\n\n\n\n\nJul 14, 2023\n\n\nhacker_newb\n\n\n\n\n\n\n  \n\n\n\n\nGitHub for beginners\n\n\n\n\n\n\n\nbeginner\n\n\ncode\n\n\ngithub\n\n\n\n\n\n\n\n\n\n\n\nJul 14, 2023\n\n\nhacker_newb\n\n\n\n\n\n\n  \n\n\n\n\nCyber Security Definitions\n\n\n\n\n\n\n\nbeginner\n\n\nterms\n\n\n\n\n\n\n\n\n\n\n\nJul 14, 2023\n\n\nhacker_newb\n\n\n\n\n\n\n  \n\n\n\n\nHacking Starter Kit\n\n\n\n\n\n\n\nbeginner\n\n\ncode\n\n\nstarter kit\n\n\n\n\n\n\n\n\n\n\n\nJul 13, 2023\n\n\nhacker_newb\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\ncyber security\n\n\nbeginner\n\n\n\n\n\n\n\n\n\n\n\nJul 10, 2023\n\n\nhacker_newb\n\n\n\n\n\n\nNo matching items"
+    "text": "Linux for beginners\n\n\n\n\n\n\n\nbeginner\n\n\ncode\n\n\nLinux\n\n\n\n\n\n\n\n\n\n\n\nJul 15, 2023\n\n\nhacker_newb\n\n\n\n\n\n\n  \n\n\n\n\nOSINT for beginners\n\n\n\n\n\n\n\nbeginner\n\n\ncode\n\n\nOSINT\n\n\n\n\n\n\n\n\n\n\n\nJul 14, 2023\n\n\nhacker_newb\n\n\n\n\n\n\n  \n\n\n\n\nGitHub for beginners\n\n\n\n\n\n\n\nbeginner\n\n\ncode\n\n\ngithub\n\n\n\n\n\n\n\n\n\n\n\nJul 14, 2023\n\n\nhacker_newb\n\n\n\n\n\n\n  \n\n\n\n\nCyber Security Definitions\n\n\n\n\n\n\n\nbeginner\n\n\nterms\n\n\n\n\n\n\n\n\n\n\n\nJul 14, 2023\n\n\nhacker_newb\n\n\n\n\n\n\n  \n\n\n\n\nHacking Starter Kit\n\n\n\n\n\n\n\nbeginner\n\n\ncode\n\n\nstarter kit\n\n\n\n\n\n\n\n\n\n\n\nJul 13, 2023\n\n\nhacker_newb\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\ncyber security\n\n\nbeginner\n\n\n\n\n\n\n\n\n\n\n\nJul 10, 2023\n\n\nhacker_newb\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -495,5 +495,26 @@
     "title": "About",
     "section": "",
     "text": "Welcome to my hacking newb blog!\nThis blog is about sharing all of the Cyber Security / Ethical Hacking knowledge I learn with whomever reads this. My goal is to make this information accessible, many parts in one.\nEverything is beginner friendly as I am also learning this huge topic and sharing what I learn.\nWhy start a blog?\nTo help others learn Cyber Security in an ever Internet of Things world, anything connected to the internet is hackable. By learning some cyber security you help protect yourself from many vulnerabilities. Those who need to know cyber security the most have barriers to accessing this information or have no idea where to start.\nI am here to help and be part of the Free Open Source Software (FOSS) community.\nWhy ‘hacker newb’ ?\nWhenever someone is new to a technology stack, they are called or referred to as a “newb” and that is what I am and who my target audience is."
+  },
+  {
+    "objectID": "posts/linux/index.html",
+    "href": "posts/linux/index.html",
+    "title": "Linux for beginners",
+    "section": "",
+    "text": "The commands and files to know to use Linux OS."
+  },
+  {
+    "objectID": "posts/linux/index.html#linux-fundamentals",
+    "href": "posts/linux/index.html#linux-fundamentals",
+    "title": "Linux for beginners",
+    "section": "Linux Fundamentals",
+    "text": "Linux Fundamentals\nThe bullet points of Linux that state the essential aspects.\nCore Principles\n\neverything is a file\nsmall single purpose programs\nability to chain programs for complex tasks\nwork mainly in shell (the terminal)\nconfiguration data is stored in a text file\n\nComponents\n\nbootloader = code the guides the booting process (GRUB bootloader)\nOS kernel = operating system\ndaemons = background services for functionality\ngraphic servers = X-server allows graphical programs to run locally\n\nwindow manager = GUI, GNOME, KDE, MATE (desktop enviros)\n\nLinux architecture\n\nhardware (RAM, hard drive, CPU)\nkernel\nshell\nsystem utility (OS functionality)\n\nDebian Linux is a kernel which is the parent to many Linux distrobution flavours (other Linux named operating systems) such as Kali Linux and Parrot OS. Debian based kernels use apt Advanced Package Tool as the package management system.\n\nto install software: sudo apt <package>\n\nROOT\nYou use root (admin) privileges to manage, control, install, remove, update and other tasks. You use sudo as super user do command, enter your password then the root command will be executed. You can just stay logged in as root with su, but it is not recommended.\n\nnon-root user: $\nroot user: #\n\nCOMMANDS\nCommands to know and use in the terminal.\n\n/ this is the root directory, you can cd /\ncd ~ change directory to the home directory\ncd Desktop/ move to the desktop directory from the home directory\ncd .. move back a directory (anywhere in file system)\nrm -r test.txt remove (delete) test.txt file, the -r is recursive and is needed for deleting directories\ncp file1.tx file2.md copy file1.txt to new file file2.md\nmv *.txt ../Documents/ move all text file on the desktop directory to the documents directory folder (need the ../ to go back)\nthe up arrow key to get previous commands or type history to see all the commands you typed\nCtrl + l to clear the terminal, or type clear\n\nHELP\nFor any command or software help page manual, type man <command> such as man pwd which will print the manual for what the present working directory does.\n\nman curl get manual on how to use curl\nman hashcat get the manual on the hashcat program\n<software> --help to get the help documentation\nhashcat --help load the documentation for hashcat\nman find search for files in a directory hierarchy\n\nSYSTEM INFO\n\nwhoami prints who the current username is\nnetstat prints the network status\ntop prints a table of processes running\nhostname prints the computer’s name\nuname -a prints out the information about your computer\nuname -r prints out the release version of your software\n\nSHELL\nTo shell is to use the terminal and sign into another computer.\nSyntax is: ssh <username>@hostname <IP address>\n\nexample: ssh example@10.10.10.2\nthen enter your password\n\nFIND\nTo find all text files in the home folder. Search the home directory for file type, all .txt files by the root user.\n\nfind $HOME -type f -name *.txt -user root\n\nGREP\nGrep is the command to find patterns of text inside a file.\n\ngrep -r password * searches every directory for the word password"
+  },
+  {
+    "objectID": "posts/linux/index.html#permission-management",
+    "href": "posts/linux/index.html#permission-management",
+    "title": "Linux for beginners",
+    "section": "Permission Management",
+    "text": "Permission Management\nThe permissions of files and directories, who can read, write to the file (edit it) and execute the file.\n\nr = read\nw = write\nx = execute\nthe order : d(owner)-(group)-(other)\nu owner\ng Group\no others\na all users\nd is a directory\n. are hidden files\n\n\nType ls -la to see all files and permissions in the pwd present working directory.\nTo modify permissions: + , - using the letters, you can use numbers when you use the command chmod.\n\nchmod 700 cracked.txt changed the permissions on the the file cracked.txt giving only root user read, write and execute command permissions (the new part).\n\n\nThere is much more to know about Linux, this blog post was to get you to know the essentials. Take this knowledge and learn more about Linux."
   }
 ]

@@ -6,7 +6,8 @@ categories: [beginner, code, OSINT]
 image: "hackinglab.png"
 ---
 
-Penentration Testing,  Step 1, gather information about target.
+Pen Testing,  Step 1, gather information about target.
+
 
 
 <img src="osint.png">

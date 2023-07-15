@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="hacker_newb">
-<meta name="dcterms.date" content="2023-07-14">
+<meta name="dcterms.date" content="2023-07-15">
 
-<title>hacking newb - OSINT for beginners</title>
+<title>hacking newb - Linux for beginners</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -109,11 +109,11 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">OSINT for beginners</h1>
+      <h1 class="title">Linux for beginners</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">beginner</div>
                 <div class="quarto-category">code</div>
-                <div class="quarto-category">OSINT</div>
+                <div class="quarto-category">Linux</div>
               </div>
                   </div>
   </div>
@@ -131,7 +131,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">July 14, 2023</p>
+        <p class="date">July 15, 2023</p>
       </div>
     </div>
     
@@ -149,109 +149,119 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p>Pen Testing, Step 1, gather information about target.</p>
-<p><img src="osint.png"></p>
-<section id="what-is-osint" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-osint">What is OSINT</h2>
-<p>Open Source Intelligence (OSINT) is using information online that is publically available about a target. This is the first step and typically takes the longest amount of time. Like in data science, you spend 80% of your time finding, cleaning, organizing, filtering the data before you do any of the fun stuff plotting the data in tables and charts.</p>
-<blockquote class="blockquote">
-<p>Take a moment and think of all the websites, apps and services you have signed up for in the last few years, and all the emails that exist. We all have some digital trail left by forgotton services and current ones.</p>
-</blockquote>
-<p>The goal of OSINT is to search websites, social media, search engines and any public asset that could have the target’s information.</p>
-<p><a href="https://osintframework.com/">OSINT Framework</a> website that can bring this concept to a visual graph, which lays out the platforms and areas to search for OSINT data on a target.</p>
-<p><img src="framework.png"></p>
-<p>The graph shows the many websites and apps that are to be searched for Email Address, Social Networks, Instant Messaging and Dating options are selected.</p>
-<section id="check-yourself" class="level3">
-<h3 class="anchored" data-anchor-id="check-yourself">check yourself</h3>
-<p>It is a good idea to see if any of your emails has been compromised. The website <a href="https://haveibeenpwned.com/">HaveIbeenPwned</a> checks various email services and accounts to see if there has been any compromises with your email. Using this for the first time is a shock, and you will be informed if your email was part of a breach.</p>
+<p>The commands and files to know to use Linux OS.</p>
+<p><img width="800" src="linux-banner.png"></p>
+<section id="linux-fundamentals" class="level2">
+<h2 class="anchored" data-anchor-id="linux-fundamentals">Linux Fundamentals</h2>
+<p>The bullet points of Linux that state the essential aspects.</p>
+<p>Core Principles</p>
 <ul>
-<li>update passwords with STRONG passwords</li>
-<li>use a password manager like BitWarden, etc.</li>
+<li>everything is a file</li>
+<li>small single purpose programs</li>
+<li>ability to chain programs for complex tasks</li>
+<li>work mainly in shell (the terminal)</li>
+<li>configuration data is stored in a text file</li>
+</ul>
+<p>Components</p>
+<ul>
+<li>bootloader = code the guides the booting process (GRUB bootloader)</li>
+<li>OS kernel = operating system</li>
+<li>daemons = background services for functionality</li>
+<li>graphic servers = X-server allows graphical programs to run locally<br>
+</li>
+<li>window manager = GUI, GNOME, KDE, MATE (desktop enviros)</li>
+</ul>
+<p>Linux architecture</p>
+<ul>
+<li>hardware (RAM, hard drive, CPU)</li>
+<li>kernel</li>
+<li>shell</li>
+<li>system utility (OS functionality)</li>
+</ul>
+<p>Debian Linux is a kernel which is the parent to many Linux distrobution flavours (other Linux named operating systems) such as Kali Linux and Parrot OS. Debian based kernels use <code>apt</code> Advanced Package Tool as the package management system.</p>
+<ul>
+<li>to install software: <code>sudo apt &lt;package&gt;</code></li>
+</ul>
+<p>ROOT</p>
+<p>You use root (admin) privileges to manage, control, install, remove, update and other tasks. You use <code>sudo</code> as <em>super user do</em> command, enter your password then the root command will be executed. You can just stay logged in as root with <code>su</code>, but it is not recommended.</p>
+<ul>
+<li>non-root user: <code>$</code></li>
+<li>root user: <code>#</code></li>
+</ul>
+<p>COMMANDS</p>
+<p>Commands to know and use in the terminal.</p>
+<ul>
+<li><code>/</code> this is the root directory, you can <code>cd /</code></li>
+<li><code>cd ~</code> change directory to the home directory</li>
+<li><code>cd Desktop/</code> move to the desktop directory from the home directory</li>
+<li><code>cd ..</code> move back a directory (anywhere in file system)</li>
+<li><code>rm -r test.txt</code> remove (delete) test.txt file, the <code>-r</code> is recursive and is needed for deleting directories</li>
+<li><code>cp file1.tx file2.md</code> copy file1.txt to new file file2.md</li>
+<li><code>mv *.txt ../Documents/</code> move all text file on the desktop directory to the documents directory folder (need the <code>../</code> to go back)</li>
+<li>the up arrow key to get previous commands or type <code>history</code> to see all the commands you typed</li>
+<li><code>Ctrl + l</code> to clear the terminal, or type clear</li>
+</ul>
+<p>HELP</p>
+<p>For any command or software help page manual, type <code>man &lt;command&gt;</code> such as <code>man pwd</code> which will print the manual for what the <em>present working directory</em> does.</p>
+<ul>
+<li><code>man curl</code> get manual on how to use curl</li>
+<li><code>man hashcat</code> get the manual on the hashcat program</li>
+<li><code>&lt;software&gt; --help</code> to get the help documentation</li>
+<li><code>hashcat --help</code> load the documentation for hashcat</li>
+<li><code>man find</code> search for files in a directory hierarchy</li>
+</ul>
+<p>SYSTEM INFO</p>
+<ul>
+<li><code>whoami</code> prints who the current username is</li>
+<li><code>netstat</code> prints the network status</li>
+<li><code>top</code> prints a table of processes running</li>
+<li><code>hostname</code> prints the computer’s name</li>
+<li><code>uname -a</code> prints out the information about your computer</li>
+<li><code>uname -r</code> prints out the release version of your software</li>
+</ul>
+<p>SHELL</p>
+<p>To <em>shell</em> is to use the terminal and sign into another computer.</p>
+<p>Syntax is: <code>ssh &lt;username&gt;@hostname &lt;IP address&gt;</code></p>
+<ul>
+<li>example: <code>ssh example@10.10.10.2</code></li>
+<li>then enter your password</li>
+</ul>
+<p>FIND</p>
+<p>To find all text files in the home folder. Search the home directory for file type, all <code>.txt</code> files by the root user.</p>
+<ul>
+<li><code>find $HOME -type f -name *.txt -user root</code></li>
+</ul>
+<p>GREP</p>
+<p>Grep is the command to find patterns of text inside a file.</p>
+<ul>
+<li><code>grep -r password *</code> searches every directory for the word password</li>
+</ul>
+</section>
+<section id="permission-management" class="level2">
+<h2 class="anchored" data-anchor-id="permission-management">Permission Management</h2>
+<p>The permissions of files and directories, who can read, write to the file (edit it) and execute the file.</p>
+<ul>
+<li>r = read</li>
+<li>w = write</li>
+<li>x = execute</li>
+<li>the order : <code>d</code>(<code>owner</code>)-(<code>group</code>)-(<code>other</code>)</li>
+<li><code>u</code> owner</li>
+<li><code>g</code> Group</li>
+<li><code>o</code> others</li>
+<li><code>a</code> all users</li>
+<li><code>d</code> is a directory</li>
+<li><code>.</code> are hidden files</li>
+</ul>
+<p><img src="directory.png"></p>
+<p>Type <code>ls -la</code> to see all files and permissions in the <code>pwd</code> present working directory.</p>
+<p>To modify permissions: <code>+</code> , <code>-</code> using the letters, you can use numbers when you use the command <code>chmod</code>.</p>
+<ul>
+<li><code>chmod 700 cracked.txt</code> changed the permissions on the the file cracked.txt giving only root user read, write and execute command permissions (the new part).</li>
 </ul>
 <hr>
-</section>
-</section>
-<section id="tools" class="level1">
-<h1>Tools ⚒️</h1>
-<hr>
-<section id="checkusernames" class="level2">
-<h2 class="anchored" data-anchor-id="checkusernames"><span style="color:#ffff66"> CheckUserNames </span></h2>
-<p>OSINT tool that checks 500 websites for usernames and company brand names.</p>
-<p><img src="username.png"></p>
-</section>
-<section id="google-dorks" class="level2">
-<h2 class="anchored" data-anchor-id="google-dorks"><span style="color:#ffff66"> Google Dorks </span></h2>
-<p>Using the search engine you already know, but with syntax that you use when searching a library database.</p>
-<p><img src="google.png"></p>
-<p>Search syntax for dorking:</p>
-<ul>
-<li><code>Filetype:</code> specify the type of file (pdf, docx, etc.)</li>
-<li><code>Ext:</code> the file extension (.txt, .log, etc)</li>
-<li><code>Intext:</code> searches for text inside a webpage</li>
-<li><code>Intitle:</code> search a website with a specfic title</li>
-<li><code>Inurl:</code> searches for the url of any website</li>
-</ul>
-<p>Example: <code>github: theharvester</code> which searches only GitHub for the repositories with that name.</p>
-</section>
-<section id="recon-ng" class="level2">
-<h2 class="anchored" data-anchor-id="recon-ng"><span style="color:#ffff66"> recon-ng </span></h2>
-<p>recon-ng is installed in Kali Linux and Parrot OS.</p>
-<p><img src="recon-ng.png"></p>
-</section>
-<section id="theharvester" class="level2">
-<h2 class="anchored" data-anchor-id="theharvester"><span style="color:#ffff66"> theHarvester </span></h2>
-<p><img src="harvester.png"></p>
-<p>Scan for IP subdomains and ports for a company.</p>
-<p>For details on how to use this check out the “GitHub for beginners” post.</p>
-</section>
-<section id="sherlock" class="level2">
-<h2 class="anchored" data-anchor-id="sherlock"><span style="color:#ffff66"> Sherlock </span></h2>
-<p>The Sherlock scan of Red Team Hacker Cyber Security Professional Nahamsec.</p>
-<p><img src="sherlock.png"></p>
-<p>Install the requirements: <code>python3 -m pip install -r requirements.txt</code> then <code>cd sherlock/</code>. The path to the executable Python is “sherlock/sherlock”.</p>
-<ul>
-<li>get help <code>python3 sherlock --help</code> or <code>-h</code></li>
-</ul>
-<p>To scan a username and have the scan spend only 1 second waiting for website reply:</p>
-<ul>
-<li><code>python3 sherlock &lt;username&gt;  --print-found --timeout 1</code></li>
-</ul>
-<p>After the search Sherlock makes the <code>&lt;username&gt;.txt</code> file in the same directory.</p>
-</section>
-<section id="nmap" class="level2">
-<h2 class="anchored" data-anchor-id="nmap"><span style="color:#ffff66"> Nmap </span></h2>
-<p>Network mapper is super popular and is used for scanning networks. It comes installed in Kali Linux and Porrot OS.</p>
-<p>You used this to see if a website domain (IP address) has any ports open and can detect which operating systsm (OS) is being used and its version. This tool is a powerful and useful one to know.</p>
-<p>Nmap has many functions and is not an easy start for beginners, but there is a guide book <a href="https://nmap.org/book/toc.html">Link here</a> which will help.</p>
-<ul>
-<li><code>man nmap</code> as usual to get the manual</li>
-</ul>
-</section>
-<section id="fierce" class="level2">
-<h2 class="anchored" data-anchor-id="fierce"><span style="color:#ffff66"> fierce </span></h2>
-<p><img src="fierce.png"></p>
-<p>Open source tool that scans a website domain and subdomains that you specify.</p>
-</section>
-<section id="metagoofil" class="level2">
-<h2 class="anchored" data-anchor-id="metagoofil"><span style="color:#ffff66"> metagoofil </span></h2>
-<p>Somewhat of a silly name but what a useful tool.</p>
-<p><img src="metagoofil.png"></p>
-<p>The search parameters were to search the domain GitHub <code>-d github.com</code> for <code>-f</code> files of <code>-t</code> type pdf. The program generates <code>.txt</code> file of all pdfs found with links to the pdf.</p>
-</section>
-<section id="other" class="level2">
-<h2 class="anchored" data-anchor-id="other">other</h2>
-<p>other tools (not personally tried)</p>
-<ul>
-<li><p><a href="https://censys.io/">Censys</a> for any internet connected device</p></li>
-<li><p><a href="https://www.wappalyzer.com/">Wappalyzer</a> free plan includes 50 searches/month for tracking websites, software vulnerabilities, Chrome/Firefox extension</p></li>
-<li><p><a href="https://www.maltego.com/downloads/">Maltego</a> need an account to search target IP and domains</p></li>
-<li><p><a href="https://www.shodan.io/">Shodan</a> It is the Google for hackers. Not free. (monthly subscription: $69 / $359 (small business) / $1099 (corp))</p></li>
-<li><p><a href="https://www.jigsawsecurityenterprise.com/">Jigsaw</a> Need an account. It allows you to search Jigsaw’s database of mostly large well known companies</p></li>
-<li><p><a href="https://exiftool.org/">Exiftool</a> This gets data from images and video runs on Windows, MacOS and Linux. Free.</p></li>
-</ul>
+<p>There is much more to know about Linux, this blog post was to get you to know the essentials. Take this knowledge and learn more about Linux.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

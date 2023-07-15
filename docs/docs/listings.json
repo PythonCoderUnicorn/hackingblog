@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/linux/index.html",
       "/posts/OSINT/index.html",
       "/posts/github/index.html",
       "/posts/definitions/index.html",

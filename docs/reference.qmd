@@ -4,6 +4,7 @@ title: "References"
 
 List of resources and references used in my Cyber Security / Ethical Hacking learning and used on this blog.
 
+
 - Cyber Security Bootcamp. Zero To Mastery Inc., 2023. _Udemy_
 - [OSINT Tools. Security Trails. July 14, 2023.](https://securitytrails.com/blog/osint-tools)
 
