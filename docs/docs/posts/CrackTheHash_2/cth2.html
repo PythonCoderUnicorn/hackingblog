@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="hacker_newb">
+<meta name="dcterms.date" content="2023-07-18">
+
+<title>hacking newb - Crack the hash Level 2</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">hacking newb</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../reference.html">
+ <span class="menu-text">References</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://infosec.exchange/@hacker_newb"><i class="bi bi-mastodon" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Crack the hash Level 2</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">TryHackMe</div>
+                <div class="quarto-category">hashes</div>
+                <div class="quarto-category">password</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>hacker_newb </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">July 18, 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p>Advanced cracking of hashes and wordlist generation.</p>
+<p><img src="hash-2.png" class="img-fluid"></p>
+<p>The link to this room for level 2 Crack the Hash is <a href="https://tryhackme.com/room/crackthehashlevel2">here</a>.</p>
+<section id="task-2.1" class="level2">
+<h2 class="anchored" data-anchor-id="task-2.1">Task 2.1</h2>
+<p>Need to install <a href="https://noraj.github.io/haiti/">Haiti</a> with the <a href="https://noraj.github.io/haiti/#/pages/install">install guide</a>.</p>
+<ul>
+<li>If on Kali or Parrot, you can just use <code>sudo gem install haiti-hash</code></li>
+<li>then type <code>haiti -h</code> for the help page</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="haiti.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">haiti –ascii-art command</figcaption><p></p>
+</figure>
+</div>
+<p><code>haiti samples ref name</code>: haiti samples hashcat sha1</p>
+</section>
+<section id="task-2.2" class="level2">
+<h2 class="anchored" data-anchor-id="task-2.2">Task 2.2</h2>
+<ul>
+<li>hash: <code>741ebf5166b9ece4cca88a3868c44871e8370707cf19af3ceaa4a6fba006f224ae03f39153492853</code></li>
+<li>I tried putting in the 3 types it just printed but did not get the answer, read the documentation and saw the second best program is called Name-That-Hash.</li>
+</ul>
+<p>So I also installed <a href="https://github.com/HashPals/Name-That-Hash">Name-That-Hash</a>, seeing that it is recently updated and well liked.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="namehash.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Name-That-Hash</figcaption><p></p>
+</figure>
+</div>
+<ul>
+<li>navigate to the directory is, <code>cd Name-That-Hash</code></li>
+<li>then type: <code>nth --text '&lt;the hash&gt;'</code></li>
+</ul>
+<p>Just running the command once, and trying the 1st printed hash type, I got the answer correct.</p>
+</section>
+<section id="task-2.3" class="level2">
+<h2 class="anchored" data-anchor-id="task-2.3">Task 2.3</h2>
+<ul>
+<li>hash: <code>1aec7a56aa08b25b596057e1ccbcb6d768b770eaa0f355ccbd56aee5040e02ee</code></li>
+</ul>
+<p>When I run the command in Haiti <code>haiti -e &lt;hash&gt;</code> I get a long list of what it could be, <code>SHA-256</code> all the way to <code>Umbraco HMAC-SHA1</code>. I choose to ignore trying all of these.</p>
+<p>So I try with Name-That-Hash, and get nicely printed <strong>Most Likely</strong> and <strong>Least Likely</strong> categories of the hash types. One of the most likely is the name for the next question, so far off to a great start.</p>
+<p>We get SHA256, KECCAK-256, HAVEL-128 AND Snefru-256 as most likely to the solution.</p>
+<ul>
+<li>Note: this task does not need an answer</li>
+</ul>
+</section>
+<section id="task-2.4" class="level2">
+<h2 class="anchored" data-anchor-id="task-2.4">Task 2.4</h2>
+<p>Question: <em>What is Keccak-256 Hashcat code?</em></p>
+<p>Using the output from Task 2.3 we can answer this question, the answer is of length 5, so it requires only values.</p>
+</section>
+<section id="task-2.5" class="level2">
+<h2 class="anchored" data-anchor-id="task-2.5">Task 2.5</h2>
+<p>Question: <em>What is Keccak-256 John the Ripper code?</em></p>
+<p>Having previous run the hash with the long list of hash types, the <code>Keccak-256</code> is near the top, in pink brackets is “JtR:” which holds the answer.</p>
+</section>
+<section id="task-3.1" class="level2">
+<h2 class="anchored" data-anchor-id="task-3.1">Task 3.1</h2>
+<p>For hash cracking you will often need some custom or specialized dictionaries called wordlists.</p>
+<ul>
+<li><p>SecLists is a collection of multiple types of lists used during security assessments, collected in one place. List types include usernames, passwords, URLs, sensitive data patterns, fuzzing payloads, web shells, and many more. SecLists is created by OWASP <a href="https://github.com/danielmiessler/SecLists">GitHub link</a></p></li>
+<li><p>wordlistctl is a script to fetch, install, update and search wordlist archives from websites offering wordlists with more than 6300 wordlists available. <a href="https://github.com/BlackArch/wordlistctl">GitHub link</a>. If using the AttackBox VM it will have this wordlist (when I opened the AttackBox it did not have it).</p>
+<ul>
+<li>to install on your VM <code>git clone &lt;link&gt;</code></li>
+<li><code>python3 wordlistctl/wordlistctl -v</code></li>
+<li>The Documentation shows syntax: <code>wordlistctl {fetch, search, list}</code></li>
+</ul></li>
+</ul>
+<p>RockYou is a famous wordlist contains a large set of commonly used password sorted by frequency. To search for this wordlist with wordlistclt run:</p>
+<ul>
+<li><code>python3 wordlistctl/wordlistctl.py search rockyou</code></li>
+</ul>
+</section>
+<section id="task-3.2" class="level2">
+<h2 class="anchored" data-anchor-id="task-3.2">Task 3.2</h2>
+<p>Question: <em>Which option do you need to add to the previous command to search into local archives instead of remote ones?</em></p>
+<p>To answer this question you need to go to the GitHub README page, it will show what flag you need to print the local wordlist for rockyou. But if you read ahead on the page will see the answer shown.</p>
+</section>
+<section id="task-3.3" class="level2">
+<h2 class="anchored" data-anchor-id="task-3.3">Task 3.3</h2>
+<p>We are instructed to download and install a wordlist</p>
+<ul>
+<li><code>wordlistctl fetch -l rockyou</code></li>
+<li>no answer needed</li>
+</ul>
+</section>
+<section id="task-3.4" class="level2">
+<h2 class="anchored" data-anchor-id="task-3.4">Task 3.4</h2>
+<p>You are asked to run the commands again searching for local rockyou file. When you download a wordlist it is in a <code>.tar.gz</code> but running <code>gunzip</code> can unzip the file and then you will have <code>.txt</code>. The path of where the file for wordlists is the same, <code>/usr/share/wordlists/passwords/rockyou.txt</code>.</p>
+</section>
+<section id="task-3.5" class="level2">
+<h2 class="anchored" data-anchor-id="task-3.5">Task 3.5</h2>
+<p>You can search for a wordlist about a specific subject (eg. facebook) <code>wordlistctl search facebook</code> or list all wordlists from a category (eg. fuzzing) <code>wordlistctl list -g fuzzing</code>.</p>
+<ul>
+<li><code>python3 wordlistctl/wordlistctl list -g usernames</code></li>
+</ul>
+<p>I made the mistake of downloading usernames which took a big chunk of my VM disk usage, so be careful with what you run.</p>
+</section>
+<section id="resources" class="level2">
+<h2 class="anchored" data-anchor-id="resources">Resources</h2>
+<ul>
+<li><a href="https://phantom-95.medium.com/tryhackme-crack-the-hash-2-walk-through-f42b9554e80f?sk=d59bc2d827cd59f36bd8512e1992e731">THM Crack the Hash Level 2 walkthrough</a></li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

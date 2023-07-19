@@ -1,0 +1,148 @@
+---
+title: "Crack the hash Level 2"
+author: "hacker_newb"
+date: "2023-07-18"
+categories: [TryHackMe, hashes, password]
+image: "cth2.png"
+---
+
+Advanced cracking of hashes and wordlist generation. 
+
+![](hash-2.png)
+
+The link to this room for level 2 Crack the Hash is [here](https://tryhackme.com/room/crackthehashlevel2). 
+
+
+## Task 2.1
+
+Need to install [Haiti](https://noraj.github.io/haiti/) with the [install guide](https://noraj.github.io/haiti/#/pages/install).
+
+- If on Kali or Parrot, you can just use `sudo gem install haiti-hash`
+- then type `haiti -h` for the help page
+
+
+![haiti --ascii-art command](haiti.png)
+
+`haiti samples ref name`: haiti samples hashcat sha1
+
+## Task 2.2
+
+- hash: `741ebf5166b9ece4cca88a3868c44871e8370707cf19af3ceaa4a6fba006f224ae03f39153492853`
+- I tried putting in the 3 types it just printed but did not get the answer, read the documentation and saw the second best program is called Name-That-Hash.
+
+So I also installed [Name-That-Hash](https://github.com/HashPals/Name-That-Hash), seeing that it is recently updated and well liked.
+
+![Name-That-Hash](namehash.png)
+
+- navigate to the directory is, `cd Name-That-Hash`
+- then type: `nth --text '<the hash>' `
+
+Just running the command once, and trying the 1st printed hash type, I got the answer correct.
+
+
+## Task 2.3 
+
+- hash: `1aec7a56aa08b25b596057e1ccbcb6d768b770eaa0f355ccbd56aee5040e02ee`
+
+
+When I run the command in Haiti `haiti -e <hash>` I get a long list of what it could be, `SHA-256` all the way to `Umbraco HMAC-SHA1`. I choose to ignore trying all of these.
+
+So I try with Name-That-Hash, and get nicely printed **Most Likely** and **Least Likely** categories of the hash types. One of the most likely is the name for the next question, so far off to a great start.
+
+We get SHA256, KECCAK-256, HAVEL-128 AND Snefru-256 as most likely to the solution. 
+
+- Note: this task does not need an answer
+
+
+## Task 2.4
+
+Question: _What is Keccak-256 Hashcat code?_
+
+Using the output from Task 2.3 we can answer this question, the answer 
+is of length 5, so it requires only values. 
+
+## Task 2.5 
+
+Question: _What is Keccak-256 John the Ripper code?_
+
+Having previous run the hash with the long list of hash types, the `Keccak-256` is near the top, in pink brackets is "JtR:" which holds 
+the answer. 
+
+
+
+## Task 3.1
+
+For hash cracking you will often need some custom or specialized dictionaries called wordlists. 
+
+- SecLists is a collection of multiple types of lists used during security assessments, collected in one place. List types include usernames, passwords, URLs, sensitive data patterns, fuzzing payloads, web shells, and many more. SecLists is created by OWASP [GitHub link](https://github.com/danielmiessler/SecLists)
+
+- wordlistctl is a script to fetch, install, update and search wordlist archives from websites offering wordlists with more than 6300 wordlists available. [GitHub link](https://github.com/BlackArch/wordlistctl). If using the AttackBox VM it will have this wordlist (when I opened the AttackBox it did not have it).
+
+  - to install on your VM `git clone <link>`
+  - `python3 wordlistctl/wordlistctl -v`
+  - The Documentation shows syntax: `wordlistctl {fetch, search, list}`
+
+
+
+RockYou is a famous wordlist contains a large set of commonly used password sorted by frequency.
+To search for this wordlist with wordlistclt run:
+
+- `python3 wordlistctl/wordlistctl.py search rockyou`
+
+
+
+## Task 3.2 
+
+Question: _Which option do you need to add to the previous command to search into local archives instead of remote ones?_
+
+To answer this question you need to go to the GitHub README page, it will show what flag you need to print the local wordlist for rockyou. 
+But if you read ahead on the page will see the answer shown.
+
+
+## Task 3.3
+
+We are instructed to download and install a wordlist
+
+- `wordlistctl fetch -l rockyou`
+- no answer needed
+
+## Task 3.4 
+
+You are asked to run the commands again searching for local rockyou file.
+When you download a wordlist it is in a `.tar.gz` but running `gunzip` can unzip the file and then you will have `.txt`. The path of where the
+file for wordlists is the same, `/usr/share/wordlists/passwords/rockyou.txt`.
+
+
+## Task 3.5
+
+
+You can search for a wordlist about a specific subject (eg. facebook) `wordlistctl search facebook` or list all wordlists from a category (eg. fuzzing) `wordlistctl list -g fuzzing`.
+
+- `python3 wordlistctl/wordlistctl list -g usernames` 
+
+I made the mistake of downloading usernames which took a big chunk of my VM disk usage, so be careful with what you run. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Resources
+
+- [THM Crack the Hash Level 2 walkthrough](https://phantom-95.medium.com/tryhackme-crack-the-hash-2-walk-through-f42b9554e80f?sk=d59bc2d827cd59f36bd8512e1992e731)
+
+
+

@@ -1,0 +1,162 @@
+---
+title: "Crack the hash"
+author: "hacker_newb"
+date: "2023-07-18"
+categories: [TryHackMe, beginner, hashes, password]
+image: "crackhash.png"
+---
+
+Crack the Hash room. 
+This blog post is how to get to the answer without showing the answer. 
+I found the answer, and you will learn how to as well. 
+
+![](crackthehash.png)
+
+The TryHackMe room link [here](https://tryhackme.com/room/crackthehash). This room is for beginners with some familiarity with how hashes work.
+Answer the questions by cracking the hashes.
+
+
+
+
+## Methodology
+
+- go to [Hash Analyzer](https://www.tunnelsup.com/hash-analyzer/) paste in the hash to know what hash type
+- look at hashcat manual: [https://manpages.org/hashcat]()
+- [https://hashcat.net/wiki/doku.php?id=example_hashes]()
+- paste hash in a text file 5 times (otherwise hashcat throws an error). I delete previous 5 hashes so i don't have to add `--potfile-disable`
+- hashcat syntax: `hashcat <options> <hashes> <mask>`
+- use hashcat `hashcat -m0 -a0 -o hashed.txt hash.txt /usr/share/wordlist/rockyou.txt`. The `-o` is for output a file, then pass in the file with the hashes you want cracked. At the end is the location of the wordlist.
+
+## Hash Level 1.1
+
+- hash: `48bb6e862e54f2a795ffc4e541caed4d`
+- hash analyzer: md5 
+- hash type: `-m0` 
+
+
+## Hahs Level 1.2
+
+- hash: `CBFDAC6008F9CAB4083784CBD1874F76618D2A97`
+- hash analyzer: sha1 
+- hash type: `-m100`
+
+
+## Hash Level 1.3
+
+- hash: `1C8BFE8F801D79745C4631D09FFF36C82AA37FC4CCE4FC946683D7B336B63032`
+- hash analyzer: SHA2-256
+- hash type: `-m1400`
+
+
+## Hash Level 1.4
+
+- hash: `$2y$12$Dwt1BZj6pcyc3Dy1FWZ5ieeUznr71EeNkJkUlypTsgbX1H68wsRom`
+- hash analyzer: bcrypt 
+- hash type: `-m3200`
+
+The hint suggests using a mask attack, and answer is length of 4, look at hashcat charsets for options (lowercase = l). Having 4 letters in lowercase: `?l?l?l?l`. Using a mask is a brute force attack which is `-a3`.
+
+I tried:
+
+- `hashcat -m3200 -a3 hashes.txt /usr/share/wordlist/rockyou.txt ?l?l?l?l`
+- `hashcat -a3 -m3200 hashes.txt`
+- trying to understand the mask attack syntax: `hashcat -a3 -m3200 -o hashed.txt hashes.txt ?l?l?l?l`
+- `hashcat -a3 -m3200 -1 ?l -2 ?l -3 ?l -4 ?l  <hash> -o hashed.txt ?1?1?1?1`
+
+None of these attempts worked at all. Then I got help from the Discord and was pointed to hashes.com which I learned about in the morning of the day I was working on this.
+
+To get the answer, paste the bcrypt hash into : [hashes.com](https://hashes.com/en/decrypt/hash) to decrypt the hash.
+
+
+
+## Hash Level 1.5
+
+- hash: `279412f945939ba78ce0758d3fd83daa`
+- hash analyzerL md5
+- hash type: `-m0`
+
+
+
+
+## Hash Level 2.1
+
+- hash: `F09EDCB1FCEFC6DFB23DC3505A882655FF77375ED8AA2D1C13F640FCCC2D0C85`
+- hash analyzer: sha2-256
+- hash type: `-m1400`
+
+Paste in hash into [hashes.com](https://hashes.com/en/decrypt/hash) and get the answer.
+
+
+## Hash Level 2.2
+
+- hash: `1DFECA0C002AE40B8619ECF94819CC1B`
+- hash analyzer: md5
+- hash type: `-m0`
+
+Open the attackbox, copy the hash and paste into the clipboard on the left side.
+Launch the terminal, type `nano hash.txt` copy and paste the hash from the clipboard.
+Exit and save. Open a new tab, run the hashcat command for the basic md5sum hash with the output being written to hashed text file `-o hashed.txt` .
+
+- hashcat -m0 -a0 -o hashed.txt hash.txt /usr/share/wordlists/rockyou.txt . no results.
+- hashcat -m10 -a0 -o hashed.txt hash.txt /usr/share/wordlists/rockyou.txt . 
+
+The 2 attempts on my own did not work, so i looked for a hint.
+
+- hint: NTLM
+- hash type: `-m1000`
+
+Run the command but have `-m1000`.
+Copy the password from the hashed.txt file into clipboard and paste into answer input.
+
+## Hash Level 2.3
+
+- hash: `$6$aReallyHardSalt$6WKUTqzq.UQQmrm0p/T7MPpMbGNnzXPMAXi4bJMl9be.cfi3/qxIf.hsGpS41BqMhSrHVXgMpdjS6xeKZAs02`
+
+- salt: `aReallyHardSalt`
+- hash type: ?
+
+The hash analyzer had no answer for type. So looking at the hashcat reference, it looked like SHA512 + salt = 1710. Using `-m1710` does not work and was getting stuck on which type it was.
+
+Searching for help online, I read _only part_ of [Cyber-99](https://cyber-99.co.uk/mesmerize/thm-crack-the-hash-ctf) walk through to get what proper hash type, which I needed help as I kept looking at other types. I closed the tab and continued on with hashcat attempts. 
+
+- hash type: SHA512crypt 
+- reran the hashcat with `-m1800` 
+- while hashcat was running, I tried again with hashes.com and got the answer
+
+
+
+## Hash Level 2.4
+
+- hash: `e5d8870e5bdd26602cab8dbe07a942c8669e56d6`
+- salt: tryhackme
+- hash analyzer: sha1 
+- hash type: `-m100`
+
+Pasted the hash into hashes.com and got the answer. 
+
+
+## Finish
+
+Time to collect your badge!
+
+
+
+
+
+
+
+
+
+
+
+
+
+## RESOURCES
+
+
+- [using hashcat with masks](https://infosecscout.com/use-mask-attack-with-hashcat/)
+- [hashcat mask](https://hashcat.net/wiki/doku.php?id=mask_attack)
+- [how to use hashcat](https://youtu.be/R_Nsj6BUr6w)
+- [hashcat using a mask](https://youtu.be/PI8ZcVsdLos)
+- [Cracking NLTM hashes with hashcat](https://youtu.be/Ndm5t4sy8o0)
+- [NLTM passwords](https://medium.com/@petergombos/lm-ntlm-net-ntlmv2-oh-my-a9b235c58ed4)
