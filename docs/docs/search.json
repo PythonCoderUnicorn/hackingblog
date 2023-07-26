@@ -42,6 +42,83 @@
     "text": "Linux Crash Course\nIn order to get anywhere in cyber security, programming or hacking is to know the Linux essentials of navigating through the file system. This information applies to Apple users as Apple is based off of Unix, so in a Mac computer with the terminal you can apply most of Linux commands.\nHere is a crash course, but you will greatly benefit from further learning. Note: folder and directory is being used interchangeably. All of these commands are typed in the terminal.\n\npwd means present working directory, this shows what files and folders are inside the folder directory you are at. If you have a file “desk.png”, and you are located at the desktop directory, you will see “desk.png” listed.\nls means list the things in the pwd\ncd means change directory, if you are in the home directory but want to go to the Download folder, you type cd Download/.\nsudo apt install <package> sudo means super user do, which is the command to run things as root (as admin) which requires a password (you will not see your password being typed, no ’*’ shown). This command installs the package you name.\nsudo apt update run this command to update all software packages on your linux VM or OS, you should get in a habit of running this every time you start the machine.\nsudo apt upgrade run this command for similar reason above, you want to ensure you stay uup to date on Linux packages.\nman <command> man means manual, it is the instructions for how to use a command, if you want to know more about ‘pwd’ you type man pwd and you will get a guide on how it works.\n<program> -h or --help is how to get help on how to use a program function. Example hashcat , type hashcat -h\ncd ~ this command takes you to your home directory, it will list Documents, Downloads, Pictures, etc. Wherever you are in the file system, this command will take you home (yep, a pun).\n\nHere is a tip, you often just need to type part of the word for a directory or file and hit tab for it to autocomplete. If autocomplete is not working then it is an indication you are in the wrong directory or the path is wrong.\n\nWe covered:\n\nVirtual Machines\nKali Linux\nGitHub\nCode Editor\nLinux Crash Course\n\nThis hopefully this was helpful to you and gets you ready for all the learning ahead."
   },
   {
+    "objectID": "posts/Networking/intro_Networking.html",
+    "href": "posts/Networking/intro_Networking.html",
+    "title": "Networking Intro",
+    "section": "",
+    "text": "Beginner’s introduction to the basic principles of networking. The process of how computers communicate."
+  },
+  {
+    "objectID": "posts/Networking/intro_Networking.html#intro-networking",
+    "href": "posts/Networking/intro_Networking.html#intro-networking",
+    "title": "Networking Intro",
+    "section": "Intro Networking",
+    "text": "Intro Networking\nThe aim of this room is to provide a beginner’s introduction to the basic principles of networking. Networking is a massive topic, so this really will just be a brief overview; however, it will hopefully give you some foundational knowledge of the topic, which you can build upon for yourself."
+  },
+  {
+    "objectID": "posts/Networking/intro_Networking.html#osi-model",
+    "href": "posts/Networking/intro_Networking.html#osi-model",
+    "title": "Networking Intro",
+    "section": "OSI Model",
+    "text": "OSI Model\nThe OSI (Open Systems Interconnection) Model is a standardised model, the theory behind computer networking.\nThere are 7 layers:\n\nApplication\nPresentation\nSession\nTransport\nNetwork\nData Link\nPhysical\n\nSome mnemonics for remembering the OSI model (P D N T S P A | A P S T N D P):\n\n(bottom-up)  “Please Do Not Throw Salami Pizza Away” \n(top-down) “All People Seem To Need Data Procesing”\n(bottom-up) “Picard Does Not Teach Spanish Programming Apps”\n(bottom-up) “Pet Dinosaur Next To Special Placed Area”\n(top-down) “All Pickles Sent To National Dancing Pets”"
+  },
+  {
+    "objectID": "posts/Networking/intro_Networking.html#task-2",
+    "href": "posts/Networking/intro_Networking.html#task-2",
+    "title": "Networking Intro",
+    "section": "Task 2",
+    "text": "Task 2\n\n Layer 7 - Application \n\nessentially provides networking options to programs running on a computer\nprovides an interface for use to transmit data\n\n\n\n Layer 6 - Presentation \n\ngets data not in standardized format\ntranslates data into standardized format + encryption + compression\nsends standardized data\n\n\n\n Layer 5 - Sessions \n\ntries to set up a connection with the other computer across the network\nIF error Then stop process\nIF connection Then maintain synch communication (unique: host & remote computer)\n(synch connection) data is then sent\n\n\n\n Layer 4 - Transport \n\nchooses the protocol which data is to be transmitted (TCP and UDP)\nTCP transmission control protocol is connection-based, connection lasts for duration of request (all packets are sent, any lost packets are resent)\nUDP user datagram protocol throws packets at the receiving computer (speed over data accuracy, ex: streaming video)\nIF protocol selected Then divide transmission into bytes (TCP: segments | UDP: datagrams)\n\n\n\n Layer 3 - Network \n\nlocates the destination of your request (IP address and finds best route)\ndealing with IP addresses is Logical addressing\nIPv4 format = 192.168.1.1\n\n\n\n Layer 2 - Data Link \n\ngets data and checks for corruption\nfocuses on the physical addressing of the transmission\ngets packet that has IP address and the MAC address of endpoint\nevery computer has Network Interface Card (NIC) which has Media Access Control (MAC) address {can’t be changed but can be spoofed}\ntranslate data for transmisison\n\n\n\n Layer 1 – Physical \n\nthe physical hardware of computer\nelectrical pulses are sent & received over a network\nconverts binary data of the transmisison into signals and transmits them (also signals to binary data)\n\n\nQuestion: Which layer would choose to send data over TCP or UDP?\n\n4\n\nQuestion: Which layer checks received information to make sure that it hasn’t been corrupted?\n\n2\n\nQuestion: In which layer would data be formatted in preparation for transmission?\n\n2\n\nQuestion: Which layer transmits and receives data?\n\n1\n\nQuestion: Which layer encrypts, compresses, or otherwise transforms the initial data to give it a standardised format?\n\n6\n\nQuestion: Which layer tracks communications between the host and receiving computers?\n\n5\n\nQuestion: Which layer accepts communication requests from applications?\n\n7\n\nQuestion: Which layer handles logical addressing?\n\n3\n\nQuestion: When sending data over TCP, what would you call the “bite-sized” pieces of data?\n\nsegments\n\nQuestion: [Research] Which layer would the FTP protocol communicate with?\n\n7"
+  },
+  {
+    "objectID": "posts/Networking/intro_Networking.html#task-3",
+    "href": "posts/Networking/intro_Networking.html#task-3",
+    "title": "Networking Intro",
+    "section": "Task 3",
+    "text": "Task 3\nEncapsulation is as the data is passed down each layer of the model, more information containing details specific to the layer is added to the start of the transmission.\nThe data link layer also adds a piece on at the end of the transmission, which is used to verify that the data has not been corrupted on transmission.\nIn the transport layer the encapsulated data is referred to as a segment or a datagram (depending on whether TCP or UDP has been selected as a transmission protocol).\nAt the Network Layer, the data is referred to as a packet. The packet gets passed down to the Data Link layer it becomes a frame, the frame transmitted across a network has been broken down into bits.\nWhen message received, process is physical layer to application layer (de-encapsulation).\n\n\nQuestion: How would you refer to data at layer 2 of the encapsulation process (with the OSI model)?\n\nframes\n\nQuestion: How would you refer to data at layer 4 of the encapsulation process (with the OSI model), if the UDP protocol has been selected?\n\nUDP: datagrams\n\nQuestion: What process would a computer perform on a received message?\n\nde-encapsulation\n\nQuestion: Which is the only layer of the OSI model to add a trailer during encapsulation?\n\ndata link\n\nQuestion: Does encapsulation provide an extra layer of security (Aye/Nay)?\n\naye"
+  },
+  {
+    "objectID": "posts/Networking/intro_Networking.html#task-4",
+    "href": "posts/Networking/intro_Networking.html#task-4",
+    "title": "Networking Intro",
+    "section": "Task 4",
+    "text": "Task 4\nThe OSI model is one model, TCP/IP model is another (older). Transmission Control Protocol and the Internet Protocol.\n4 layers to TCP/IP:\n\nApplication\nTransport\nInternet\nNetwork Interface [Data Link & Physical]\n\n\n\n\nOSI\nTCP/IP\n\n\n\n\nApplication\nApp\n\n\nPresentation\nApp\n\n\nSession\nApp\n\n\nTransport\nTransport\n\n\nNetwork\nInternet\n\n\nData Link\nNetwork Interface\n\n\nPhysical\nNetwork Interface\n\n\n\n\nEncapsulation/ de-encapsulation works the same as OSI model.\n\nTCP is a connection-based protocol, you must have stable connection first before sending any packets between computers (3-way handshake).\n\nyour computer first sends a special request to the remote server indicating that it wants to initialise a connection SYN synchronise bit. First contact.\nThe server will then respond with a packet containing the SYN bit, as well as another “acknowledgement” bit, called ACK.\nFinally, your computer will send a packet that contains the ACK bit by itself, confirming that the connection has been setup successfully.\n\n\nthe three-way handshake must be carried out before a connection can be established using TCP.\n\n\n\n\n3 way handshake\n\n\nQuestiion: Which model was introduced first, OSI or TCP/IP?\n\nTCP/IP\n\nQuestion: Which layer of the TCP/IP model covers the functionality of the Transport layer of the OSI model (Full Name)?\n\ntransport\n\nQuestion: Which layer of the TCP/IP model covers the functionality of the Session layer of the OSI model (Full Name)?\n\napplication\n\nQuestion: The Network Interface layer of the TCP/IP model covers the functionality of two layers in the OSI model. These layers are Data Link, and?.. (Full Name)?\n\nphysical\n\nQuestion: Which layer of the TCP/IP model handles the functionality of the OSI network layer?\n\ninternet\n\nQuestion: What kind of protocol is TCP?\n\nconnection-based\n\nQuestion: What is SYN short for?\n\nsynchronise\n\nQuestion: What is the second step of the three way handshake?\n\nsyn/ack\n\nQuestion: What is the short name for the “Acknowledgement” segment in the three-way handshake?\n\nack"
+  },
+  {
+    "objectID": "posts/Networking/intro_Networking.html#task-5",
+    "href": "posts/Networking/intro_Networking.html#task-5",
+    "title": "Networking Intro",
+    "section": "Task 5",
+    "text": "Task 5\nSome of the command line networking tools that we can use in practical applications.\nThe ping command is used when we want to test whether a connection to a remote resource is possible.\n\nping <target>\nping google.com returns the Google server not the url requested\nping 217.160.0.152\n\n\n\n\nping Google server. Your numbers will be different.\n\n\nQuestion: What switch lets you change the interval of sent ping requests?\n\n-i\n\nQuestion: What switch would allow you to restrict requests to IPv4?\n\n-4\n\nQuestion: What switch would give you a more verbose output?\n\n-v"
+  },
+  {
+    "objectID": "posts/Networking/intro_Networking.html#task-6",
+    "href": "posts/Networking/intro_Networking.html#task-6",
+    "title": "Networking Intro",
+    "section": "Task 6",
+    "text": "Task 6\nThe logical follow-up to the ping command is ‘traceroute’. Traceroute can be used to map the path your request takes as it heads to the target machine.\nTraceroute allows you to see each of these connections – it allows you to see every intermediate step between your computer and the resource that you requested.\n\ntraceroute <destination>\ntraceroute google.com\nWindows: tracert\n\nQuestion: Use traceroute on tryhackme.com . Can you see the path your request has taken?\n\nno answer needed\n\nQuestion: What switch would you use to specify an interface when using Traceroute?\n\n-i\n\nQuestion: What switch would you use if you wanted to use TCP SYN requests when tracing the route?\n\n-T\n\nQuestion: Which layer of the TCP/IP model will traceroute run on by default (Windows)?\n\ninternet"
+  },
+  {
+    "objectID": "posts/Networking/intro_Networking.html#task-7",
+    "href": "posts/Networking/intro_Networking.html#task-7",
+    "title": "Networking Intro",
+    "section": "Task 7",
+    "text": "Task 7\nDomain Name System (DNS) saves us from rmembering IP addresses. You can find the IP address of a website using whois.\n\nwhois <target>\nwhois bbc.co.uk\nwhois facebook.com\n\nQuestion: What is the registrant postal code for facebook.com?\n\n94025\n\nQuestion: When was the facebook.com domain first registered (Format: DD/MM/YYYY)?\n\n29/03/1997\n\nQuestion: Perform a whosi on microsoft.com. Which city is the registrant based in?\n\nRedmond\n\nQuestion: [OSINT] What is the name of the golf course that is near the registrant address for microsoft.com?\n\nBellevue golf course\n\nQuestion: What is the registered Tech Email for microsoft.com?\n\nmsnhst@microsoft.com"
+  },
+  {
+    "objectID": "posts/Networking/intro_Networking.html#task-8",
+    "href": "posts/Networking/intro_Networking.html#task-8",
+    "title": "Networking Intro",
+    "section": "Task 8",
+    "text": "Task 8\nAt the most basic level, DNS allows us to ask a special server to give us the IP address of the website we’re trying to access.\n\nyou request for google.com\ncomputer checks cache for stored websites\n(recursive DNS server) computer requests DNS from server (root name server)\nserver returns the IP address (Top Level Domain server (TLD))\nTLD deals with ‘.com’,‘co.uk’, etc tryhackme.com\n\n\ndig <domain> @<dns-server-ip>\ndig google.com @1.1.1.1\n\nAn interesting piece of information that dig gives us is the TTL (Time To Live) of the queried DNS record. The TTL of the record tells your computer when to stop considering the record as being valid (request data again).\nQuestion: What is DNS short for?\n\ndomain name system\n\nQuestion: What is the first type of DNS server your computer would query when you search for a domain?\n\nrecursive\n\nQuestion: What type of DNS server contains records specific to domain extensions (i.e. .com, .co.uk, etc)? Use the long version of the name.\n\ntop-level domain\n\nQuestion: Where is the very first place your computer would look to find the IP address of a domain?\n\nlocal cache\n\nQuestion: Google runs two public DNS servers. One of them can be queried with the IP 8.8.8.8, what is the IP address of the other one?\n\n8.8.4.4\n\nQuestion: If a DNS query has a TTL of 24 hours, what number would the dig query show?\n\n86400"
+  },
+  {
+    "objectID": "posts/Networking/intro_Networking.html#reference",
+    "href": "posts/Networking/intro_Networking.html#reference",
+    "title": "Networking Intro",
+    "section": "Reference",
+    "text": "Reference\n\nWikiepdia OSI Model - Application layer"
+  },
+  {
     "objectID": "posts/welcome/index.html",
     "href": "posts/welcome/index.html",
     "title": "Welcome To My Blog",
@@ -180,6 +257,118 @@
     "title": "Linux for beginners",
     "section": "Permission Management",
     "text": "Permission Management\nThe permissions of files and directories, who can read, write to the file (edit it) and execute the file.\n\nr = read\nw = write\nx = execute\nthe order : d(owner)-(group)-(other)\nu owner\ng Group\no others\na all users\nd is a directory\n. are hidden files\n\n\nType ls -la to see all files and permissions in the pwd present working directory.\nTo modify permissions: + , - using the letters, you can use numbers when you use the command chmod.\n\nchmod 700 cracked.txt changed the permissions on the the file cracked.txt giving only root user read, write and execute command permissions (the new part).\n\n\nThere is much more to know about Linux, this blog post was to get you to know the essentials. Take this knowledge and learn more about Linux."
+  },
+  {
+    "objectID": "posts/Nmap/Nmap.html",
+    "href": "posts/Nmap/Nmap.html",
+    "title": "Nmap Basics",
+    "section": "",
+    "text": "Network Mapper allows for gaining info on target system or network."
+  },
+  {
+    "objectID": "posts/Nmap/Nmap.html#task-1",
+    "href": "posts/Nmap/Nmap.html#task-1",
+    "title": "Nmap Basics",
+    "section": "Task 1",
+    "text": "Task 1\nStep 1 is to scan the “landscape” of what you are attacking, need to establish what services are running on the targets which is called port scanning.\nPorts are necessary for making multiple network requests or having multiple services available. Every computer has a total of 65535 available ports; however, many of these are registered as standard ports\n\nHTTP = port 80\nHTTPS = port 443\nWindows NETBIOS = port 139\nSMB = port 445\nthese ports can be altered\n\nMUST KNOW WHAT PORTS ARE OPEN in order for attack/ security.\nNmap tries to connect to all the ports and returns\n\nopen\nclosed\nfiltered (firewall)"
+  },
+  {
+    "objectID": "posts/Nmap/Nmap.html#task-2",
+    "href": "posts/Nmap/Nmap.html#task-2",
+    "title": "Nmap Basics",
+    "section": "Task 2",
+    "text": "Task 2\nOnce you know the ports that are open, you start enumerating which services are running on each port.\n\nQuestion: What networking constructs are used to direct traffic to the right application on a server?\nQuestion: How many of these are considered “well-known”? 1024 and not 1023."
+  },
+  {
+    "objectID": "posts/Nmap/Nmap.html#task-3",
+    "href": "posts/Nmap/Nmap.html#task-3",
+    "title": "Nmap Basics",
+    "section": "Task 3",
+    "text": "Task 3\nNmap is installed in Kali Linux.\n\nnmap -h to get help\nman nmap to get the manual\n\nQuestion: What is the first switch listed in the help menu for a ‘Syn Scan’ (more on this later!)?\n\nlook at SCAN TECHNIQUES, -sS TCP SYN scans\n\nQuestion: Which switch would you use for a “UDP scan”?\n\nlook at SCAN TECHNIQUES, -sU UDP scans\n\nQuestion: Nmap provides a switch to detect the version of the services running on the target. What is this switch?\n\nlook at OS DETECTION, -O enable OS detection\n\nQuestion: Nmap provides a switch to detect the version of the services running on the target. What is this switch?\n\nlook at SERVICE/VERSION DETECTION, -sV probe open ports to see service version\n\nQuestion: The default output provided by nmap often does not provide enough information for a pentester. How would you increase the verbosity?\n\nlook at OUTPUT, -v increase verbosity\n\nQuestion: Verbosity level one is good, but verbosity level two is better! How would you set the verbosity level to two?\n\n-vv\n\nQuestion: We should always save the output of our scans – this means that we only need to run the scan once (reducing network traffic and thus chance of detection), and gives us a reference to use when writing reports for clients. What switch would you use to save the nmap results in three major formats?\n\nOUTPUT, -oA output in 3 major formats at once\n\nQuestion: What switch would you use to save the nmap results in a “normal” format?\n\nOUTPUT, -oN output scan in normal format\n\nQuestion: A very useful output format: how would you save results in a “grepable” format?\n\n-oG\n\nQuestion: This is a shorthand switch that activates service detection, operating system detection, a traceroute and common script scanning.\n\n-A\n\nQuestion: Nmap offers five levels of “timing” template. These are essentially used to increase the speed your scan runs at. Be careful though: higher speeds are noisier, and can incur errors! How would you set the timing template to level 5?\n\n-T5 timing template\n\nQuestion: We can also choose which port(s) to scan. How would you tell nmap to only scan port 80?\n\nlook at PORT SPECIFICATION, -p, -p 80\n\nQuestion: How would you tell nmap to scan ports 1000-1500?\n\n-p 1000-1500\n\nQuestion: How would you tell nmap to scan all ports?\n\n-p- instead of a number after the p\n\nQuestion: How would you activate a script from the nmap scripting library?\n\n-script\n\nQuestion: How would you activate all of the scripts in the “vuln” category?\n\n-script=vuln"
+  },
+  {
+    "objectID": "posts/Nmap/Nmap.html#task-4",
+    "href": "posts/Nmap/Nmap.html#task-4",
+    "title": "Nmap Basics",
+    "section": "Task 4",
+    "text": "Task 4\nThere are 3 basic scan types:\n\nTCP connect scans -sT\nSYN half open scans -sS\nUDP scans -sU\n\nLess common scans:\n\nTCP null scans -sN\nTCP FIN scans -sF\nTCP Xmas scans -sX\n\nICMP “ping” scan"
+  },
+  {
+    "objectID": "posts/Nmap/Nmap.html#task-5",
+    "href": "posts/Nmap/Nmap.html#task-5",
+    "title": "Nmap Basics",
+    "section": "Task 5",
+    "text": "Task 5\nTransmission Control Protocol (TCP) is a connection-oriented protocol requiring a TCP three-way-handshake to establish a connection.\nThe 3-way handshake (the SYN <–> SYN/ACK –> ACK ):\n\nThe terminal sends TCP request to target server with SYN flag\nthe server says that they got the packet with SYN/ACK flags\nthe terminal ends handshake by sending TCP request with ACK flag\n\nIf Nmap sends a TCP request to a closed port, the port will reply with RST (reset) flag.\nIf a port is open but hidden behind a firewall, a TCP request is sent but nothing is sent back, it is then labelled filtered. You can get the firewall to reply with a RST flag.\n\niptables -I INPUT -p tcp --dport <port> -j REJECT --reject-with tcp-reset\n\nQuestion: Which RFC defines the appropriate behaviour for the TCP protocol? hint: RFC 793 was deprecated and replaced\n\nRFC 9293\n\nQuestion: If a port is closed, which flag should the server send back to indicate this?\n\nRST"
+  },
+  {
+    "objectID": "posts/Nmap/Nmap.html#task-6",
+    "href": "posts/Nmap/Nmap.html#task-6",
+    "title": "Nmap Basics",
+    "section": "Task 6",
+    "text": "Task 6\nThe SYN scans -sS are used to scan the TCP port range of a target, called “half open scans” or “stealth scans”. The SYN scans sends back a RST TCP packet after it gets a SYN/ACK flag from the server (SYN <-===-> SYN//ACK ==-> RST).\n\ncan be used for bypassing older intrusion detection systems looking for the 3-way handshake\noften not logged as only port connects are logged\nSYN scans are faster than TCP connect scans (avoiding 3-way handshake)\nSYN require sudo permissions as they make new raw packets\nunstable services can go down from SYN scans\n\nThe default Nmap scan is TCP, but SYN needs sudo.\n\nSYN scans closed port, the server sends RST packet\nSYN scans filteres port, the packet is dropped or spoofed with TCP reset\n\nQuestion: There are two other names for a SYN scan, what are they?\n\nhalf-open, stealth\n\nQuestion: Can Nmap use a SYN scan without Sudo permissions (Y/N)?\n\nn"
+  },
+  {
+    "objectID": "posts/Nmap/Nmap.html#task-7",
+    "href": "posts/Nmap/Nmap.html#task-7",
+    "title": "Nmap Basics",
+    "section": "Task 7",
+    "text": "Task 7\nUDP scans are stateless, packets are sent and don’t care if they make it to the target. UDP scans -sU are faster but less quality, also are harder and slower to scan.\nUDP scan sends packet to open port, there is no reply which is labelled as open or filtered (firewall). Rarely does UDP get a reply, but if it does it is labelled as open.\n\nif UDP scan sends packet to closed port, it should get a ICMP (ping) packet with a message “port unreachable” = labelled closed\nUDP scans take 20 minutes (very slow) to scan top 1000 ports\nUDP scan: nmap -sU --top-ports 20 <target> scans the 20 most common UDP ports\nif UDP scans a port used by a service, it will send a protocol payload instead of the usual empty UDP packets to get a reply\n\nQuestion: If a UDP port doesn’t respond to an Nmap scan, what will it be marked as?\n\nopen|filtered\n\nQuestion: When a UDP port is closed, by convention the target should send back a “port unreachable” message. Which protocol would it use to do so?\n\nICMP"
+  },
+  {
+    "objectID": "posts/Nmap/Nmap.html#task-8",
+    "href": "posts/Nmap/Nmap.html#task-8",
+    "title": "Nmap Basics",
+    "section": "Task 8",
+    "text": "Task 8\nNULL, FIN and XMAS TCP port scans are less commonly used. All are used for stealthy use.\n\nNULL: -sN TCP request is sent but no flags, this gets a RST reply if port is closed\nFIN: -sF TCP request is sent with FIN flag, this gets a RST reply if port is closed\nXMAS: -sX sends a malformed TCP packet and expects a RST reply for closed ports (christmas name as in Wireshark it looks like a christmas tree)\n\nIf the port is open then no reply to malformed packet (same for any firewall port).\n\nNULL, FIN, XMAS can only label ports: open|filtered, closed, filtered (ICMP unreachable packet).\nMany firewalls are configured to drop incoming TCP packets to blocked ports which have the SYN flag, sending requests without SYN flag == firewall bypass (not 100% effective).\n\nQuestion: Which of the three shown scan types uses the URG flag?\n\nXMAS\n\nQuestion: Why are NULL, FIN and Xmas scans generally used?\n\nfirewall evasion\n\nQuestion: Which common OS may respond to a NULL, FIN or Xmas scan with a RST for every port?\n\nMicrosoft Window"
+  },
+  {
+    "objectID": "posts/Nmap/Nmap.html#task-9",
+    "href": "posts/Nmap/Nmap.html#task-9",
+    "title": "Nmap Basics",
+    "section": "Task 9",
+    "text": "Task 9\nWhen the target is a black box, you need to get a map of the network structure of which IP addresses have active hosts with a “ping sweep” (not always accurate).\n\nping sweep: -sn, nmap -sn 192.168.0.1-254 (CIDR notation) or nmap -sn 195.168.0.0/24\nthis tells nmap to not scan any ports but use pings to ID targets\n\nsends TCP SYN packet to port 443 to target\nsends TCP ACK (root user) or SYN packet to port 80 to target\n\n\nQuestion: How would you perform a ping sweep on the 172.16.x.x network (Netmask: 255.255.0.0) using Nmap? (CIDR notation)\n\nnmap -sn 172.16.0.0/16"
+  },
+  {
+    "objectID": "posts/Nmap/Nmap.html#task-10",
+    "href": "posts/Nmap/Nmap.html#task-10",
+    "title": "Nmap Basics",
+    "section": "Task 10",
+    "text": "Task 10\nNmap Scripting Engine (NSE) is writtenin Lua programming language. The NSE has various categories including:\n\nsafe which won’t affect the target\nintrusive not safe, likely affecting target\nvuln scans for vulnerabilities\nexploit attempt to exploit a vulnerability\nauth attempt to bypass auth for running services\nbrute attempt to bruteforce credentials for running services\ndiscovery attempt to query running services for further info about the network\n\nQuestion: What language are NSE scripts written in?\n\nLua\n\nQuestion: Which category of scripts would be a very bad idea to run in a production environment?\n\nintrusive"
+  },
+  {
+    "objectID": "posts/Nmap/Nmap.html#task-11",
+    "href": "posts/Nmap/Nmap.html#task-11",
+    "title": "Nmap Basics",
+    "section": "Task 11",
+    "text": "Task 11\nWorking with the NSE scripts inside nmap commands.\n\n--script=vuln\n--script=safe\n--script=http-fileupload-exploiter you can dd more scripts with a comma\nexploiting auth vulnerability --script-args http-put.url=\" \" , http-put=\" \"\n\n\nQuestion: What optional argument can the ftp-anon.nse script take?\n\nReading the documentation and you compare the script arguments with what is required and get the answer of maxlist."
+  },
+  {
+    "objectID": "posts/Nmap/Nmap.html#task-12",
+    "href": "posts/Nmap/Nmap.html#task-12",
+    "title": "Nmap Basics",
+    "section": "Task 12",
+    "text": "Task 12\nSearch for nmap scripts using the website and using Linux /usr/share/nmap/scripts.\n\nto search for installed scripts /usr/share/nmap/scripts/script.db file, look at content head script.db\nfind scripts grep \"ftp\" /usr/share/nmap/scripts/script.db\nor ls -l /usr/share/nmap/scripts/*ftp*\n\nIf you want a specific script you can download it\n\nsudo wget -O /usr/share/nmap/scripts/<script-name>.nse https://svn.nmap.org/nmap/scripts/ <script-name> .nse\n\nQuestion: Search for “smb” in the scripts. What is the filename of the script which determines the underlying OS of the SMB server?\n\nsmb-os-discovery.nse\n\nQuestion: Read through this script. What does it depend on?\n\nhint: look for dependencies in the Lua script\nsmb-brute"
+  },
+  {
+    "objectID": "posts/Nmap/Nmap.html#task-13",
+    "href": "posts/Nmap/Nmap.html#task-13",
+    "title": "Nmap Basics",
+    "section": "Task 13",
+    "text": "Task 13\nThere is a way to bypass firewall protection.\nA Windows user will by default firewall block all ICMP packets. Using ping and nmap both use ICMP, this will label a target with firewall dead or not scan it. To avoid this use -Pn which does not ping the target host before scanning.\n\ndon’t ping, treat host as active and scan target\n\nSome useful switches:\n\n-f fragment the packets, less likely to be detected\n--mtu <number> max transmission unit size for packets sent (multiple of 8)\n--scan-delay <time>ms delay between sending packets\n--badsum used to make invalid checksum for packets, used to see if there is a firewall\n\nQuestion: Which simple (and frequently relied upon) protocol is often blocked, requiring the use of the -Pn switch?\n\nICMP\n\nQuestion: Which Nmap switch allows you to append an arbitrary length of random data to the end of packets? Use the nmap -h.\n\n--data-length"
+  },
+  {
+    "objectID": "posts/Nmap/Nmap.html#task-14",
+    "href": "posts/Nmap/Nmap.html#task-14",
+    "title": "Nmap Basics",
+    "section": "Task 14",
+    "text": "Task 14\nLaunch the attackbox and target IP address. Open the terminal.\n\ntype ping IP_address. no packets returned\n\nQuestion: Perform an Xmas scan on the first 999 ports of the target – how many ports are shown to be open or filtered?\n\nnmap -sX IP_address -p 0-999\n\nQuestion: There is a reason given for this – what is it? Note: The answer will be in your scan results. Think carefully about which switches to use – and read the hint before asking for help!\n\nhint: Run this command with the -vv switch enabled. It’s good practice to always increase the verbosity in your scans.\nno response\n\nQuestion: Perform a TCP SYN scan on the first 5000 ports of the target – how many ports are shown to be open?\n\nnmap IP address -p 0-5000 -vv, 5 open\n\nQuestion: Open Wireshark (Wireshark room) and and perform a TCP Connect scan against port 80 on the target, monitoring the results.\n\nno answer needed\ndid not do\n\nQuestion: Deploy the ftp-anon script against the box. Can Nmap login successfully to the FTP server on port 21? (Y/N)\n\nnmap -sV -sC <target>, found FileZilla ftpd"
+  },
+  {
+    "objectID": "posts/Nmap/Nmap.html#reference",
+    "href": "posts/Nmap/Nmap.html#reference",
+    "title": "Nmap Basics",
+    "section": "Reference",
+    "text": "Reference\n\nWiki - List of TCP and UDP ports\nNmap walkthrough\nTransmission Control Protocol – IETF\nNmap walkthough\nNmap Scripting Engine\nNmap scripts\nnmap firewall bypass"
   },
   {
     "objectID": "posts/definitions/index.html",
@@ -490,6 +679,223 @@
     "text": "Aircrack-ng\nAircrack-ng is a complete suite of tools to assess WiFi network security. Several things can be performed with aircrack from monitoring to attacking and cracking the password of the access point."
   },
   {
+    "objectID": "posts/CrackTheHash_2/cth2.html",
+    "href": "posts/CrackTheHash_2/cth2.html",
+    "title": "Crack the hash Level 2",
+    "section": "",
+    "text": "Advanced cracking of hashes and wordlist generation.\nThe link to this room for level 2 Crack the Hash is here."
+  },
+  {
+    "objectID": "posts/CrackTheHash_2/cth2.html#task-2.1",
+    "href": "posts/CrackTheHash_2/cth2.html#task-2.1",
+    "title": "Crack the hash Level 2",
+    "section": "Task 2.1",
+    "text": "Task 2.1\nNeed to install Haiti with the install guide.\n\nIf on Kali or Parrot, you can just use sudo gem install haiti-hash\nthen type haiti -h for the help page\n\n\n\n\nhaiti –ascii-art command\n\n\nhaiti samples ref name: haiti samples hashcat sha1"
+  },
+  {
+    "objectID": "posts/CrackTheHash_2/cth2.html#task-2.2",
+    "href": "posts/CrackTheHash_2/cth2.html#task-2.2",
+    "title": "Crack the hash Level 2",
+    "section": "Task 2.2",
+    "text": "Task 2.2\n\nhash: 741ebf5166b9ece4cca88a3868c44871e8370707cf19af3ceaa4a6fba006f224ae03f39153492853\nI tried putting in the 3 types it just printed but did not get the answer, read the documentation and saw the second best program is called Name-That-Hash.\n\nSo I also installed Name-That-Hash, seeing that it is recently updated and well liked.\n\n\n\nName-That-Hash\n\n\n\npip3 install name-that-hash\nthen type: nth --text '<the hash>'\n\nJust running the command once, and trying the 1st printed hash type, I got the answer correct."
+  },
+  {
+    "objectID": "posts/CrackTheHash_2/cth2.html#task-2.3",
+    "href": "posts/CrackTheHash_2/cth2.html#task-2.3",
+    "title": "Crack the hash Level 2",
+    "section": "Task 2.3",
+    "text": "Task 2.3\n\nhash: 1aec7a56aa08b25b596057e1ccbcb6d768b770eaa0f355ccbd56aee5040e02ee\n\nWhen I run the command in Haiti haiti -e <hash> I get a long list of what it could be, SHA-256 all the way to Umbraco HMAC-SHA1. I choose to ignore trying all of these.\nSo I try with Name-That-Hash, and get nicely printed Most Likely and Least Likely categories of the hash types. One of the most likely is the name for the next question, so far off to a great start.\nWe get SHA256, KECCAK-256, HAVEL-128 AND Snefru-256 as most likely to the solution.\n\nNote: this task does not need an answer"
+  },
+  {
+    "objectID": "posts/CrackTheHash_2/cth2.html#task-2.4",
+    "href": "posts/CrackTheHash_2/cth2.html#task-2.4",
+    "title": "Crack the hash Level 2",
+    "section": "Task 2.4",
+    "text": "Task 2.4\nQuestion: What is Keccak-256 Hashcat code?\nUsing the output from Task 2.3 we can answer this question, the answer is of length 5, so it requires only values."
+  },
+  {
+    "objectID": "posts/CrackTheHash_2/cth2.html#task-2.5",
+    "href": "posts/CrackTheHash_2/cth2.html#task-2.5",
+    "title": "Crack the hash Level 2",
+    "section": "Task 2.5",
+    "text": "Task 2.5\nQuestion: What is Keccak-256 John the Ripper code?\nHaving previous run the hash with the long list of hash types, the Keccak-256 is near the top, in pink brackets is “JtR:” which holds the answer."
+  },
+  {
+    "objectID": "posts/CrackTheHash_2/cth2.html#task-3.1",
+    "href": "posts/CrackTheHash_2/cth2.html#task-3.1",
+    "title": "Crack the hash Level 2",
+    "section": "Task 3.1",
+    "text": "Task 3.1\nFor hash cracking you will often need some custom or specialized dictionaries called wordlists.\n\nSecLists is a collection of multiple types of lists used during security assessments, collected in one place. List types include usernames, passwords, URLs, sensitive data patterns, fuzzing payloads, web shells, and many more. SecLists is created by OWASP GitHub link\nwordlistctl is a script to fetch, install, update and search wordlist archives from websites offering wordlists with more than 6300 wordlists available. GitHub link. If using the AttackBox VM it will have this wordlist (when I opened the AttackBox it did not have it).\n\nto install on your VM git clone <link>\npython3 wordlistctl/wordlistctl -v\nThe Documentation shows syntax: wordlistctl {fetch, search, list}\n\n\nRockYou is a famous wordlist contains a large set of commonly used password sorted by frequency. To search for this wordlist with wordlistclt run:\n\npython3 wordlistctl/wordlistctl.py search rockyou"
+  },
+  {
+    "objectID": "posts/CrackTheHash_2/cth2.html#task-3.2",
+    "href": "posts/CrackTheHash_2/cth2.html#task-3.2",
+    "title": "Crack the hash Level 2",
+    "section": "Task 3.2",
+    "text": "Task 3.2\nQuestion: Which option do you need to add to the previous command to search into local archives instead of remote ones?\nTo answer this question you need to go to the GitHub README page, it will show what flag you need to print the local wordlist for rockyou. But if you read ahead on the page will see the answer shown."
+  },
+  {
+    "objectID": "posts/CrackTheHash_2/cth2.html#task-3.3",
+    "href": "posts/CrackTheHash_2/cth2.html#task-3.3",
+    "title": "Crack the hash Level 2",
+    "section": "Task 3.3",
+    "text": "Task 3.3\nWe are instructed to download and install a wordlist\n\nwordlistctl fetch -l rockyou\nno answer needed"
+  },
+  {
+    "objectID": "posts/CrackTheHash_2/cth2.html#task-3.4",
+    "href": "posts/CrackTheHash_2/cth2.html#task-3.4",
+    "title": "Crack the hash Level 2",
+    "section": "Task 3.4",
+    "text": "Task 3.4\nYou are asked to run the commands again searching for local rockyou file. When you download a wordlist it is in a .tar.gz but running gunzip can unzip the file and then you will have .txt. The path of where the file for wordlists is the same, /usr/share/wordlists/passwords/rockyou.txt."
+  },
+  {
+    "objectID": "posts/CrackTheHash_2/cth2.html#task-3.5",
+    "href": "posts/CrackTheHash_2/cth2.html#task-3.5",
+    "title": "Crack the hash Level 2",
+    "section": "Task 3.5",
+    "text": "Task 3.5\nYou can search for a wordlist about a specific subject (eg. facebook) wordlistctl search facebook or list all wordlists from a category (eg. fuzzing) wordlistctl list -g fuzzing.\n\npython3 wordlistctl/wordlistctl list -g usernames\n\nI made the mistake of downloading usernames which took a big chunk of my VM disk usage, so be careful with what you run."
+  },
+  {
+    "objectID": "posts/CrackTheHash_2/cth2.html#task-4.1",
+    "href": "posts/CrackTheHash_2/cth2.html#task-4.1",
+    "title": "Crack the hash Level 2",
+    "section": "Task 4.1",
+    "text": "Task 4.1\nThe most common hash cracking tools are Hashcat and John the Ripper.\nModes of cracking:\n\nwordlist = a long list of common words like a dictionary for passwords\nincremental mode = trying all possible character combinations as passwords (powerful but longer run time, especially if password is long)\nrule mode = uses wodlist mode with a character/ string pattern\n\nRule based bruteforce attacks:\n\ngenerating a custom wordlist and using the standard wordlist mode iwth it\nusing a common wordlist with a custom rules. This saves time iterating over thousands of lines of possible passwords. Using a custom wordlist can be applied for multiple cracking uses.\n\n\nI changed the order of instructions from the room as this process makes more sense to install SecList then talk about John the Ripper.\n\nWe are instructed to install a SecList wordlist from GitHub. Then use the top 10,000 password list.\n\nif on Kali linux, install sudo apt -y install seclists\nthe path for passwords: /usr/share/seclists/Passwords/Common-Credentials/10k-most-common.txt\n\nJohn the Ripper has syntax for using a wordlist with rules.\n\nlocate where John the Ripper is on your machine, for me it is /usr/share/john\nsudo touch john-local.conf\n\ninsert:\n[List.Rules:THM01]\n$[0-9]$[0-9]\n\nthere is a file john.conf and need to run this file, john john.conf then quit\n\nNow the hash we need to crack.\n\nhash: 2d5c517a4f7a14dcb38329d228a7d18a3b78ce83\nhash type: SHA1\n\nPut the hash into a text file, specify the hash type, the wordlist and our rule name.\n\ni named my file riphash.txt\njohn riphash.txt --format=raw-sha1 --wordlist=/usr/share/seclists/Passwords/Common-Credentials/10k-most-common.txt --rules=THM01\n\nWow, that was SUPER fast to crack such a simple password."
+  },
+  {
+    "objectID": "posts/CrackTheHash_2/cth2.html#task-5.1",
+    "href": "posts/CrackTheHash_2/cth2.html#task-5.1",
+    "title": "Crack the hash Level 2",
+    "section": "Task 5.1",
+    "text": "Task 5.1\nSometimes making a custom wordlist makes more sense as it can be used for multiple tools, but in other cases a wordlist is the better choice. Wordlists are best suited for passwords you know are around a specific topic like dogs, then you would use a wordlist for dogs.\n\nthis part I skipped installing Mentalist GitHub link to generate a wordlist. No answer is required."
+  },
+  {
+    "objectID": "posts/CrackTheHash_2/cth2.html#task-5.2",
+    "href": "posts/CrackTheHash_2/cth2.html#task-5.2",
+    "title": "Crack the hash Level 2",
+    "section": "Task 5.2",
+    "text": "Task 5.2\n\nhash: ed91365105bba79fdab20c376d83d752\nhash type: md5\n\nI used hashes.com and pasted in the hash instead of messing with the the previous section dog wordlist and mentalist app. It found the answer as it is a md5 hash."
+  },
+  {
+    "objectID": "posts/CrackTheHash_2/cth2.html#task-5.3",
+    "href": "posts/CrackTheHash_2/cth2.html#task-5.3",
+    "title": "Crack the hash Level 2",
+    "section": "Task 5.3",
+    "text": "Task 5.3\nNow we have new tool to use, called CeWL Custom Word List generator that generates a wordlist from a website which is helpful for topic specific passwords.\n\ninstall via git clone <link>\nsudo gem install bundler, bundle install I got a warning\nchanged permissions for cewl.rb as shown chmod u+x ./cewl.rb\nnavigate to cewl/ and run cewl --h\nno answer required"
+  },
+  {
+    "objectID": "posts/CrackTheHash_2/cth2.html#task-5.4",
+    "href": "posts/CrackTheHash_2/cth2.html#task-5.4",
+    "title": "Crack the hash Level 2",
+    "section": "Task 5.4",
+    "text": "Task 5.4\nWe are given a website to point teh cewl program to crawl and a depth of 2 links.\n\ncewl -d 2 -w $(pwd)/example.txt https://example.org\nNote that this makes example.txt file in the pwd which is where the answer can be found"
+  },
+  {
+    "objectID": "posts/CrackTheHash_2/cth2.html#task-5.5",
+    "href": "posts/CrackTheHash_2/cth2.html#task-5.5",
+    "title": "Crack the hash Level 2",
+    "section": "Task 5.5",
+    "text": "Task 5.5\nAnother tool to install from GitHub is TTPassGen which is a scriptable password dictionary generator.\n\n(Python 3) pip install ttpassgen\nKali linux has it installed\n\nWith TTPassGen we can craft wordlists from scratch. Create a first wordlist containing all 4 digits PIN code value.\n\nttpassgen --rule '[?d]{4:4:*}' pin.txt\nno answer required"
+  },
+  {
+    "objectID": "posts/CrackTheHash_2/cth2.html#task-5.6",
+    "href": "posts/CrackTheHash_2/cth2.html#task-5.6",
+    "title": "Crack the hash Level 2",
+    "section": "Task 5.6",
+    "text": "Task 5.6\nGenerate a list of all lowercase chars combinations of length 1 to 3.\n\nttpassgen --rule '[?l]{1:3:*}' abc.txt\nno answer required"
+  },
+  {
+    "objectID": "posts/CrackTheHash_2/cth2.html#task-5.7",
+    "href": "posts/CrackTheHash_2/cth2.html#task-5.7",
+    "title": "Crack the hash Level 2",
+    "section": "Task 5.7",
+    "text": "Task 5.7\nThen we can create a new wordlist that is a combination of several wordlists. Eg. combine the PIN wordlist and the letter wordlist separated by a dash.\n\nWarning: combining wordlists makes huge file sizes. ttpassgen --dictlist 'pin.txt,abc.txt' --rule '$0[-]{1}$1' combination.tx\nI did not make this wordlist\nno answer required"
+  },
+  {
+    "objectID": "posts/CrackTheHash_2/cth2.html#task-5.8",
+    "href": "posts/CrackTheHash_2/cth2.html#task-5.8",
+    "title": "Crack the hash Level 2",
+    "section": "Task 5.8",
+    "text": "Task 5.8\nCrack this md5 hash with combinations.txt.\n\nhash: e5b47b7e8df2597077e703c76ee86aee\n\nI instead used hashes.com and cracked the hash."
+  },
+  {
+    "objectID": "posts/CrackTheHash_2/cth2.html#task-6",
+    "href": "posts/CrackTheHash_2/cth2.html#task-6",
+    "title": "Crack the hash Level 2",
+    "section": "Task 6",
+    "text": "Task 6\nYou will have to crack several hashes. For each hash you will be given a short scenario that will help you to create a mangling rules, build a wordlist or finding some specialized data you’ll need to crack the hash.\nThe scenarios are located on the website: Password advisor (AttackBox VM), each piece of advice matches one of the following hashes (in the same order)."
+  },
+  {
+    "objectID": "posts/CrackTheHash_2/cth2.html#task-6.1",
+    "href": "posts/CrackTheHash_2/cth2.html#task-6.1",
+    "title": "Crack the hash Level 2",
+    "section": "Task 6.1",
+    "text": "Task 6.1\n\nAdvice n°1\nhash: b16f211a8ad7f97778e5006c7cecdf31\nhint: English male name, md5, border mutation, custom rule\n\nI went to hashes.com and pasted it in and got the answer.\n\nwork through\nBut the hint tells us to use wordlistctl dictionary that has names.\n\ncd wordlistctl/\nin another terminal tab, I copied the hash into name-that-hash, it says it is md5\nnano hash.txt and paste the hash\nsearch -l usernames shows what usernames you have on your machine\nlist usernames python3 wordlistctl list -g usernames and find malenames-usa-top1000\nwarning: this command downloads all usernames files fetch femalenames-use-top1000 -g usernames -l usernames. I stopped the download after a few seconds and deleted usernames files I did not want to save space.\n\nSo we now have male and female usernames.\nNow we need to make a John the Ripper rule. Need to make a new rule sudo nano john-local.conf or john.conf and type:\n[List.Rules:CTH01]\n[0–9!@\\#\\$%^&()_+\\-={}|\\[\\]\\\\;’:,/\\<\\>?`~*]\nThis code is from Phantom-95 walkthrough and is helpful showing how to add a real custom rule.\n\njohn hash.txt --format=raw-md5 --wordlist=/usr/share/wordlists/usernames/malenames-use-top1000.txt  --rules=CTH01"
+  },
+  {
+    "objectID": "posts/CrackTheHash_2/cth2.html#task-6.2",
+    "href": "posts/CrackTheHash_2/cth2.html#task-6.2",
+    "title": "Crack the hash Level 2",
+    "section": "Task 6.2",
+    "text": "Task 6.2\n\nAdvice n°2\nhash: 7463fcb720de92803d179e7f83070f97\nhint: English female name, md5, border mutation, custom rule\n\nI went to hashes.com and pasted it in and got the answer."
+  },
+  {
+    "objectID": "posts/CrackTheHash_2/cth2.html#task-6.3",
+    "href": "posts/CrackTheHash_2/cth2.html#task-6.3",
+    "title": "Crack the hash Level 2",
+    "section": "Task 6.3",
+    "text": "Task 6.3\n\nAdvice n°3\nhash: f4476669333651be5b37ec6d81ef526f\nhint: Town name of Mexico, MD5, Freak mutation, mentalist tool\n\nI went to hashes.com and pasted it in and got the answer."
+  },
+  {
+    "objectID": "posts/CrackTheHash_2/cth2.html#task-6.4",
+    "href": "posts/CrackTheHash_2/cth2.html#task-6.4",
+    "title": "Crack the hash Level 2",
+    "section": "Task 6.4",
+    "text": "Task 6.4\n\nAdvice n°4\nhash: a3a321e1c246c773177363200a6c0466a5030afc\nhint: Own name, SHA1, Case mutation; existing rule"
+  },
+  {
+    "objectID": "posts/CrackTheHash_2/cth2.html#task-6.5",
+    "href": "posts/CrackTheHash_2/cth2.html#task-6.5",
+    "title": "Crack the hash Level 2",
+    "section": "Task 6.5",
+    "text": "Task 6.5\n\nAdvice n°5\nhash: d5e085772469d544a447bc8250890949\nhint: Lyrics, MD5, Order mutation, lyricpass"
+  },
+  {
+    "objectID": "posts/CrackTheHash_2/cth2.html#task-6.6",
+    "href": "posts/CrackTheHash_2/cth2.html#task-6.6",
+    "title": "Crack the hash Level 2",
+    "section": "Task 6.6",
+    "text": "Task 6.6\n\nAdvice n°6\nhash: 377081d69d23759c5946a95d1b757adc\n\nI went to hashes.com and pasted it in and got the answer."
+  },
+  {
+    "objectID": "posts/CrackTheHash_2/cth2.html#task-6.7",
+    "href": "posts/CrackTheHash_2/cth2.html#task-6.7",
+    "title": "Crack the hash Level 2",
+    "section": "Task 6.7",
+    "text": "Task 6.7\n\nAdvice n°7\nhash: ba6e8f9cd4140ac8b8d2bf96c9acd2fb58c0827d556b78e331d1113fcbfe425ca9299fe917f6015978f7e1644382d1ea45fd581aed6298acde2fa01e7d83cdbd\nhint: Rockyou, SHA3-512, No mutation"
+  },
+  {
+    "objectID": "posts/CrackTheHash_2/cth2.html#task-6.8",
+    "href": "posts/CrackTheHash_2/cth2.html#task-6.8",
+    "title": "Crack the hash Level 2",
+    "section": "Task 6.8",
+    "text": "Task 6.8\n\nAdvice n°8\nhash: 9f7376709d3fe09b389a27876834a13c6f275ed9a806d4c8df78f0ce1aad8fb343316133e810096e0999eaf1d2bca37c336e1b7726b213e001333d636e896617\nhint: Web scrapping, blake2, Repetition, CeWL"
+  },
+  {
+    "objectID": "posts/CrackTheHash_2/cth2.html#task-6.9",
+    "href": "posts/CrackTheHash_2/cth2.html#task-6.9",
+    "title": "Crack the hash Level 2",
+    "section": "Task 6.9",
+    "text": "Task 6.9\n\nAdvice n°9\nhash: $6$kI6VJ0a31.SNRsLR$Wk30X8w8iEC2FpasTo0Z5U7wke0TpfbDtSwayrNebqKjYWC4gjKoNEJxO/DkP.YFTLVFirQ5PEh4glQIHuKfA/\nhint: Rockyou, SHA512-crypt, No mutation"
+  },
+  {
+    "objectID": "posts/CrackTheHash_2/cth2.html#resources",
+    "href": "posts/CrackTheHash_2/cth2.html#resources",
+    "title": "Crack the hash Level 2",
+    "section": "Resources",
+    "text": "Resources\n\nTHM Crack the Hash Level 2 walkthrough\nPassword cracking with John the Ripper – HackerSploit"
+  },
+  {
     "objectID": "posts/CrackTheHash/crackhash.html",
     "href": "posts/CrackTheHash/crackhash.html",
     "title": "Crack the hash",
@@ -599,7 +1005,7 @@
     "href": "index.html",
     "title": "hacking newb",
     "section": "",
-    "text": "Crack the hash Level 2\n\n\n\n\n\n\n\nTryHackMe\n\n\nhashes\n\n\npassword\n\n\n\n\n\n\n\n\n\n\n\nJul 18, 2023\n\n\nhacker_newb\n\n\n\n\n\n\n  \n\n\n\n\nCrack the hash\n\n\n\n\n\n\n\nTryHackMe\n\n\nbeginner\n\n\nhashes\n\n\npassword\n\n\n\n\n\n\n\n\n\n\n\nJul 18, 2023\n\n\nhacker_newb\n\n\n\n\n\n\n  \n\n\n\n\nLinux for beginners\n\n\n\n\n\n\n\nbeginner\n\n\ncode\n\n\nLinux\n\n\n\n\n\n\n\n\n\n\n\nJul 15, 2023\n\n\nhacker_newb\n\n\n\n\n\n\n  \n\n\n\n\nOSINT for beginners\n\n\n\n\n\n\n\nbeginner\n\n\ncode\n\n\nOSINT\n\n\n\n\n\n\n\n\n\n\n\nJul 14, 2023\n\n\nhacker_newb\n\n\n\n\n\n\n  \n\n\n\n\nGitHub for beginners\n\n\n\n\n\n\n\nbeginner\n\n\ncode\n\n\ngithub\n\n\n\n\n\n\n\n\n\n\n\nJul 14, 2023\n\n\nhacker_newb\n\n\n\n\n\n\n  \n\n\n\n\nCyber Security Definitions\n\n\n\n\n\n\n\nbeginner\n\n\nterms\n\n\n\n\n\n\n\n\n\n\n\nJul 14, 2023\n\n\nhacker_newb\n\n\n\n\n\n\n  \n\n\n\n\nHacking Starter Kit\n\n\n\n\n\n\n\nbeginner\n\n\ncode\n\n\nstarter kit\n\n\n\n\n\n\n\n\n\n\n\nJul 13, 2023\n\n\nhacker_newb\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\ncyber security\n\n\nbeginner\n\n\n\n\n\n\n\n\n\n\n\nJul 10, 2023\n\n\nhacker_newb\n\n\n\n\n\n\nNo matching items"
+    "text": "Networking Intro\n\n\n\n\n\n\n\nNetworking\n\n\nTryHackMe\n\n\n\n\n\n\n\n\n\n\n\nJul 25, 2023\n\n\nhacker_newb\n\n\n\n\n\n\n  \n\n\n\n\nNmap Basics\n\n\n\n\n\n\n\nbeginner\n\n\nTryHackMe\n\n\ncode\n\n\n\n\n\n\n\n\n\n\n\nJul 24, 2023\n\n\nhacker_newb\n\n\n\n\n\n\n  \n\n\n\n\nCrack the hash Level 2\n\n\n\n\n\n\n\nTryHackMe\n\n\nhashes\n\n\npassword\n\n\n\n\n\n\n\n\n\n\n\nJul 18, 2023\n\n\nhacker_newb\n\n\n\n\n\n\n  \n\n\n\n\nCrack the hash\n\n\n\n\n\n\n\nTryHackMe\n\n\nbeginner\n\n\nhashes\n\n\npassword\n\n\n\n\n\n\n\n\n\n\n\nJul 18, 2023\n\n\nhacker_newb\n\n\n\n\n\n\n  \n\n\n\n\nLinux for beginners\n\n\n\n\n\n\n\nbeginner\n\n\ncode\n\n\nLinux\n\n\n\n\n\n\n\n\n\n\n\nJul 15, 2023\n\n\nhacker_newb\n\n\n\n\n\n\n  \n\n\n\n\nOSINT for beginners\n\n\n\n\n\n\n\nbeginner\n\n\ncode\n\n\nOSINT\n\n\n\n\n\n\n\n\n\n\n\nJul 14, 2023\n\n\nhacker_newb\n\n\n\n\n\n\n  \n\n\n\n\nGitHub for beginners\n\n\n\n\n\n\n\nbeginner\n\n\ncode\n\n\ngithub\n\n\n\n\n\n\n\n\n\n\n\nJul 14, 2023\n\n\nhacker_newb\n\n\n\n\n\n\n  \n\n\n\n\nCyber Security Definitions\n\n\n\n\n\n\n\nbeginner\n\n\nterms\n\n\n\n\n\n\n\n\n\n\n\nJul 14, 2023\n\n\nhacker_newb\n\n\n\n\n\n\n  \n\n\n\n\nHacking Starter Kit\n\n\n\n\n\n\n\nbeginner\n\n\ncode\n\n\nstarter kit\n\n\n\n\n\n\n\n\n\n\n\nJul 13, 2023\n\n\nhacker_newb\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\ncyber security\n\n\nbeginner\n\n\n\n\n\n\n\n\n\n\n\nJul 10, 2023\n\n\nhacker_newb\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -607,89 +1013,5 @@
     "title": "About",
     "section": "",
     "text": "Welcome to my hacking newb blog!\nThis blog is about sharing all of the Cyber Security / Ethical Hacking knowledge I learn with whomever reads this. My goal is to make this information accessible, many parts in one.\nEverything is beginner friendly as I am also learning this huge topic and sharing what I learn.\nWhy start a blog?\nTo help others learn Cyber Security in an ever Internet of Things world, anything connected to the internet is hackable. By learning some cyber security you help protect yourself from many vulnerabilities. Those who need to know cyber security the most have barriers to accessing this information or have no idea where to start.\nI am here to help and be part of the Free Open Source Software (FOSS) community.\nWhy ‘hacker newb’ ?\nWhenever someone is new to a technology stack, they are called or referred to as a “newb” and that is what I am and who my target audience is."
-  },
-  {
-    "objectID": "posts/CrackTheHash_2/cth2.html",
-    "href": "posts/CrackTheHash_2/cth2.html",
-    "title": "Crack the hash Level 2",
-    "section": "",
-    "text": "Advanced cracking of hashes and wordlist generation.\nThe link to this room for level 2 Crack the Hash is here."
-  },
-  {
-    "objectID": "posts/CrackTheHash_2/cth2.html#task-2.1",
-    "href": "posts/CrackTheHash_2/cth2.html#task-2.1",
-    "title": "Crack the hash Level 2",
-    "section": "Task 2.1",
-    "text": "Task 2.1\nNeed to install Haiti with the install guide.\n\nIf on Kali or Parrot, you can just use sudo gem install haiti-hash\nthen type haiti -h for the help page\n\n\n\n\nhaiti –ascii-art command\n\n\nhaiti samples ref name: haiti samples hashcat sha1"
-  },
-  {
-    "objectID": "posts/CrackTheHash_2/cth2.html#task-2.2",
-    "href": "posts/CrackTheHash_2/cth2.html#task-2.2",
-    "title": "Crack the hash Level 2",
-    "section": "Task 2.2",
-    "text": "Task 2.2\n\nhash: 741ebf5166b9ece4cca88a3868c44871e8370707cf19af3ceaa4a6fba006f224ae03f39153492853\nI tried putting in the 3 types it just printed but did not get the answer, read the documentation and saw the second best program is called Name-That-Hash.\n\nSo I also installed Name-That-Hash, seeing that it is recently updated and well liked.\n\n\n\nName-That-Hash\n\n\n\nnavigate to the directory is, cd Name-That-Hash\nthen type: nth --text '<the hash>'\n\nJust running the command once, and trying the 1st printed hash type, I got the answer correct."
-  },
-  {
-    "objectID": "posts/CrackTheHash_2/cth2.html#task-2.3",
-    "href": "posts/CrackTheHash_2/cth2.html#task-2.3",
-    "title": "Crack the hash Level 2",
-    "section": "Task 2.3",
-    "text": "Task 2.3\n\nhash: 1aec7a56aa08b25b596057e1ccbcb6d768b770eaa0f355ccbd56aee5040e02ee\n\nWhen I run the command in Haiti haiti -e <hash> I get a long list of what it could be, SHA-256 all the way to Umbraco HMAC-SHA1. I choose to ignore trying all of these.\nSo I try with Name-That-Hash, and get nicely printed Most Likely and Least Likely categories of the hash types. One of the most likely is the name for the next question, so far off to a great start.\nWe get SHA256, KECCAK-256, HAVEL-128 AND Snefru-256 as most likely to the solution.\n\nNote: this task does not need an answer"
-  },
-  {
-    "objectID": "posts/CrackTheHash_2/cth2.html#task-2.4",
-    "href": "posts/CrackTheHash_2/cth2.html#task-2.4",
-    "title": "Crack the hash Level 2",
-    "section": "Task 2.4",
-    "text": "Task 2.4\nQuestion: What is Keccak-256 Hashcat code?\nUsing the output from Task 2.3 we can answer this question, the answer is of length 5, so it requires only values."
-  },
-  {
-    "objectID": "posts/CrackTheHash_2/cth2.html#task-2.5",
-    "href": "posts/CrackTheHash_2/cth2.html#task-2.5",
-    "title": "Crack the hash Level 2",
-    "section": "Task 2.5",
-    "text": "Task 2.5\nQuestion: What is Keccak-256 John the Ripper code?\nHaving previous run the hash with the long list of hash types, the Keccak-256 is near the top, in pink brackets is “JtR:” which holds the answer."
-  },
-  {
-    "objectID": "posts/CrackTheHash_2/cth2.html#task-3.1",
-    "href": "posts/CrackTheHash_2/cth2.html#task-3.1",
-    "title": "Crack the hash Level 2",
-    "section": "Task 3.1",
-    "text": "Task 3.1\nFor hash cracking you will often need some custom or specialized dictionaries called wordlists.\n\nSecLists is a collection of multiple types of lists used during security assessments, collected in one place. List types include usernames, passwords, URLs, sensitive data patterns, fuzzing payloads, web shells, and many more. SecLists is created by OWASP GitHub link\nwordlistctl is a script to fetch, install, update and search wordlist archives from websites offering wordlists with more than 6300 wordlists available. GitHub link. If using the AttackBox VM it will have this wordlist (when I opened the AttackBox it did not have it).\n\nto install on your VM git clone <link>\npython3 wordlistctl/wordlistctl -v\nThe Documentation shows syntax: wordlistctl {fetch, search, list}\n\n\nRockYou is a famous wordlist contains a large set of commonly used password sorted by frequency. To search for this wordlist with wordlistclt run:\n\npython3 wordlistctl/wordlistctl.py search rockyou"
-  },
-  {
-    "objectID": "posts/CrackTheHash_2/cth2.html#task-3.2",
-    "href": "posts/CrackTheHash_2/cth2.html#task-3.2",
-    "title": "Crack the hash Level 2",
-    "section": "Task 3.2",
-    "text": "Task 3.2\nQuestion: Which option do you need to add to the previous command to search into local archives instead of remote ones?\nTo answer this question you need to go to the GitHub README page, it will show what flag you need to print the local wordlist for rockyou. But if you read ahead on the page will see the answer shown."
-  },
-  {
-    "objectID": "posts/CrackTheHash_2/cth2.html#task-3.3",
-    "href": "posts/CrackTheHash_2/cth2.html#task-3.3",
-    "title": "Crack the hash Level 2",
-    "section": "Task 3.3",
-    "text": "Task 3.3\nWe are instructed to download and install a wordlist\n\nwordlistctl fetch -l rockyou\nno answer needed"
-  },
-  {
-    "objectID": "posts/CrackTheHash_2/cth2.html#task-3.4",
-    "href": "posts/CrackTheHash_2/cth2.html#task-3.4",
-    "title": "Crack the hash Level 2",
-    "section": "Task 3.4",
-    "text": "Task 3.4\nYou are asked to run the commands again searching for local rockyou file. When you download a wordlist it is in a .tar.gz but running gunzip can unzip the file and then you will have .txt. The path of where the file for wordlists is the same, /usr/share/wordlists/passwords/rockyou.txt."
-  },
-  {
-    "objectID": "posts/CrackTheHash_2/cth2.html#task-3.5",
-    "href": "posts/CrackTheHash_2/cth2.html#task-3.5",
-    "title": "Crack the hash Level 2",
-    "section": "Task 3.5",
-    "text": "Task 3.5\nYou can search for a wordlist about a specific subject (eg. facebook) wordlistctl search facebook or list all wordlists from a category (eg. fuzzing) wordlistctl list -g fuzzing.\n\npython3 wordlistctl/wordlistctl list -g usernames\n\nI made the mistake of downloading usernames which took a big chunk of my VM disk usage, so be careful with what you run."
-  },
-  {
-    "objectID": "posts/CrackTheHash_2/cth2.html#resources",
-    "href": "posts/CrackTheHash_2/cth2.html#resources",
-    "title": "Crack the hash Level 2",
-    "section": "Resources",
-    "text": "Resources\n\nTHM Crack the Hash Level 2 walkthrough"
   }
 ]

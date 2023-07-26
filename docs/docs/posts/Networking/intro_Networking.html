@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="hacker_newb">
+<meta name="dcterms.date" content="2023-07-25">
+
+<title>hacking newb - Networking Intro</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">hacking newb</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../reference.html">
+ <span class="menu-text">References</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://infosec.exchange/@hacker_newb"><i class="bi bi-mastodon" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Networking Intro</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Networking</div>
+                <div class="quarto-category">TryHackMe</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>hacker_newb </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">July 25, 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p>Beginner’s introduction to the basic principles of networking. The process of how computers communicate.</p>
+<p><img src="networking2.png" class="img-fluid"></p>
+<section id="intro-networking" class="level2">
+<h2 class="anchored" data-anchor-id="intro-networking">Intro Networking</h2>
+<p>The aim of this room is to provide a beginner’s introduction to the basic principles of networking. Networking is a massive topic, so this really will just be a brief overview; however, it will hopefully give you some foundational knowledge of the topic, which you can build upon for yourself.</p>
+</section>
+<section id="osi-model" class="level2">
+<h2 class="anchored" data-anchor-id="osi-model">OSI Model</h2>
+<p>The OSI (Open Systems Interconnection) Model is a standardised model, the theory behind computer networking.</p>
+<p>There are 7 layers:</p>
+<ol start="7" type="1">
+<li>Application</li>
+<li>Presentation</li>
+<li>Session</li>
+<li>Transport</li>
+<li>Network</li>
+<li>Data Link</li>
+<li>Physical</li>
+</ol>
+<p>Some mnemonics for remembering the OSI model (P D N T S P A | A P S T N D P):</p>
+<ul>
+<li>(bottom-up) <span style="color:#66ff66"> <em>“Please Do Not Throw Salami Pizza Away”</em> </span></li>
+<li>(top-down) “All People Seem To Need Data Procesing”</li>
+<li>(bottom-up) “Picard Does Not Teach Spanish Programming Apps”</li>
+<li>(bottom-up) “Pet Dinosaur Next To Special Placed Area”</li>
+<li>(top-down) “All Pickles Sent To National Dancing Pets”</li>
+</ul>
+</section>
+<section id="task-2" class="level2">
+<h2 class="anchored" data-anchor-id="task-2">Task 2</h2>
+<section id="layer-7---application" class="level3">
+<h3 class="anchored" data-anchor-id="layer-7---application"><span style="color:#66b3ff"> Layer 7 - Application </span></h3>
+<ul>
+<li>essentially provides networking options to programs running on a computer</li>
+<li>provides an interface for use to transmit data</li>
+</ul>
+</section>
+<section id="layer-6---presentation" class="level3">
+<h3 class="anchored" data-anchor-id="layer-6---presentation"><span style="color:#33cccc"> Layer 6 - Presentation </span></h3>
+<ul>
+<li>gets data not in standardized format</li>
+<li>translates data into standardized format + encryption + compression</li>
+<li>sends standardized data</li>
+</ul>
+</section>
+<section id="layer-5---sessions" class="level3">
+<h3 class="anchored" data-anchor-id="layer-5---sessions"><span style="color:#66ffcc"> Layer 5 - Sessions </span></h3>
+<ul>
+<li>tries to set up a connection with the other computer across the network</li>
+<li>IF error Then stop process</li>
+<li>IF connection Then maintain synch communication (unique: host &amp; remote computer)</li>
+<li>(synch connection) data is then sent</li>
+</ul>
+</section>
+<section id="layer-4---transport" class="level3">
+<h3 class="anchored" data-anchor-id="layer-4---transport"><span style="color:#66ff99"> Layer 4 - Transport </span></h3>
+<ul>
+<li>chooses the protocol which data is to be transmitted (TCP and UDP)</li>
+<li>TCP <em>transmission control protocol</em> is connection-based, connection lasts for duration of request (all packets are sent, any lost packets are resent)</li>
+<li>UDP <em>user datagram protocol</em> throws packets at the receiving computer (speed over data accuracy, ex: streaming video)</li>
+<li>IF protocol selected Then divide transmission into bytes (TCP: segments | UDP: datagrams)</li>
+</ul>
+</section>
+<section id="layer-3---network" class="level3">
+<h3 class="anchored" data-anchor-id="layer-3---network"><span style="color:#ffff99"> Layer 3 - Network </span></h3>
+<ul>
+<li>locates the destination of your request (IP address and finds best route)</li>
+<li>dealing with IP addresses is Logical addressing</li>
+<li>IPv4 format = 192.168.1.1</li>
+</ul>
+</section>
+<section id="layer-2---data-link" class="level3">
+<h3 class="anchored" data-anchor-id="layer-2---data-link"><span style="color:#ffcc66"> Layer 2 - Data Link </span></h3>
+<ul>
+<li>gets data and checks for corruption</li>
+<li>focuses on the physical addressing of the transmission</li>
+<li>gets packet that has IP address and the MAC address of endpoint</li>
+<li>every computer has <em>Network Interface Card</em> (NIC) which has <em>Media Access Control</em> (MAC) address {can’t be changed but can be spoofed}</li>
+<li>translate data for transmisison</li>
+</ul>
+</section>
+<section id="layer-1-physical" class="level3">
+<h3 class="anchored" data-anchor-id="layer-1-physical"><span style="color:#ff99ff"> Layer 1 – Physical <span></span></span></h3>
+<ul>
+<li>the physical hardware of computer</li>
+<li>electrical pulses are sent &amp; received over a network</li>
+<li>converts binary data of the transmisison into signals and transmits them (also signals to binary data)</li>
+</ul>
+<hr>
+<p>Question: <em>Which layer would choose to send data over TCP or UDP?</em></p>
+<ul>
+<li>4</li>
+</ul>
+<p>Question: <em>Which layer checks received information to make sure that it hasn’t been corrupted?</em></p>
+<ul>
+<li>2</li>
+</ul>
+<p>Question: <em>In which layer would data be formatted in preparation for transmission?</em></p>
+<ul>
+<li>2</li>
+</ul>
+<p>Question: <em>Which layer transmits and receives data?</em></p>
+<ul>
+<li>1</li>
+</ul>
+<p>Question: <em>Which layer encrypts, compresses, or otherwise transforms the initial data to give it a standardised format?</em></p>
+<ul>
+<li>6</li>
+</ul>
+<p>Question: <em>Which layer tracks communications between the host and receiving computers?</em></p>
+<ul>
+<li>5</li>
+</ul>
+<p>Question: <em>Which layer accepts communication requests from applications?</em></p>
+<ul>
+<li>7</li>
+</ul>
+<p>Question: <em>Which layer handles logical addressing?</em></p>
+<ul>
+<li>3</li>
+</ul>
+<p>Question: <em>When sending data over TCP, what would you call the “bite-sized” pieces of data?</em></p>
+<ul>
+<li>segments</li>
+</ul>
+<p>Question: <em>[Research] Which layer would the FTP protocol communicate with?</em></p>
+<ul>
+<li>7</li>
+</ul>
+</section>
+</section>
+<section id="task-3" class="level2">
+<h2 class="anchored" data-anchor-id="task-3">Task 3</h2>
+<p>Encapsulation is as the data is passed down each layer of the model, more information containing details specific to the layer is added to the start of the transmission.</p>
+<p>The data link layer also adds a piece on at the end of the transmission, which is used to verify that the data has not been corrupted on transmission.</p>
+<p>In the transport layer the encapsulated data is referred to as a segment or a datagram (depending on whether TCP or UDP has been selected as a transmission protocol).</p>
+<p>At the Network Layer, the data is referred to as a packet. The packet gets passed down to the Data Link layer it becomes a frame, the frame transmitted across a network has been broken down into bits.</p>
+<p>When message received, process is physical layer to application layer (de-encapsulation).</p>
+<!-- ![OSI model](OSImodel.png) -->
+<p><img height="400" width="1110" src="osimodel.png"></p>
+<p>Question: <em>How would you refer to data at layer 2 of the encapsulation process (with the OSI model)?</em></p>
+<ul>
+<li>frames</li>
+</ul>
+<p>Question: <em>How would you refer to data at layer 4 of the encapsulation process (with the OSI model), if the UDP protocol has been selected?</em></p>
+<ul>
+<li>UDP: datagrams</li>
+</ul>
+<p>Question: <em>What process would a computer perform on a received message?</em></p>
+<ul>
+<li>de-encapsulation</li>
+</ul>
+<p>Question: <em>Which is the only layer of the OSI model to add a trailer during encapsulation?</em></p>
+<ul>
+<li>data link</li>
+</ul>
+<p>Question: <em>Does encapsulation provide an extra layer of security (Aye/Nay)?</em></p>
+<ul>
+<li>aye</li>
+</ul>
+</section>
+<section id="task-4" class="level2">
+<h2 class="anchored" data-anchor-id="task-4">Task 4</h2>
+<p>The OSI model is one model, TCP/IP model is another (older). <em>Transmission Control Protocol</em> and the <em>Internet Protocol</em>.</p>
+<p>4 layers to TCP/IP:</p>
+<ul>
+<li>Application</li>
+<li>Transport</li>
+<li>Internet</li>
+<li>Network Interface [Data Link &amp; Physical]</li>
+</ul>
+<table class="table">
+<thead>
+<tr class="header">
+<th>OSI</th>
+<th>TCP/IP</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Application</td>
+<td>App</td>
+</tr>
+<tr class="even">
+<td>Presentation</td>
+<td>App</td>
+</tr>
+<tr class="odd">
+<td>Session</td>
+<td>App</td>
+</tr>
+<tr class="even">
+<td>Transport</td>
+<td>Transport</td>
+</tr>
+<tr class="odd">
+<td>Network</td>
+<td><em>Internet</em></td>
+</tr>
+<tr class="even">
+<td>Data Link</td>
+<td>Network Interface</td>
+</tr>
+<tr class="odd">
+<td>Physical</td>
+<td>Network Interface</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Encapsulation/ de-encapsulation works the same as OSI model.</li>
+</ul>
+<p>TCP is a connection-based protocol, you must have stable connection first before sending any packets between computers (3-way handshake).</p>
+<ol type="1">
+<li>your computer first sends a special request to the remote server indicating that it wants to initialise a connection SYN <em>synchronise</em> bit. First contact.</li>
+<li>The server will then respond with a packet containing the SYN bit, as well as another “acknowledgement” bit, called ACK.</li>
+<li>Finally, your computer will send a packet that contains the ACK bit by itself, confirming that the connection has been setup successfully.</li>
+</ol>
+<ul>
+<li>the three-way handshake must be carried out before a connection can be established using TCP.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="handshake.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">3 way handshake</figcaption><p></p>
+</figure>
+</div>
+<p>Questiion: <em>Which model was introduced first, OSI or TCP/IP?</em></p>
+<ul>
+<li>TCP/IP</li>
+</ul>
+<p>Question: <em>Which layer of the TCP/IP model covers the functionality of the Transport layer of the OSI model (Full Name)?</em></p>
+<ul>
+<li>transport</li>
+</ul>
+<p>Question: <em>Which layer of the TCP/IP model covers the functionality of the Session layer of the OSI model (Full Name)?</em></p>
+<ul>
+<li>application</li>
+</ul>
+<p>Question: <em>The Network Interface layer of the TCP/IP model covers the functionality of two layers in the OSI model. These layers are Data Link, and?.. (Full Name)?</em></p>
+<ul>
+<li>physical</li>
+</ul>
+<p>Question: <em>Which layer of the TCP/IP model handles the functionality of the OSI network layer?</em></p>
+<ul>
+<li>internet</li>
+</ul>
+<p>Question: <em>What kind of protocol is TCP?</em></p>
+<ul>
+<li>connection-based</li>
+</ul>
+<p>Question: <em>What is SYN short for?</em></p>
+<ul>
+<li>synchronise</li>
+</ul>
+<p>Question: <em>What is the second step of the three way handshake?</em></p>
+<ul>
+<li>syn/ack</li>
+</ul>
+<p>Question: <em>What is the short name for the “Acknowledgement” segment in the three-way handshake?</em></p>
+<ul>
+<li>ack</li>
+</ul>
+</section>
+<section id="task-5" class="level2">
+<h2 class="anchored" data-anchor-id="task-5">Task 5</h2>
+<p>Some of the command line networking tools that we can use in practical applications.</p>
+<p>The ping command is used when we want to test whether a connection to a remote resource is possible.</p>
+<ul>
+<li><code>ping &lt;target&gt;</code></li>
+<li><code>ping google.com</code> returns the Google server not the url requested</li>
+<li><code>ping 217.160.0.152</code></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ping.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">ping Google server. <em>Your numbers will be different.</em></figcaption><p></p>
+</figure>
+</div>
+<p>Question: <em>What switch lets you change the interval of sent ping requests?</em></p>
+<ul>
+<li><code>-i</code></li>
+</ul>
+<p>Question: <em>What switch would allow you to restrict requests to IPv4?</em></p>
+<ul>
+<li><code>-4</code></li>
+</ul>
+<p>Question: <em>What switch would give you a more verbose output?</em></p>
+<ul>
+<li><code>-v</code></li>
+</ul>
+</section>
+<section id="task-6" class="level2">
+<h2 class="anchored" data-anchor-id="task-6">Task 6</h2>
+<p>The logical follow-up to the ping command is ‘traceroute’. Traceroute can be used to map the path your request takes as it heads to the target machine.</p>
+<p>Traceroute allows you to see each of these connections – it allows you to see every intermediate step between your computer and the resource that you requested.</p>
+<ul>
+<li><code>traceroute &lt;destination&gt;</code></li>
+<li><code>traceroute google.com</code></li>
+<li>Windows: <code>tracert</code></li>
+</ul>
+<p>Question: <em>Use traceroute on tryhackme.com . Can you see the path your request has taken?</em></p>
+<ul>
+<li>no answer needed</li>
+</ul>
+<p>Question: <em>What switch would you use to specify an interface when using Traceroute?</em></p>
+<ul>
+<li><code>-i</code></li>
+</ul>
+<p>Question: <em>What switch would you use if you wanted to use TCP SYN requests when tracing the route?</em></p>
+<ul>
+<li><code>-T</code></li>
+</ul>
+<p>Question: <em>Which layer of the TCP/IP model will traceroute run on by default (Windows)?</em></p>
+<ul>
+<li>internet</li>
+</ul>
+</section>
+<section id="task-7" class="level2">
+<h2 class="anchored" data-anchor-id="task-7">Task 7</h2>
+<p>Domain Name System (DNS) saves us from rmembering IP addresses. You can find the IP address of a website using whois.</p>
+<ul>
+<li><code>whois &lt;target&gt;</code></li>
+<li><code>whois bbc.co.uk</code></li>
+<li><code>whois facebook.com</code></li>
+</ul>
+<p>Question: <em>What is the registrant postal code for facebook.com?</em></p>
+<ul>
+<li>94025</li>
+</ul>
+<p>Question: <em>When was the facebook.com domain first registered (Format: DD/MM/YYYY)?</em></p>
+<ul>
+<li>29/03/1997</li>
+</ul>
+<p>Question: <em>Perform a whosi on microsoft.com. Which city is the registrant based in?</em></p>
+<ul>
+<li>Redmond</li>
+</ul>
+<p>Question: <em>[OSINT] What is the name of the golf course that is near the registrant address for microsoft.com?</em></p>
+<ul>
+<li>Bellevue golf course</li>
+</ul>
+<p>Question: <em>What is the registered Tech Email for microsoft.com?</em></p>
+<ul>
+<li><code>msnhst@microsoft.com</code></li>
+</ul>
+</section>
+<section id="task-8" class="level2">
+<h2 class="anchored" data-anchor-id="task-8">Task 8</h2>
+<p>At the most basic level, DNS allows us to ask a special server to give us the IP address of the website we’re trying to access.</p>
+<ol type="1">
+<li>you request for google.com</li>
+<li>computer checks cache for stored websites</li>
+<li>(recursive DNS server) computer requests DNS from server (root name server)</li>
+<li>server returns the IP address (Top Level Domain server (TLD))</li>
+<li>TLD deals with ‘.com’,‘co.uk’, etc tryhackme.com</li>
+</ol>
+<ul>
+<li><code>dig &lt;domain&gt; @&lt;dns-server-ip&gt;</code></li>
+<li><code>dig google.com @1.1.1.1</code></li>
+</ul>
+<p>An interesting piece of information that dig gives us is the TTL (Time To Live) of the queried DNS record. The TTL of the record tells your computer when to stop considering the record as being valid (request data again).</p>
+<p>Question: <em>What is DNS short for?</em></p>
+<ul>
+<li>domain name system</li>
+</ul>
+<p>Question: <em>What is the first type of DNS server your computer would query when you search for a domain?</em></p>
+<ul>
+<li>recursive</li>
+</ul>
+<p>Question: <em>What type of DNS server contains records specific to domain extensions (i.e.&nbsp;.com, .co.uk<em>, etc)</em>? Use the long version of the name.</em></p>
+<ul>
+<li>top-level domain</li>
+</ul>
+<p>Question: <em>Where is the very first place your computer would look to find the IP address of a domain?</em></p>
+<ul>
+<li>local cache</li>
+</ul>
+<p>Question: <em>Google runs two public DNS servers. One of them can be queried with the IP 8.8.8.8, what is the IP address of the other one?</em></p>
+<ul>
+<li>8.8.4.4</li>
+</ul>
+<p>Question: <em>If a DNS query has a TTL of 24 hours, what number would the dig query show?</em></p>
+<ul>
+<li>86400</li>
+</ul>
+</section>
+<section id="reference" class="level2">
+<h2 class="anchored" data-anchor-id="reference">Reference</h2>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Application_layer">Wikiepdia OSI Model - Application layer</a></li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

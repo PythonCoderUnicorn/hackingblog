@@ -181,7 +181,7 @@ ul.task-list li input[type="checkbox"] {
 </figure>
 </div>
 <ul>
-<li>navigate to the directory is, <code>cd Name-That-Hash</code></li>
+<li><code>pip3 install name-that-hash</code></li>
 <li>then type: <code>nth --text '&lt;the hash&gt;'</code></li>
 </ul>
 <p>Just running the command once, and trying the 1st printed hash type, I got the answer correct.</p>
@@ -250,10 +250,228 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>I made the mistake of downloading usernames which took a big chunk of my VM disk usage, so be careful with what you run.</p>
 </section>
+<section id="task-4.1" class="level2">
+<h2 class="anchored" data-anchor-id="task-4.1">Task 4.1</h2>
+<p>The most common hash cracking tools are Hashcat and John the Ripper.</p>
+<p>Modes of cracking:</p>
+<ul>
+<li><code>wordlist</code> = a long list of common words like a dictionary for passwords</li>
+<li><code>incremental mode</code> = trying all possible character combinations as passwords (powerful but longer run time, especially if password is long)</li>
+<li><code>rule mode</code> = uses wodlist mode with a character/ string pattern</li>
+</ul>
+<p>Rule based bruteforce attacks:</p>
+<ul>
+<li>generating a custom wordlist and using the standard wordlist mode iwth it</li>
+<li>using a common wordlist with a custom rules. <em>This saves time iterating over thousands of lines of possible passwords</em>. Using a custom wordlist can be applied for multiple cracking uses.</li>
+</ul>
+<blockquote class="blockquote">
+<p>I changed the order of instructions from the room as this process makes more sense to install SecList then talk about John the Ripper.</p>
+</blockquote>
+<p>We are instructed to install a <a href="https://github.com/danielmiessler/SecLists#install">SecList</a> wordlist from GitHub. Then use the top 10,000 password list.</p>
+<ul>
+<li>if on Kali linux, install <code>sudo apt -y install seclists</code></li>
+<li>the path for passwords: <code>/usr/share/seclists/Passwords/Common-Credentials/10k-most-common.txt</code></li>
+</ul>
+<p>John the Ripper has syntax for using a wordlist with rules.</p>
+<ul>
+<li>locate where John the Ripper is on your machine, for me it is <code>/usr/share/john</code></li>
+<li><code>sudo touch john-local.conf</code></li>
+</ul>
+<p>insert:</p>
+<pre><code>[List.Rules:THM01]
+$[0-9]$[0-9]</code></pre>
+<ul>
+<li>there is a file <code>john.conf</code> and need to run this file, <code>john john.conf</code> then quit</li>
+</ul>
+<p>Now the hash we need to crack.</p>
+<ul>
+<li>hash: <code>2d5c517a4f7a14dcb38329d228a7d18a3b78ce83</code></li>
+<li>hash type: SHA1</li>
+</ul>
+<p>Put the hash into a text file, specify the hash type, the wordlist and our rule name.</p>
+<ul>
+<li>i named my file <code>riphash.txt</code></li>
+<li><code>john riphash.txt --format=raw-sha1 --wordlist=/usr/share/seclists/Passwords/Common-Credentials/10k-most-common.txt --rules=THM01</code></li>
+</ul>
+<p>Wow, that was <em>SUPER</em> fast to crack such a simple password.</p>
+</section>
+<section id="task-5.1" class="level2">
+<h2 class="anchored" data-anchor-id="task-5.1">Task 5.1</h2>
+<p>Sometimes making a custom wordlist makes more sense as it can be used for multiple tools, but in other cases a wordlist is the better choice. Wordlists are best suited for passwords you know are around a specific topic like dogs, then you would use a wordlist for dogs.</p>
+<blockquote class="blockquote">
+<p>this part I skipped installing Mentalist <a href="https://github.com/sc0tfree/mentalist">GitHub link</a> to generate a wordlist. No answer is required.</p>
+</blockquote>
+</section>
+<section id="task-5.2" class="level2">
+<h2 class="anchored" data-anchor-id="task-5.2">Task 5.2</h2>
+<ul>
+<li>hash: <code>ed91365105bba79fdab20c376d83d752</code></li>
+<li>hash type: md5</li>
+</ul>
+<p>I used hashes.com and pasted in the hash instead of messing with the the previous section dog wordlist and mentalist app. It found the answer as it is a md5 hash.</p>
+</section>
+<section id="task-5.3" class="level2">
+<h2 class="anchored" data-anchor-id="task-5.3">Task 5.3</h2>
+<p>Now we have new tool to use, called <a href="https://github.com/digininja/CeWL">CeWL</a> <em>Custom Word List generator</em> that generates a wordlist from a website which is helpful for topic specific passwords.</p>
+<ul>
+<li>install via <code>git clone &lt;link&gt;</code></li>
+<li><code>sudo gem install bundler</code>, <code>bundle install</code> I got a warning</li>
+<li>changed permissions for <code>cewl.rb</code> as shown <code>chmod u+x ./cewl.rb</code></li>
+<li>navigate to cewl/ and run <code>cewl --h</code></li>
+<li>no answer required</li>
+</ul>
+</section>
+<section id="task-5.4" class="level2">
+<h2 class="anchored" data-anchor-id="task-5.4">Task 5.4</h2>
+<p>We are given a website to point teh cewl program to crawl and a depth of 2 links.</p>
+<ul>
+<li><code>cewl -d 2 -w $(pwd)/example.txt https://example.org</code></li>
+<li>Note that this makes example.txt file in the <code>pwd</code> which is where the answer can be found</li>
+</ul>
+</section>
+<section id="task-5.5" class="level2">
+<h2 class="anchored" data-anchor-id="task-5.5">Task 5.5</h2>
+<p>Another tool to install from GitHub is <a href="https://github.com/tp7309/TTPassGen">TTPassGen</a> which is a scriptable password dictionary generator.</p>
+<ul>
+<li>(Python 3) <code>pip install ttpassgen</code></li>
+<li>Kali linux has it installed</li>
+</ul>
+<p>With TTPassGen we can craft wordlists from scratch. Create a first wordlist containing all 4 digits PIN code value.</p>
+<ul>
+<li><code>ttpassgen --rule '[?d]{4:4:*}' pin.txt</code></li>
+<li>no answer required</li>
+</ul>
+</section>
+<section id="task-5.6" class="level2">
+<h2 class="anchored" data-anchor-id="task-5.6">Task 5.6</h2>
+<p>Generate a list of all lowercase chars combinations of length 1 to 3.</p>
+<ul>
+<li><code>ttpassgen --rule '[?l]{1:3:*}' abc.txt</code></li>
+<li>no answer required</li>
+</ul>
+</section>
+<section id="task-5.7" class="level2">
+<h2 class="anchored" data-anchor-id="task-5.7">Task 5.7</h2>
+<p>Then we can create a new wordlist that is a combination of several wordlists. Eg. combine the PIN wordlist and the letter wordlist separated by a dash.</p>
+<ul>
+<li>Warning: combining wordlists makes huge file sizes. <code>ttpassgen --dictlist 'pin.txt,abc.txt' --rule '$0[-]{1}$1' combination.tx</code></li>
+<li>I did not make this wordlist</li>
+<li>no answer required</li>
+</ul>
+</section>
+<section id="task-5.8" class="level2">
+<h2 class="anchored" data-anchor-id="task-5.8">Task 5.8</h2>
+<p>Crack this md5 hash with combinations.txt.</p>
+<ul>
+<li>hash: <code>e5b47b7e8df2597077e703c76ee86aee</code></li>
+</ul>
+<p>I instead used hashes.com and cracked the hash.</p>
+</section>
+<section id="task-6" class="level2">
+<h2 class="anchored" data-anchor-id="task-6">Task 6</h2>
+<p>You will have to crack several hashes. For each hash you will be given a short scenario that will help you to create a mangling rules, build a wordlist or finding some specialized data you’ll need to crack the hash.</p>
+<p>The scenarios are located on the website: Password advisor (AttackBox VM), each piece of advice matches one of the following hashes (in the same order).</p>
+</section>
+<section id="task-6.1" class="level2">
+<h2 class="anchored" data-anchor-id="task-6.1">Task 6.1</h2>
+<ul>
+<li>Advice n°1</li>
+<li>hash: <code>b16f211a8ad7f97778e5006c7cecdf31</code></li>
+<li>hint: English male name, md5, border mutation, custom rule</li>
+</ul>
+<p>I went to hashes.com and pasted it in and got the answer.</p>
+<section id="work-through" class="level3">
+<h3 class="anchored" data-anchor-id="work-through">work through</h3>
+<p>But the hint tells us to use <code>wordlistctl</code> dictionary that has names.</p>
+<ul>
+<li><p><code>cd wordlistctl/</code></p></li>
+<li><p>in another terminal tab, I copied the hash into <code>name-that-hash</code>, it says it is md5</p></li>
+<li><p><code>nano hash.txt</code> and paste the hash</p></li>
+<li><p><code>search -l usernames</code> shows what usernames you have on your machine</p></li>
+<li><p>list usernames <code>python3 wordlistctl list -g usernames</code> and find <code>malenames-usa-top1000</code></p></li>
+<li><p>warning: this command downloads all usernames files <code>fetch femalenames-use-top1000 -g usernames -l usernames</code>. I stopped the download after a few seconds and deleted usernames files I did not want to save space.</p></li>
+</ul>
+<p>So we now have male and female usernames.</p>
+<p>Now we need to make a John the Ripper rule. Need to make a new rule <code>sudo nano john-local.conf</code> or <code>john.conf</code> and type:</p>
+<pre><code>[List.Rules:CTH01]
+[0–9!@\#\$%^&amp;()_+\-={}|\[\]\\;’:,/\&lt;\&gt;?`~*]</code></pre>
+<p><em>This code is from <a href="">Phantom-95 walkthrough</a></em> and is helpful showing how to add a real custom rule.</p>
+<ul>
+<li><code>john hash.txt --format=raw-md5 --wordlist=/usr/share/wordlists/usernames/malenames-use-top1000.txt  --rules=CTH01</code></li>
+</ul>
+</section>
+</section>
+<section id="task-6.2" class="level2">
+<h2 class="anchored" data-anchor-id="task-6.2">Task 6.2</h2>
+<ul>
+<li>Advice n°2</li>
+<li>hash: <code>7463fcb720de92803d179e7f83070f97</code></li>
+<li>hint: English female name, md5, border mutation, custom rule</li>
+</ul>
+<p>I went to hashes.com and pasted it in and got the answer.</p>
+</section>
+<section id="task-6.3" class="level2">
+<h2 class="anchored" data-anchor-id="task-6.3">Task 6.3</h2>
+<ul>
+<li>Advice n°3</li>
+<li>hash: <code>f4476669333651be5b37ec6d81ef526f</code></li>
+<li>hint: Town name of Mexico, MD5, Freak mutation, mentalist tool</li>
+</ul>
+<p>I went to hashes.com and pasted it in and got the answer.</p>
+</section>
+<section id="task-6.4" class="level2">
+<h2 class="anchored" data-anchor-id="task-6.4">Task 6.4</h2>
+<ul>
+<li>Advice n°4</li>
+<li>hash: <code>a3a321e1c246c773177363200a6c0466a5030afc</code></li>
+<li>hint: Own name, SHA1, Case mutation; existing rule</li>
+</ul>
+</section>
+<section id="task-6.5" class="level2">
+<h2 class="anchored" data-anchor-id="task-6.5">Task 6.5</h2>
+<ul>
+<li>Advice n°5</li>
+<li>hash: <code>d5e085772469d544a447bc8250890949</code></li>
+<li>hint: Lyrics, MD5, Order mutation, lyricpass</li>
+</ul>
+</section>
+<section id="task-6.6" class="level2">
+<h2 class="anchored" data-anchor-id="task-6.6">Task 6.6</h2>
+<ul>
+<li>Advice n°6</li>
+<li>hash: <code>377081d69d23759c5946a95d1b757adc</code></li>
+</ul>
+<p>I went to hashes.com and pasted it in and got the answer.</p>
+</section>
+<section id="task-6.7" class="level2">
+<h2 class="anchored" data-anchor-id="task-6.7">Task 6.7</h2>
+<ul>
+<li>Advice n°7</li>
+<li>hash: <code>ba6e8f9cd4140ac8b8d2bf96c9acd2fb58c0827d556b78e331d1113fcbfe425ca9299fe917f6015978f7e1644382d1ea45fd581aed6298acde2fa01e7d83cdbd</code></li>
+<li>hint: Rockyou, SHA3-512, No mutation</li>
+</ul>
+</section>
+<section id="task-6.8" class="level2">
+<h2 class="anchored" data-anchor-id="task-6.8">Task 6.8</h2>
+<ul>
+<li>Advice n°8</li>
+<li>hash: <code>9f7376709d3fe09b389a27876834a13c6f275ed9a806d4c8df78f0ce1aad8fb343316133e810096e0999eaf1d2bca37c336e1b7726b213e001333d636e896617</code></li>
+<li>hint: Web scrapping, blake2, Repetition, CeWL</li>
+</ul>
+</section>
+<section id="task-6.9" class="level2">
+<h2 class="anchored" data-anchor-id="task-6.9">Task 6.9</h2>
+<ul>
+<li>Advice n°9</li>
+<li>hash: <code>$6$kI6VJ0a31.SNRsLR$Wk30X8w8iEC2FpasTo0Z5U7wke0TpfbDtSwayrNebqKjYWC4gjKoNEJxO/DkP.YFTLVFirQ5PEh4glQIHuKfA/</code></li>
+<li>hint: Rockyou, SHA512-crypt, No mutation</li>
+</ul>
+</section>
 <section id="resources" class="level2">
 <h2 class="anchored" data-anchor-id="resources">Resources</h2>
 <ul>
-<li><a href="https://phantom-95.medium.com/tryhackme-crack-the-hash-2-walk-through-f42b9554e80f?sk=d59bc2d827cd59f36bd8512e1992e731">THM Crack the Hash Level 2 walkthrough</a></li>
+<li><p><a href="https://phantom-95.medium.com/tryhackme-crack-the-hash-2-walk-through-f42b9554e80f?sk=d59bc2d827cd59f36bd8512e1992e731">THM Crack the Hash Level 2 walkthrough</a></p></li>
+<li><p><a href="https://youtu.be/XjVYl1Ts6XI">Password cracking with John the Ripper – HackerSploit</a></p></li>
 </ul>
 
 
