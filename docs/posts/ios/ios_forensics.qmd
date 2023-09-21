@@ -1,0 +1,404 @@
+---
+title: "iOS Forensics"
+author: "hacker_newb"
+date: "2023-08-01"
+categories: [iOS, forensics]
+image: forensics.png
+---
+
+Learn about the data acquisition techniques and tools used in iOS device digital forensics!
+
+
+## iOS Forensics
+
+This is Digital Forensics and Incidence Response, where you are
+going to be learning the fundamentals of iOS forensics and apply
+this knowledge in analyzing an actual iPhone in "Operation JustEncase".
+
+## Task 2
+
+Digital forensics is the mere digitisation of the traditional use and applications of forensic investigation. 
+
+Artefacts are items or biological markers like fingerprints or hair help in the investigation for a physical crime, digital forensics is about finding artefacts for ditial devices.
+
+Removing evidence or covering your tracks is a fallacy to some extent, someone
+can hide exactly what they were doing but _hiding_ leave a trace of something being hidden. 
+
+Digital devices hold plethoras of information, and in turn, evidence about our activities. In this room we'll be analysing an iOS device, however, as the Internet of Things (IoT) expands, there's a possibility your toaster can be used as evidence against you. Because of how personal IoT devices are, they serve as goldmines for analysts.
+
+
+Digital forensics isn't only used in investigations by the authorities but has an extremely heavy and necessary footprint in every sector of the world. 
+Companies need to understand the chain of events on how they were breached and what data was taken, this is known as incidence response.
+
+
+Question: _What would look more suspicious? an empty hard drive or a full hard drive?_
+
+- an empty hard drive
+
+Question: _What is the definition for an abstract view of a hard drive?_
+
+- image
+
+
+
+
+
+
+
+
+
+## Task 3
+  
+Digital forensics is very time-consuming process, despite the tools available as you 
+will have to analyze data bit-by-bit to find the "smoking gun". 
+
+- time consuming
+
+If you have 10 terabytes of data, then you need 10 terabytes of storage before the data is processed, then another 10 terabytes for backups and so you have 20+ terabytes of data involved. 
+
+- lots of data to parse through
+
+Forensic analysis involves piecing parts of information together into a formal and well-documented timeline of events for presentation. Piecing together information without a Graphical User Interface (GUI) or a terminal is very hard. 
+
+- hard puzzle to solve
+
+
+Encryption is a means for good but is also a big hurdle for forensic analysis.
+The problem is that people and/or devices leave the _decryption_ keys within 
+the same platform.
+
+
+Steganography is hiding data within data, unlike cryptography which makes 
+the data unreadable, steganography hides the data. 
+
+
+Tools available like FTK and Autopsy are free to use, but these free
+tools are limited. The company tool Cellebrite costs $15,000 for their equipment and 
+only specific agencies and universities have access to them. 
+
+
+
+
+
+
+
+
+## Task 4
+
+Apple has their own file system formattings: APFS and HFS+ (oldest: 1998).
+File system HFS+ did not support encryption entirely, iMac and iPhones past `iOS 10.3` (2016) have been converted to AFS automatically.
+
+Apple File System improved file system fundamentals as well as several new features, including cloning, snapshots, space sharing, fast directory sizing, atomic safe-save, and sparse files.
+
+> The inode (index node) is a data structure in a Unix file system that describes objects like a file or a directory. Each inode stores attributes and disk locations of the object's data. 
+
+- full disk encryption
+- increased max number of files 2^63 files in 64-bit inode numbers
+
+
+
+
+
+
+
+
+## Task 5
+
+Elcomsoft recently announced being able to acquisition file system data from iPhones running iOS 13 and 13.3 without any jailbreaking. That in of itself is groundbreaking in mobile device forensics.
+
+Cellebrite toolkits such as this UFED can use all of the acquisition methods, as
+the UFED Extractor can force the iDevice to boot using UFED custom boot loader which bypasses the entire iOS. 
+
+- if the iPhone isn't properly isolated, it can be remotely wiped via the iCloud.
+- Apple enforces a "Restricted Mode" on all Apple devices, this disables the input/output of data functionality from the lightening charge cable until the iPhone is unlocked with a passcode. 
+
+
+
+
+
+
+
+
+## Task 6 
+
+In modern-day digital forensics, there are four primary methods and procedures followed when trying to retrieve data from devices such as iPhones. 
+How an analyst approaches a device is arguably the most important decision they'll make. _If the wrong call was made, data that could have been retrieved may end up deleted, or just as worse, inadmissible as evidence due to incorrect technique or failure to follow policy._
+
+In a court of law, any evidence submitted must be admissible. This complex process involves the "chain of custody". No matter how indicting a piece of evidence is, it can be dismissed if there is insufficient documentation and/or negligence in handling - all the way from the crime scene to the courtroom.
+
+
+Primary Methods: 
+
+- `direct acquisition`  interacting with the device itself
+- `logical/backup acquisition` utilizing the iTunes backup of phone for file system entry. Forensics software to analyze data `.plists`
+- `advanced logical acquisition` using the escalated privileges to an iPhone file system found when pairing the iOS device to a computer (iTunes or Xcode)
+- `physical acquisition` direct approach, use of forensic imaging kits like Cellebrite to take all the bits and copy them, both data and system partitions
+
+
+
+
+### Direct Acquisition
+
+Non-forensics focused free apps such as iFunBox do the same job as Cellebrite(not on App store).
+
+The iFunbox app is capable of writing to the device being analysed, this makes it
+inadmissible in court due to the fact that there is a possibility that data 
+was overwritten to the device (could be argued the Forensic Analyst left it).
+
+
+Direct Acquisition covers 3 scenarios:
+
+1. there is no password on the phone
+2. there is a password but it's known to the analyst
+3. the analyst has a "Lockdown Certificate"   
+
+
+
+
+
+### Logical or Backup Acquisition
+
+The backup is the cheapest way of acquiring data from a device. 
+Analyst can pair the computer with the iPhone. 
+
+
+
+### iTunes backups & trust certificates
+
+When backing up an iPhone, iTunes accesses the iPhone in a privileged state - similar to using the sudocommand on Linux to run a command with root privileges.
+iPhones will only backup to trusted computers. When plugging into a new device, the iPhone will ask the user whether or not they wish to trust the computer.
+
+
+"Trusting" a computer involves generating a pair certificate on both the iPhone and computer. If the certificate matches up on both devices, the iPhone can be backed up. This process is a fantastic security measure by Apple, namely to prevent attacks such as "Juice Jacking".
+
+
+A lockdown certificate is stored within `/private/var/db/lockdown` on later iOS devices or `/private/var/Lockdown` on older iOS devices. 
+
+- Windows computer stores the certificate: `C:\ProgramData\Apple\Lockdown` 
+
+
+A "Juice Jacking" attack involves maliciously created USB chargers or cables (such as the O.MG Cable) to steal data or infect devices. The "Trust This Computer" popup is to prevent attacks and is to alert the user when plugging in device to a power supply. 
+
+
+### Trust Certifications
+
+Trust certificates aren't permanent by design and will eventually require you to re-trust the device.
+
+iTunes will generate a certificate using the iPhone's unique identifier once data read/write has been allowed by trusting the computer on the iPhone.
+This certificate will be stored on the trusted computer for 30 days. Afterwhich you will need to re-trust the device. However, the certificate that is generated can only be used for 48 hours since the user has last unlocked their iPhone. 
+
+- If the iPhone has been connected to a trusted computer but the iPhone hasn't been unlocked in a week, the certificate won't be used although it is still valid.
+- if you were to connect the iPhone to the trusted computer 6 hours since it was last unlocked, the iPhone will allow read/write access straight away.
+
+
+Apple file backups are either Unencrypted or Encrypted.
+
+
+The iPhone uses lockdown certificates and extracts data from the phone with the keychain which has:
+
+- WiFi passwords
+- Internet Account Credentials (autofil)
+- VPN
+- Root certificates for apps
+- Mail credentials
+
+
+
+Question: _What is the name of a forensics tool that couldn't be used in a court of law, because data could be written to the device being analysed?_
+
+- iFunBox
+
+Question: _You've found an iPhone with no passcode lock, what acquisition method would you use?_
+
+- direct acquisition
+
+Question: _What is the name of the certificate that gets stored on a computer when it becomes trusted?_
+
+- trust certificate
+
+
+
+
+
+
+
+
+
+
+
+## Task 7
+
+No matter how privacy-minded you are, our mobile devices are quite literal extensions of our lives, and as such, hold everything someone could ever want to know about us.
+
+Phones store a lot of data. You'll come to see how log files of connections to WiFi cellular towers are the least of concerns in privacy on your phone when you can see the data that can be extracted from such small devices.
+
+
+
+## Task 8
+
+Apple standard file system has files with `plist` which are property files
+which have various data about app settings and preferences. 
+The plist file is an XML document. The files count the number of times
+the phone was "hard reset" (pressing home + power button). 
+
+- some plist files will have hex code, and you need to use HxD hex code editor (VS Code has an extension).
+
+Apple uses SQLit or DB format files for storing data, such as iPhone SMS, contacts and email. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Task 9
+
+Your crime taskforce has been investigating into the root cause of a recent outbreak of criminal activity. Although you've apprehended a Mr Brandon Hunter, you need to analyse the filesystem dump of his iPhone to find a lead into the gang.
+
+
+Although the suspect's phone is locked with a passcode, you have been able to use a recent "Lockdown Certificate" from the suspect's computer, allowing you to create a logical file system dump from an iPhone backup he made recently.
+
+
+Good luck, and remember, all you need is your SQL viewer and both hex and text editors of your choice.
+
+
+- Launch AttackBox, there should be a Windows VM available.
+  
+
+
+Question: _Who was the recepient of the SMS message sent on 23rd of August 2020?_
+
+- on the desktop, open the OpJustEncase folder
+- the path to the file `var\mobile\library\SMS` and I opened the file in Notepad to see if there was any info and found the answer
+
+
+
+Question: _What did the SMS message say?_
+
+- the message is visible near the bottom of the file
+
+
+Question: _Looking at the address book, what is the first name of the other person in the contacts?_
+
+- the path to the file `var\mobile\library\AddressBook`
+- click and drag the "AddressBook.sqlitedb" to the DB Browser (SQLite) app
+- click on the tab "Database Structure", right click on "ABPerson" as it is first option and select "Browse Table"
+- the answer is in second column
+
+
+Question: _Following on from Question #3, what is their listed "Organization"_
+
+- scroll to the right of same table, the answer is there
+
+
+Question: _Investigate their browsing history, what is the address of the website that they have bookmarked?_
+
+- path to file `var\mobile\library\Safari`
+- the `plist` files are empty so try Bookmarks and drag that to SQLite
+- under Tables is bookmarks, right click on Browse Table
+- answer is in the table
+- 
+
+
+Question: _The suspected received an email, what is the remote_id of the sender?_
+
+- path to file `var\mobile\library\Mail` 
+- Mailboxes folder is empty, so drag 'Envelope Index' to SQLite
+- Browse Table on messages, the IP address is there
+
+
+
+
+Question: _What is the name of the company on one of the images stored on the suspects phone?_
+
+- path to file `var\Media\PhotoData\100Apple`
+- click on the non-clip art png file, the answer is on the image
+
+
+
+Question: _What is the value of the cookie that was left behind?_
+
+- path to file `var\mobile\library\Cookies`
+- there is a sqlitdb file and a plist file, open the plist file with notepad or Sublime
+- the flag in there
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## General Principles for Digital Forensics
+
+Some of these principles have been omitted, the content is from US Homeland Security.
+
+- if computer is involved in a crime, take immediate steps to preserve the evidence 
+- if the computer is `OFF`, leave it off. _don't power it on!_
+- if the computer is destroying evidence, immediately shut down the computer by pulling the power cord from the back of the computer
+- if Forensics Analyst is not available, unplug the computer from back of computer power cord (if does not power off, remove battery)
+- disconnect all cords and devices from the computer
+
+For when the computer is `ON`:
+
+- if something is on the monitor, take photo of it
+- if screen is blank, move mouse or press the space bar, take photo of screen
+- if Forensics Analyst is available, consider a volatile RAM acquisition to capture the data that may be lost when powered off
+- if connected to a network (router or modem) AND  Forensics Analyst is available, consider capturing the volatile network info (IP addresses, open ports, active network connections) and network logs (if applicable)
+- if networked, unplug the power to the network device and record the MAC address(es) from the device
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Reference 
+
+- [Wiki - iOS 10](https://en.wikipedia.org/wiki/IOS_10)
+- [Wiki - APFS](https://en.wikipedia.org/wiki/Apple_File_System)
+- [Apple - Apple File System](https://developer.apple.com/documentation/foundation/file_system/about_apple_file_system)
+- [Apple - Apple File System Reference (pdf)](https://developer.apple.com/support/downloads/Apple-File-System-Reference.pdf)
+- [Wiki - inode](https://en.wikipedia.org/wiki/Inode)
+- [helpnetsecurity - Rules for Computer Forensics](https://www.helpnetsecurity.com/2007/07/20/the-rules-for-computer-forensics/)
+- [ACPO - Digital Evidence (pdf)](https://www.digital-detective.net/digital-forensics-documents/ACPO_Good_Practice_Guide_for_Digital_Evidence_v5.pdf)
+- [US Dep. Homeland Security - Electronic Evidence](https://www.cwagweb.org/wp-content/uploads/2018/05/BestPracticesforSeizingElectronicEvidence.pdf)
+
+

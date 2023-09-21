@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-0.9.334">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="hacker_newb">
+<meta name="dcterms.date" content="2023-08-01">
+
+<title>hacking newb - iOS Forensics</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link id="quarto-text-highlighting-styles" href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">hacking newb</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html">About</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../reference.html">References</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://infosec.exchange/@hacker_newb"><i class="bi bi-mastodon" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">iOS Forensics</h1>
+                          <div class="quarto-categories">
+                <div class="quarto-category">iOS</div>
+                <div class="quarto-category">forensics</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+
+
+
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>hacker_newb </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">August 1, 2023</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p>Learn about the data acquisition techniques and tools used in iOS device digital forensics!</p>
+<section id="ios-forensics" class="level2">
+<h2 class="anchored" data-anchor-id="ios-forensics">iOS Forensics</h2>
+<p>This is Digital Forensics and Incidence Response, where you are going to be learning the fundamentals of iOS forensics and apply this knowledge in analyzing an actual iPhone in “Operation JustEncase”.</p>
+</section>
+<section id="task-2" class="level2">
+<h2 class="anchored" data-anchor-id="task-2">Task 2</h2>
+<p>Digital forensics is the mere digitisation of the traditional use and applications of forensic investigation.</p>
+<p>Artefacts are items or biological markers like fingerprints or hair help in the investigation for a physical crime, digital forensics is about finding artefacts for ditial devices.</p>
+<p>Removing evidence or covering your tracks is a fallacy to some extent, someone can hide exactly what they were doing but <em>hiding</em> leave a trace of something being hidden.</p>
+<p>Digital devices hold plethoras of information, and in turn, evidence about our activities. In this room we’ll be analysing an iOS device, however, as the Internet of Things (IoT) expands, there’s a possibility your toaster can be used as evidence against you. Because of how personal IoT devices are, they serve as goldmines for analysts.</p>
+<p>Digital forensics isn’t only used in investigations by the authorities but has an extremely heavy and necessary footprint in every sector of the world. Companies need to understand the chain of events on how they were breached and what data was taken, this is known as incidence response.</p>
+<p>Question: <em>What would look more suspicious? an empty hard drive or a full hard drive?</em></p>
+<ul>
+<li>an empty hard drive</li>
+</ul>
+<p>Question: <em>What is the definition for an abstract view of a hard drive?</em></p>
+<ul>
+<li>image</li>
+</ul>
+</section>
+<section id="task-3" class="level2">
+<h2 class="anchored" data-anchor-id="task-3">Task 3</h2>
+<p>Digital forensics is very time-consuming process, despite the tools available as you will have to analyze data bit-by-bit to find the “smoking gun”.</p>
+<ul>
+<li>time consuming</li>
+</ul>
+<p>If you have 10 terabytes of data, then you need 10 terabytes of storage before the data is processed, then another 10 terabytes for backups and so you have 20+ terabytes of data involved.</p>
+<ul>
+<li>lots of data to parse through</li>
+</ul>
+<p>Forensic analysis involves piecing parts of information together into a formal and well-documented timeline of events for presentation. Piecing together information without a Graphical User Interface (GUI) or a terminal is very hard.</p>
+<ul>
+<li>hard puzzle to solve</li>
+</ul>
+<p>Encryption is a means for good but is also a big hurdle for forensic analysis. The problem is that people and/or devices leave the <em>decryption</em> keys within the same platform.</p>
+<p>Steganography is hiding data within data, unlike cryptography which makes the data unreadable, steganography hides the data.</p>
+<p>Tools available like FTK and Autopsy are free to use, but these free tools are limited. The company tool Cellebrite costs $15,000 for their equipment and only specific agencies and universities have access to them.</p>
+</section>
+<section id="task-4" class="level2">
+<h2 class="anchored" data-anchor-id="task-4">Task 4</h2>
+<p>Apple has their own file system formattings: APFS and HFS+ (oldest: 1998). File system HFS+ did not support encryption entirely, iMac and iPhones past <code>iOS 10.3</code> (2016) have been converted to AFS automatically.</p>
+<p>Apple File System improved file system fundamentals as well as several new features, including cloning, snapshots, space sharing, fast directory sizing, atomic safe-save, and sparse files.</p>
+<blockquote class="blockquote">
+<p>The inode (index node) is a data structure in a Unix file system that describes objects like a file or a directory. Each inode stores attributes and disk locations of the object’s data.</p>
+</blockquote>
+<ul>
+<li>full disk encryption</li>
+<li>increased max number of files 2^63 files in 64-bit inode numbers</li>
+</ul>
+</section>
+<section id="task-5" class="level2">
+<h2 class="anchored" data-anchor-id="task-5">Task 5</h2>
+<p>Elcomsoft recently announced being able to acquisition file system data from iPhones running iOS 13 and 13.3 without any jailbreaking. That in of itself is groundbreaking in mobile device forensics.</p>
+<p>Cellebrite toolkits such as this UFED can use all of the acquisition methods, as the UFED Extractor can force the iDevice to boot using UFED custom boot loader which bypasses the entire iOS.</p>
+<ul>
+<li>if the iPhone isn’t properly isolated, it can be remotely wiped via the iCloud.</li>
+<li>Apple enforces a “Restricted Mode” on all Apple devices, this disables the input/output of data functionality from the lightening charge cable until the iPhone is unlocked with a passcode.</li>
+</ul>
+</section>
+<section id="task-6" class="level2">
+<h2 class="anchored" data-anchor-id="task-6">Task 6</h2>
+<p>In modern-day digital forensics, there are four primary methods and procedures followed when trying to retrieve data from devices such as iPhones. How an analyst approaches a device is arguably the most important decision they’ll make. <em>If the wrong call was made, data that could have been retrieved may end up deleted, or just as worse, inadmissible as evidence due to incorrect technique or failure to follow policy.</em></p>
+<p>In a court of law, any evidence submitted must be admissible. This complex process involves the “chain of custody”. No matter how indicting a piece of evidence is, it can be dismissed if there is insufficient documentation and/or negligence in handling - all the way from the crime scene to the courtroom.</p>
+<p>Primary Methods:</p>
+<ul>
+<li><code>direct acquisition</code> interacting with the device itself</li>
+<li><code>logical/backup acquisition</code> utilizing the iTunes backup of phone for file system entry. Forensics software to analyze data <code>.plists</code></li>
+<li><code>advanced logical acquisition</code> using the escalated privileges to an iPhone file system found when pairing the iOS device to a computer (iTunes or Xcode)</li>
+<li><code>physical acquisition</code> direct approach, use of forensic imaging kits like Cellebrite to take all the bits and copy them, both data and system partitions</li>
+</ul>
+<section id="direct-acquisition" class="level3">
+<h3 class="anchored" data-anchor-id="direct-acquisition">Direct Acquisition</h3>
+<p>Non-forensics focused free apps such as iFunBox do the same job as Cellebrite(not on App store).</p>
+<p>The iFunbox app is capable of writing to the device being analysed, this makes it inadmissible in court due to the fact that there is a possibility that data was overwritten to the device (could be argued the Forensic Analyst left it).</p>
+<p>Direct Acquisition covers 3 scenarios:</p>
+<ol type="1">
+<li>there is no password on the phone</li>
+<li>there is a password but it’s known to the analyst</li>
+<li>the analyst has a “Lockdown Certificate”</li>
+</ol>
+</section>
+<section id="logical-or-backup-acquisition" class="level3">
+<h3 class="anchored" data-anchor-id="logical-or-backup-acquisition">Logical or Backup Acquisition</h3>
+<p>The backup is the cheapest way of acquiring data from a device. Analyst can pair the computer with the iPhone.</p>
+</section>
+<section id="itunes-backups-trust-certificates" class="level3">
+<h3 class="anchored" data-anchor-id="itunes-backups-trust-certificates">iTunes backups &amp; trust certificates</h3>
+<p>When backing up an iPhone, iTunes accesses the iPhone in a privileged state - similar to using the sudocommand on Linux to run a command with root privileges. iPhones will only backup to trusted computers. When plugging into a new device, the iPhone will ask the user whether or not they wish to trust the computer.</p>
+<p>“Trusting” a computer involves generating a pair certificate on both the iPhone and computer. If the certificate matches up on both devices, the iPhone can be backed up. This process is a fantastic security measure by Apple, namely to prevent attacks such as “Juice Jacking”.</p>
+<p>A lockdown certificate is stored within <code>/private/var/db/lockdown</code> on later iOS devices or <code>/private/var/Lockdown</code> on older iOS devices.</p>
+<ul>
+<li>Windows computer stores the certificate: <code>C:\ProgramData\Apple\Lockdown</code></li>
+</ul>
+<p>A “Juice Jacking” attack involves maliciously created USB chargers or cables (such as the O.MG Cable) to steal data or infect devices. The “Trust This Computer” popup is to prevent attacks and is to alert the user when plugging in device to a power supply.</p>
+</section>
+<section id="trust-certifications" class="level3">
+<h3 class="anchored" data-anchor-id="trust-certifications">Trust Certifications</h3>
+<p>Trust certificates aren’t permanent by design and will eventually require you to re-trust the device.</p>
+<p>iTunes will generate a certificate using the iPhone’s unique identifier once data read/write has been allowed by trusting the computer on the iPhone. This certificate will be stored on the trusted computer for 30 days. Afterwhich you will need to re-trust the device. However, the certificate that is generated can only be used for 48 hours since the user has last unlocked their iPhone.</p>
+<ul>
+<li>If the iPhone has been connected to a trusted computer but the iPhone hasn’t been unlocked in a week, the certificate won’t be used although it is still valid.</li>
+<li>if you were to connect the iPhone to the trusted computer 6 hours since it was last unlocked, the iPhone will allow read/write access straight away.</li>
+</ul>
+<p>Apple file backups are either Unencrypted or Encrypted.</p>
+<p>The iPhone uses lockdown certificates and extracts data from the phone with the keychain which has:</p>
+<ul>
+<li>WiFi passwords</li>
+<li>Internet Account Credentials (autofil)</li>
+<li>VPN</li>
+<li>Root certificates for apps</li>
+<li>Mail credentials</li>
+</ul>
+<p>Question: <em>What is the name of a forensics tool that couldn’t be used in a court of law, because data could be written to the device being analysed?</em></p>
+<ul>
+<li>iFunBox</li>
+</ul>
+<p>Question: <em>You’ve found an iPhone with no passcode lock, what acquisition method would you use?</em></p>
+<ul>
+<li>direct acquisition</li>
+</ul>
+<p>Question: <em>What is the name of the certificate that gets stored on a computer when it becomes trusted?</em></p>
+<ul>
+<li>trust certificate</li>
+</ul>
+</section>
+</section>
+<section id="task-7" class="level2">
+<h2 class="anchored" data-anchor-id="task-7">Task 7</h2>
+<p>No matter how privacy-minded you are, our mobile devices are quite literal extensions of our lives, and as such, hold everything someone could ever want to know about us.</p>
+<p>Phones store a lot of data. You’ll come to see how log files of connections to WiFi cellular towers are the least of concerns in privacy on your phone when you can see the data that can be extracted from such small devices.</p>
+</section>
+<section id="task-8" class="level2">
+<h2 class="anchored" data-anchor-id="task-8">Task 8</h2>
+<p>Apple standard file system has files with <code>plist</code> which are property files which have various data about app settings and preferences. The plist file is an XML document. The files count the number of times the phone was “hard reset” (pressing home + power button).</p>
+<ul>
+<li>some plist files will have hex code, and you need to use HxD hex code editor (VS Code has an extension).</li>
+</ul>
+<p>Apple uses SQLit or DB format files for storing data, such as iPhone SMS, contacts and email.</p>
+</section>
+<section id="task-9" class="level2">
+<h2 class="anchored" data-anchor-id="task-9">Task 9</h2>
+<p>Your crime taskforce has been investigating into the root cause of a recent outbreak of criminal activity. Although you’ve apprehended a Mr Brandon Hunter, you need to analyse the filesystem dump of his iPhone to find a lead into the gang.</p>
+<p>Although the suspect’s phone is locked with a passcode, you have been able to use a recent “Lockdown Certificate” from the suspect’s computer, allowing you to create a logical file system dump from an iPhone backup he made recently.</p>
+<p>Good luck, and remember, all you need is your SQL viewer and both hex and text editors of your choice.</p>
+<ul>
+<li>Launch AttackBox, there should be a Windows VM available.</li>
+</ul>
+<p>Question: <em>Who was the recepient of the SMS message sent on 23rd of August 2020?</em></p>
+<ul>
+<li>on the desktop, open the OpJustEncase folder</li>
+<li>the path to the file <code>var\mobile\library\SMS</code> and I opened the file in Notepad to see if there was any info and found the answer</li>
+</ul>
+<p>Question: <em>What did the SMS message say?</em></p>
+<ul>
+<li>the message is visible near the bottom of the file</li>
+</ul>
+<p>Question: <em>Looking at the address book, what is the first name of the other person in the contacts?</em></p>
+<ul>
+<li>the path to the file <code>var\mobile\library\AddressBook</code></li>
+<li>click and drag the “AddressBook.sqlitedb” to the DB Browser (SQLite) app</li>
+<li>click on the tab “Database Structure”, right click on “ABPerson” as it is first option and select “Browse Table”</li>
+<li>the answer is in second column</li>
+</ul>
+<p>Question: <em>Following on from Question #3, what is their listed “Organization”</em></p>
+<ul>
+<li>scroll to the right of same table, the answer is there</li>
+</ul>
+<p>Question: <em>Investigate their browsing history, what is the address of the website that they have bookmarked?</em></p>
+<ul>
+<li>path to file <code>var\mobile\library\Safari</code></li>
+<li>the <code>plist</code> files are empty so try Bookmarks and drag that to SQLite</li>
+<li>under Tables is bookmarks, right click on Browse Table</li>
+<li>answer is in the table</li>
+<li></li>
+</ul>
+<p>Question: <em>The suspected received an email, what is the remote_id of the sender?</em></p>
+<ul>
+<li>path to file <code>var\mobile\library\Mail</code></li>
+<li>Mailboxes folder is empty, so drag ‘Envelope Index’ to SQLite</li>
+<li>Browse Table on messages, the IP address is there</li>
+</ul>
+<p>Question: <em>What is the name of the company on one of the images stored on the suspects phone?</em></p>
+<ul>
+<li>path to file <code>var\Media\PhotoData\100Apple</code></li>
+<li>click on the non-clip art png file, the answer is on the image</li>
+</ul>
+<p>Question: <em>What is the value of the cookie that was left behind?</em></p>
+<ul>
+<li>path to file <code>var\mobile\library\Cookies</code></li>
+<li>there is a sqlitdb file and a plist file, open the plist file with notepad or Sublime</li>
+<li>the flag in there</li>
+</ul>
+</section>
+<section id="general-principles-for-digital-forensics" class="level2">
+<h2 class="anchored" data-anchor-id="general-principles-for-digital-forensics">General Principles for Digital Forensics</h2>
+<p>Some of these principles have been omitted, the content is from US Homeland Security.</p>
+<ul>
+<li>if computer is involved in a crime, take immediate steps to preserve the evidence</li>
+<li>if the computer is <code>OFF</code>, leave it off. <em>don’t power it on!</em></li>
+<li>if the computer is destroying evidence, immediately shut down the computer by pulling the power cord from the back of the computer</li>
+<li>if Forensics Analyst is not available, unplug the computer from back of computer power cord (if does not power off, remove battery)</li>
+<li>disconnect all cords and devices from the computer</li>
+</ul>
+<p>For when the computer is <code>ON</code>:</p>
+<ul>
+<li>if something is on the monitor, take photo of it</li>
+<li>if screen is blank, move mouse or press the space bar, take photo of screen</li>
+<li>if Forensics Analyst is available, consider a volatile RAM acquisition to capture the data that may be lost when powered off</li>
+<li>if connected to a network (router or modem) AND Forensics Analyst is available, consider capturing the volatile network info (IP addresses, open ports, active network connections) and network logs (if applicable)</li>
+<li>if networked, unplug the power to the network device and record the MAC address(es) from the device</li>
+</ul>
+</section>
+<section id="reference" class="level2">
+<h2 class="anchored" data-anchor-id="reference">Reference</h2>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/IOS_10">Wiki - iOS 10</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apple_File_System">Wiki - APFS</a></li>
+<li><a href="https://developer.apple.com/documentation/foundation/file_system/about_apple_file_system">Apple - Apple File System</a></li>
+<li><a href="https://developer.apple.com/support/downloads/Apple-File-System-Reference.pdf">Apple - Apple File System Reference (pdf)</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Inode">Wiki - inode</a></li>
+<li><a href="https://www.helpnetsecurity.com/2007/07/20/the-rules-for-computer-forensics/">helpnetsecurity - Rules for Computer Forensics</a></li>
+<li><a href="https://www.digital-detective.net/digital-forensics-documents/ACPO_Good_Practice_Guide_for_Digital_Evidence_v5.pdf">ACPO - Digital Evidence (pdf)</a></li>
+<li><a href="https://www.cwagweb.org/wp-content/uploads/2018/05/BestPracticesforSeizingElectronicEvidence.pdf">US Dep. Homeland Security - Electronic Evidence</a></li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

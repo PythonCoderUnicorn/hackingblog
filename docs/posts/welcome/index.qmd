@@ -7,7 +7,8 @@ image: greenlines.png
 ---
 
 <pre> Hello World! </pre> 
-
+This blog is aimed at fellow new people in the world of
+Cyber Security / Ethical Hacking. 
 
 <img src='greenlines.png'>
 

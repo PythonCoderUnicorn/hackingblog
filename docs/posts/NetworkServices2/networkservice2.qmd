@@ -358,7 +358,7 @@ Question: _Start Metasploit.  What command do we use to do this?_
 - msfconsole
 
 
-Question: _Let's search for the module "smtp_version", what's it's full module name?_
+Question: Let's search for the module "smtp_version", what's it's full module name?
 
 - auxiliary/scanner/smtp/smtp_version
 
@@ -381,7 +381,7 @@ Question: _What Mail Transfer Agent (MTA) is running the SMTP server? This will 
 - hint: If I want to send a letter to my friend I have to `****` it.
 - Postfix
 
-Question: _We've now got a good amount of information on the target system to move onto the next stage. Let's search for the module "smtp_enum", what's it's full module name?_
+Question: We've now got a good amount of information on the target system to move onto the next stage. Let's search for the module "smtp_enum", what's it's full module name?
 
 - auxiliary/scanner/smtp/smtp_enum
 
@@ -553,7 +553,7 @@ The information we know: MySQL server credntials root:password, version of MySQL
 - syntax is `create schema` (not create database)
 
 
-Question: _Let's search for and select the "mysql_schemadump" module. What's the module's full name?_
+Question: Let's search for and select the "mysql_schemadump" module. What's the module's full name?
 
 - msfconsole > search mysql_schemadump
 - `auxiliary/scanner/mysql/mysql_schemadump`

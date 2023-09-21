@@ -1,0 +1,80 @@
+---
+title: "OhSINT"
+author: "hacker_newb"
+date: "2023-08-01"
+categories: [OSINT]
+image: hackinglab.png
+---
+
+OhSINT is OSINT _open source intelligence_. It is using 
+open source tools to get data.
+
+
+
+## Task 1
+
+_What information can you possibly get with just one photo?_
+
+- download task file (Windows XP jpeg)
+
+## Task 2
+
+Question: _what is the user's avatar of?_
+
+- inside your own VM drag & upload the Windows XP image
+- in a terminal run `exiftool WindowsXP.jpg`
+- we see a name next to copyright, 'OWoodflint' now search for this
+- 1st item found is a Twitter profile with an image of a cat
+
+
+
+Question: _What city is this person in?_
+
+- hint: BSSID + Wigle.net
+- on the blog says new york, but on GitHub says london
+- london
+
+Question: _What is the SSID of the WAP he is connected to?_
+
+- from twitter, bssid: B4:5D:50:AA:86:41
+- wigle.net , paste the bssid into BSSID on the right side and hit filter. Zoom out and look for a purple circle. Once you find a purple circle zoom in.
+- I used the [OhSINT Walkthrough video](https://www.youtube.com/watch?v=xZPhLEd-tek) to show me the answer on this as I did not want to make an account. 
+- Unileverwifi
+
+
+
+
+
+ 
+
+Question: _What is his personal email address?_
+
+- on GitHub: `OWoodflint@gmail.com`
+
+
+Question: _What site did you find his email address on?_
+
+- github
+
+Question: _Where has he gone on holiday?_
+
+- new york
+
+
+Question: _What is the person's password?_
+
+This person also has a blog and GitHub. On the blog inspect source code.
+We see the full name is Oliver Woodflint.
+
+- hint: Check the Source code
+- owoodflint
+- pennYDr0pper.! hidden inside a  `<p class>` tag styled in white text (invisible to see)
+
+
+
+
+
+
+
+
+

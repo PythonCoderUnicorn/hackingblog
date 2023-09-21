@@ -2,6 +2,9 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/ios/ios_forensics.html",
+      "/posts/OSINT/ohsint.html",
+      "/posts/Hydra/hydra.html",
       "/posts/NetworkServices2/networkservice2.html",
       "/posts/NetworkServices/network_services.html",
       "/posts/Networking/intro_Networking.html",
